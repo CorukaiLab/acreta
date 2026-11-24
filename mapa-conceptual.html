@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACR✶TA — Mapa Conceptual &amp; Brand Canvas (Affinity / Vector)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #070709;
+      --ink-2: #121218;
+      --bone: #ece8e0;
+      --acid: #d7ff3b;
+      --crimson: #ff2e4c;
+      --mute: #8e8a80;
+      --line: rgba(236, 232, 224, 0.16);
+      --disp: "Anton", Impact, sans-serif;
+      --serif: "Instrument Serif", Georgia, serif;
+      --mono: "Space Mono", monospace;
+      --sans: "Manrope", system-ui, sans-serif;
+    }
+
+    body.is-light {
+      --ink: #ece8e0;
+      --ink-2: #e2ddd2;
+      --bone: #070709;
+      --line: rgba(7, 7, 9, 0.14);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      background: var(--ink); color: var(--bone);
+      font-family: var(--sans);
+      user-select: none;
+    }
+
+    /* ---------- BARRA SUPERIOR ESTILO AFFINITY / ESTUDIO ---------- */
+    .toolbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      padding: .75rem 1.25rem;
+      background: rgba(7, 7, 9, 0.92); color: #ece8e0;
+      border-bottom: 2px solid #d7ff3b;
+      backdrop-filter: blur(10px);
+    }
+    .toolbar__brand {
+      display: flex; align-items: center; gap: .9rem;
+    }
+    .toolbar__logo {
+      font-family: var(--disp); font-size: 1.55rem; letter-spacing: .04em; color: #ece8e0;
+      text-decoration: none; display: inline-flex; align-items: center;
+    }
+    .toolbar__logo svg { height: .78em; width: auto; color: #d7ff3b; margin: 0 .03em; }
+    .toolbar__tag {
+      font-family: var(--mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .12em;
+      background: #d7ff3b; color: #070709; font-weight: 700;
+      padding: .22rem .55rem; box-shadow: 3px 3px 0 #ff2e4c;
+    }
+    .toolbar__hint {
+      font-family: var(--mono); font-size: .64rem; color: #b9b4a8; letter-spacing: .08em;
+    }
+    .toolbar__actions {
+      display: flex; align-items: center; gap: .55rem; flex-wrap: wrap;
+    }
+    .tbtn {
+      font-family: var(--mono); font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: .5rem .85rem; border: 1.5px solid #ece8e0;
+      background: #14141c; color: #ece8e0; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .4rem;
+      transition: transform .15s, background .15s, color .15s, box-shadow .15s;
+    }
+    .tbtn:hover {
+      background: #d7ff3b; color: #070709; border-color: #070709;
+      transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #ff2e4c;
+    }
+    .tbtn--primary {
+      background: #d7ff3b; color: #070709; border-color: #070709;
+      box-shadow: 4px 4px 0 #ff2e4c;
+    }
+    .tbtn--primary:hover {
+      background: #ff2e4c; color: #ece8e0; border-color: #ece8e0;
+      box-shadow: 4px 4px 0 #d7ff3b;
+    }
+
+    /* ---------- LIENZO INFINITO / ARTBOARD ---------- */
+    .viewport {
+      position: fixed; inset: 56px 0 38px 0;
+      overflow: hidden;
+      cursor: grab;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(215, 255, 59, 0.05) 0%, transparent 65%),
+        linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 40px 40px,
+        linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 40px 40px;
+    }
+    .viewport.is-panning { cursor: grabbing; }
+
+    .board {
+      position: absolute; top: 0; left: 0;
+      width: 2400px; height: 1560px;
+      transform-origin: 0 0;
+      will-change: transform;
+    }
+
+    /* Órbitas decorativas de fondo */
+    .board__orbits {
+      position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+    }
+    /* Líneas de conexión dinámicas entre nodos */
+    .board__edges {
+      position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;
+    }
+
+    /* ---------- TARJETAS / NODOS DEL MAPA CONCEPTUAL ---------- */
+    .node {
+      position: absolute; z-index: 3;
+      background: #111117; color: #ece8e0;
+      border: 2.5px solid #ece8e0;
+      box-shadow: 9px 9px 0 #d7ff3b;
+      cursor: move;
+      transition: box-shadow .2s;
+    }
+    .node:hover, .node.is-dragging {
+      z-index: 10;
+      box-shadow: 13px 13px 0 #ff2e4c;
+    }
+    .node--core {
+      background: #d7ff3b; color: #070709;
+      border: 3.5px solid #070709;
+      box-shadow: 14px 14px 0 #ff2e4c;
+    }
+    .node--bone {
+      background: #ece8e0; color: #070709;
+      border: 2.5px solid #070709;
+      box-shadow: 9px 9px 0 #d7ff3b;
+    }
+    .node--crimson {
+      box-shadow: 9px 9px 0 #ff2e4c;
+    }
+
+    .node__head {
+      display: flex; align-items: center; justify-content: space-between; gap: .6rem;
+      padding: .55rem .95rem;
+      font-family: var(--mono); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      background: #d7ff3b; color: #070709;
+      border-bottom: 2px solid #070709;
+    }
+    .node--core .node__head {
+      background: #070709; color: #d7ff3b;
+    }
+    .node--bone .node__head {
+      background: #070709; color: #d7ff3b;
+    }
+    .node--crimson .node__head {
+      background: #ff2e4c; color: #ece8e0; border-bottom-color: #ece8e0;
+    }
+    .node__grip { opacity: .65; font-size: .8rem; }
+
+    .node__body {
+      padding: 1.15rem 1.3rem 1.25rem;
+    }
+    .node__title {
+      font-family: var(--disp); font-size: 2.3rem; line-height: .92; text-transform: uppercase;
+      margin-bottom: .7rem;
+    }
+    .node__title em {
+      font-family: var(--serif); font-style: italic; font-weight: 400; text-transform: lowercase;
+      color: #d7ff3b; font-size: 1.06em;
+    }
+    .node--bone .node__title em,
+    .node--core .node__title em {
+      color: #ff2e4c;
+    }
+
+    /* Logo gigante en el nodo central */
+    .core-logo {
+      font-family: var(--disp); font-size: 5.4rem; line-height: .86;
+      display: flex; align-items: center; justify-content: center;
+      margin: .3rem 0 .5rem; color: #070709;
+    }
+    .core-logo svg {
+      height: .78em; width: auto; color: #ff2e4c; margin: 0 .03em;
+      filter: drop-shadow(3px 3px 0 #070709);
+    }
+    .core-quote {
+      font-family: var(--serif); font-style: italic; font-size: 1.75rem;
+      text-align: center; line-height: 1.05; margin-bottom: .75rem;
+    }
+    .core-desc {
+      font-size: .92rem; font-weight: 600; line-height: 1.45; text-align: center;
+      border-top: 1.5px dashed #070709; padding-top: .65rem;
+    }
+
+    .node__list {
+      list-style: none; display: grid; gap: .55rem;
+      font-size: .92rem; line-height: 1.45;
+    }
+    .node__list li {
+      position: relative; padding-left: 1.1rem;
+    }
+    .node__list li::before {
+      content: "✶"; position: absolute; left: 0; top: 0;
+      color: #d7ff3b; font-size: .78rem;
+    }
+    .node--bone .node__list li::before { color: #ff2e4c; }
+
+    /* Píldoras / etiquetas */
+    .badges {
+      display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .95rem;
+    }
+    .badge {
+      font-family: var(--mono); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: .28rem .6rem; border: 1.5px solid currentColor;
+    }
+    .badge--acid { color: #d7ff3b; background: rgba(215, 255, 59, 0.1); }
+    .badge--crimson { color: #ff2e4c; background: rgba(255, 46, 76, 0.12); }
+    .badge--dark { color: #070709; background: #d7ff3b; border-color: #070709; }
+
+    /* Muestras de color (ADN visual) */
+    .swatches {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: .55rem; margin-top: .9rem;
+    }
+    .swatch {
+      border: 1.5px solid #ece8e0; padding: .4rem; text-align: center;
+      font-family: var(--mono); font-size: .6rem;
+    }
+    .swatch i {
+      display: block; height: 34px; margin-bottom: .35rem; border: 1px solid rgba(255,255,255,.25);
+    }
+
+    /* Mini tarjetas de proceso y horizonte */
+    .steps-grid {
+      display: grid; gap: .55rem; margin-top: .4rem;
+    }
+    .step-box {
+      padding: .6rem .8rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 4px solid #d7ff3b;
+    }
+    .node--bone .step-box {
+      background: #ffffff; border: 1.5px solid #070709; border-left: 6px solid #ff2e4c;
+    }
+    .step-box strong {
+      display: block; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em;
+      text-transform: uppercase; color: #d7ff3b; margin-bottom: .18rem;
+    }
+    .node--bone .step-box strong { color: #ff2e4c; }
+    .step-box p { font-size: .84rem; line-height: 1.38; }
+
+    /* Fotos de referencia visual en el mapa */
+    .thumbs-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-top: .85rem;
+    }
+    .thumbs-row img {
+      width: 100%; height: 84px; object-fit: cover;
+      border: 1.5px solid #070709;
+    }
+
+    [contenteditable="true"]:focus {
+      outline: 2px dashed #d7ff3b;
+      outline-offset: 4px;
+      cursor: text;
+    }
+
+    /* ---------- BARRA INFERIOR DE ESTADO / CONTROLES DE ZOOM ---------- */
+    .statusbar {
+      position: fixed; bottom: 0; left: 0; right: 0; height: 38px; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.25rem;
+      background: #070709; color: #ece8e0;
+      border-top: 1px solid rgba(236, 232, 224, 0.2);
+      font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .zoom-controls {
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .zbtn {
+      background: #171720; color: #ece8e0; border: 1px solid rgba(236,232,224,.35);
+      padding: .18rem .55rem; font-family: var(--mono); font-size: .68rem; cursor: pointer;
+    }
+    .zbtn:hover { background: #d7ff3b; color: #070709; }
+
+    @media print {
+      .toolbar, .statusbar { display: none !important; }
+      .viewport { position: static; inset: 0; overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DEFINICIÓN SVG DE LA ESTRELLA ACR✶TA -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="glyphStarE">
+        <path d="M 44 0 L 53 37 L 76 18 L 59 46 L 88 55 L 59 64 L 76 92 L 53 73 L 44 110 L 35 73 L 12 92 L 29 64 L 0 55 L 29 46 L 12 18 L 35 37 Z" fill="currentColor"/>
+        <circle cx="44" cy="55" r="5.5" fill="#070709"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- BARRA DE HERRAMIENTAS SUPERIOR -->
+  <header class="toolbar">
+    <div class="toolbar__brand">
+      <a href="index.html" class="toolbar__logo" title="Volver a la web de ACR✶TA">
+        <span>ACR</span><svg viewBox="0 0 88 110"><use href="#glyphStarE"/></svg><span>TA</span>
+      </a>
+      <span class="toolbar__tag">MAPA CONCEPTUAL · BRAND CANVAS</span>
+      <span class="toolbar__hint">Arrastra cualquier bloque · Doble clic en un texto para editarlo</span>
+    </div>
+
+    <div class="toolbar__actions">
+      <button type="button" class="tbtn" id="addNodeBtn">+ Añadir Nodo</button>
+      <button type="button" class="tbtn" id="themeBtn">Fondo: Cosmos / Lienzo</button>
+      <button type="button" class="tbtn" id="fitBtn">Centrar Mapa</button>
+      <a href="mapa-conceptual-acreta.svg" download="ACR-TA-Mapa-Conceptual-Affinity.svg" class="tbtn tbtn--primary" id="downloadSvgBtn">
+        ⬇ Descargar .SVG para Affinity Designer
+      </a>
+      <a href="index.html" class="tbtn">← Ver Web ACR✶TA</a>
+    </div>
+  </header>
+
+  <!-- LIENZO INTERACTIVO -->
+  <div class="viewport" id="viewport">
+    <div class="board" id="board">
+
+      <!-- Órbitas de fondo -->
+      <svg class="board__orbits" viewBox="0 0 2400 1560">
+        <circle cx="1200" cy="760" r="280" fill="none" stroke="rgba(215,255,59,0.18)" stroke-width="1.5" stroke-dasharray="8 8"/>
+        <circle cx="1200" cy="760" r="520" fill="none" stroke="rgba(236,232,224,0.14)" stroke-width="1.5" stroke-dasharray="10 10"/>
+        <circle cx="1200" cy="760" r="760" fill="none" stroke="rgba(255,46,76,0.16)" stroke-width="1.5" stroke-dasharray="12 10"/>
+      </svg>
+
+      <!-- Conectores dinámicos entre tarjetas -->
+      <svg class="board__edges" id="edgesSvg" viewBox="0 0 2400 1560">
+        <defs>
+          <marker id="arrAcid" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#d7ff3b"/>
+          </marker>
+          <marker id="arrCrimson" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#ff2e4c"/>
+          </marker>
+        </defs>
+      </svg>
+
+      <!-- ================= NODO 00: NÚCLEO CENTRAL ACR✶TA ================= -->
+      <article class="node node--core" id="node-core" style="left: 950px; top: 610px; width: 500px;">
+        <div class="node__head">
+          <span>✶ NÚCLEO DEL PROYECTO · SEGUNDA VIDA TEXTIL</span>
+          <span class="node__grip">⋮⋮</span>
+        </div>
+        <div class="node__body">
+          <div class="core-logo" aria-label="ACRETA">
+            <span>ACR</span><svg viewBox="0 0 88 110"><use href="#glyphStarE"/></svg><span>TA</span>
+          </div>
+          <p class="core-quote" contenteditable="true">«La ropa también explota y vuelve a nacer»</p>
+          <p class="core-desc" contenteditable="true">
+            <strong>Acreción:</strong> fenómeno astrofísico por el que la materia dispersa tras la explosión de una estrella se une por gravedad hasta formar un cuerpo nuevo. Aplicado a la moda: rescatar prendas olvidadas e intervenirlas a mano en ediciones <strong>1 de 1</strong>.
+          </p>
+        </div>
+      </article>
+
+      <!-- ================= NODO 01: ¿CÓMO SOMOS? (ADN Y MANIFIESTO) ================= -->
+      <article class="node" id="node-adn" data-from="node-core" data-color="acid" style="left: 90px; top: 110px; width: 510px;">
+        <div class="node__head">
+          <span>01 · ¿CÓMO SOMOS? (ADN Y VALORES)</span>
+          <span class="node__grip">⋮⋮</span>
+        </div>
+        <div class="node__body">
+          <h2 class="node__title" contenteditable="true">ANTI-FAST FASHION <em>&amp; arte lento</em></h2>
+          <ul class="node__list" contenteditable="true">
+            <li><strong>Nada se crea de cero:</strong> partimos siempre de prendas existentes con historia (segunda vida textil / 第二の命).</li>
+            <li><strong>Exclusividad radical (1 de 1):</strong> sin reposición ni tallas en serie. Cuando una prenda encuentra dueña, pasa al archivo histórico.</li>
+            <li><strong>Oficio visible:</strong> celebramos las horas de taller, el trazo humano y el valor de una prenda irrepetible frente a la producción masiva.</li>
+            <li><strong>Personalidad:</strong> cósmica, rebelde, poética y callejera; mezcla de galería de arte y cultura de <em>drops</em>.</li>
+          </ul>
+          <div class="badges">
+            <span class="badge badge--acid">100% RECUPERADO</span>
+            <span class="badge badge--crimson">PIEZA ÚNICA 1/1</span>
+            <span class="badge badge--acid">HECHO A MANO</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= NODO 02: UNIVERSO NARRATIVO (METÁFORA ESTELAR) ================= -->
+      <article class="node node--bone" id="node-concepto" data-from="node-core" data-color="acid" style="left: 880px; top: 90px; width: 640px;">
+        <div class="node__head">
+          <span>02 · IDEA DEL PROYECTO Y METÁFORA ASTRONÓMICA</span>
+          <span class="node__grip">⋮⋮</span>
+        </div>
+        <div class="node__body">
+          <h2 class="node__title" contenteditable="true">CADA PUNTO, <em>una estrella</em></h2>
+          <ul class="node__list" contenteditable="true">
+            <li><strong>Puntillismo = Constelación:</strong> de cerca, miles de puntos de tinta textil (~40.000 puntos por prenda); de lejos, una ilustración con fuerza propia.</li>
+            <li><strong>Cada Drop = Una Explosión de Nova:</strong> no lanzamos colecciones de temporada, sino «Novas» numeradas (Nova 001, Nova 002…) conectadas en una ruta estelar.</li>
+            <li><strong>Acretar:</strong> unir lo que estaba disperso (un tejido olvidado + tinta punto a punto o retales de kimono) en una nueva estrella.</li>
+          </ul>
+          <div class="thumbs-row">
+            <img src="assets/img/look-02.jpg" alt="Nova 001 Enana Blanca" />
+            <img src="assets/img/detalle.jpg" alt="Detalle puntillismo" />
+            <img src="assets/img/look-03.jpg" alt="Look perfil" />
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= NODO 03: LENGUAJE VISUAL Y ESTÉTICA ================= -->
+      <article class="node node--crimson" id="node-estetica" data-from="node-core" data-color="crimson" style="left: 1800px; top: 110px; width: 510px;">
+        <div class="node__head">
+          <span>03 · IDENTIDAD VISUAL Y ESTÉTICA «COSMOS LOCO»</span>
+          <span class="node__grip">⋮⋮</span>
+        </div>
+        <div class="node__body">
+          <h2 class="node__title" contenteditable="true">BRUTALISMO <em>editorial &amp; cósmico</em></h2>
+          <ul class="node__list" contenteditable="true">
+            <li><strong>El Símbolo (✶):</strong> la estrella de 8 puntas reemplaza a la letra <em>E</em> en <strong>ACR✶TA</strong>, convirtiendo el propio nombre en una explosión.</li>
+            <li><strong>Choque Tipográfico:</strong> bloques contundentes en <em>Anton</em> + acentos emocionales en <em>Instrument Serif Italic</em> + coordenadas técnicas en <em>Space Mono</em>.</li>
+            <li><strong>Gráfica de Taller:</strong> tickets de registro con código de barras, sellos giratorios 1/1, grano analógico y sombras duras desplazadas.</li>
+          </ul>
+          <div class="swatches">
+            <div class="swatch"><i style="background:#070709"></i>#070709<br>TINTA</div>
+            <div class="swatch"><i style="background:#ece8e0"></i>#ECE8E0<br>HUESO</div>
+            <div class="swatch"><i style="background:#d7ff3b"></i>#D7FF3B<br>ÁCIDO</div>
+            <div class="swatch"><i style="background:#ff2e4c"></i>#FF2E4C<br>NOVA</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= NODO 04: ¿QUÉ HACEMOS? (PROCESO Y PRODUCTO) ================= -->
+      <article class="node" id="node-proceso" data-from="node-core" data-color="crimson" style="left: 90px; top: 820px; width: 510px;">
+        <div class="node__head">
+          <span>04 · ¿CÓMO TRABAJAMOS? (LAS 4 FASES + TÉCNICAS)</span>
+          <span class="node__grip">⋮⋮</span>
+        </div>
+        <div class="node__body">
+          <h2 class="node__title" contenteditable="true">FASES DE <em>formación estelar</em></h2>
+          <div class="steps-grid" contenteditable="true">
+            <div class="step-box">
+              <strong>FASE 01 · MATERIA DISPERSA (RECOLECCIÓN)</strong>
+              <p>Búsqueda y rescate de camisas, chaquetas vaqueras y prendas de 2ª mano con buen tejido y caída.</p>
+            </div>
+            <div class="step-box">
+              <strong>FASE 02 · GRAVEDAD (CURADURÍA Y DISEÑO)</strong>
+              <p>Lavado, recuperación de la fibra y bocetado de la intervención según la anatomía de la prenda.</p>
+            </div>
+            <div class="step-box">
+              <strong>FASE 03 · INTERVENCIÓN (2 VÍAS ARTESANALES)</strong>
+              <p><strong>Vía A:</strong> Ilustración manual en puntillismo con tinta textil.<br><strong>Vía B:</strong> Upcycling combinando textiles asiáticos (sashiko, kimono) y occidentales.</p>
+            </div>
+            <div class="step-box">
+              <strong>FASE 04 · EXPLOSIÓN DE NOVA (DROP 1/1)</strong>
+              <p>Numeración (#001 Enana Blanca · 85€), etiqueta de registro y lanzamiento único sin reposición.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= NODO 05: COMUNIDAD Y EXPERIENCIA DIGITAL ================= -->
+      <article class="node" id="node-comunidad" data-from="node-core" data-color="acid" style="left: 880px; top: 1080px; width: 640px;">
+        <div class="node__head">
+          <span>05 · COMUNIDAD Y CANAL DIGITAL («LA ÓRBITA»)</span>
+          <span class="node__grip">⋮⋮</span>
+        </div>
+        <div class="node__body">
+          <h2 class="node__title" contenteditable="true">MÁS QUE TIENDA, <em>observatorio vivo</em></h2>
+          <ul class="node__list" contenteditable="true">
+            <li><strong>Portada viva:</strong> el visitante experimenta la explosión inicial y puede dispersar con el dedo o cursor los 10.800 puntos que forman <strong>ACR✶TA</strong>.</li>
+            <li><strong>«Avistamientos» (Lookbook):</strong> archivo fotográfico de cada pieza antes de que pase a manos de su dueña.</li>
+            <li><strong>«La Órbita» (Club &amp; Cuenta atrás):</strong> comunidad que recibe las coordenadas y la cuenta atrás de la siguiente Nova antes de que estalle públicamente.</li>
+            <li><strong>Storytelling en redes (IG / TikTok):</strong> vídeos cortos del proceso punto a punto, el antes/después de la prenda rescatada y el momento de sellar la pieza 1/1.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- ================= NODO 06: ¿DÓNDE QUEREMOS IR? (HOJA DE RUTA) ================= -->
+      <article class="node node--bone" id="node-futuro" data-from="node-core" data-color="crimson" style="left: 1800px; top: 820px; width: 510px;">
+        <div class="node__head">
+          <span>06 · ¿DÓNDE QUEREMOS IR? (HOJA DE RUTA Y FUTURO)</span>
+          <span class="node__grip">⋮⋮</span>
+        </div>
+        <div class="node__body">
+          <h2 class="node__title" contenteditable="true">LA RUTA DE <em>novas (vislumbres)</em></h2>
+          <div class="steps-grid" contenteditable="true">
+            <div class="step-box">
+              <strong>HORIZONTE 1 · IGNICIÓN (AHORA)</strong>
+              <p>Lanzamiento de la web interactiva, venta del <strong>Drop 001 (Enana Blanca)</strong> y captación de los primeros miembros en <em>La Órbita</em>.</p>
+            </div>
+            <div class="step-box">
+              <strong>HORIZONTE 2 · CONSTELACIÓN DE DROPS (002 → 007)</strong>
+              <p>Despliegue progresivo de la Ruta de Novas: <em>002 Nebulosa Índigo</em> (Sashiko + Denim), <em>003 Cinturón de Orión</em>, <em>004 Marea Lunar</em>, <em>005 Horizonte de Sucesos</em> (puntillismo blanco sobre negro), <em>006 Polvo Cósmico</em> y <em>007 Perihelio</em>.</p>
+            </div>
+            <div class="step-box">
+              <strong>HORIZONTE 3 · «TRAE TU PRENDA A ORBITAR» &amp; POP-UPS</strong>
+              <p>• Servicio por encargo donde el cliente envía una prenda propia con valor sentimental para ser intervenida.<br>• Pop-ups físicos tipo galería-taller y colaboraciones con ilustradoras y artistas textiles.</p>
+            </div>
+          </div>
+          <div class="badges">
+            <span class="badge badge--dark">META: REFERENTE UPCYCLING DE AUTOR</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- BARRA DE ESTADO Y ZOOM -->
+  <footer class="statusbar">
+    <span>ACR✶TA · MAPA CONCEPTUAL INTERACTIVO + VECTOR SVG PARA AFFINITY DESIGNER</span>
+    <div class="zoom-controls">
+      <button type="button" class="zbtn" id="zoomOutBtn">−</button>
+      <span id="zoomLabel">100%</span>
+      <button type="button" class="zbtn" id="zoomInBtn">+</button>
+      <button type="button" class="zbtn" id="printBtn">Imprimir / Guardar PDF</button>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const viewport = document.getElementById("viewport");
+      const board = document.getElementById("board");
+      const edgesSvg = document.getElementById("edgesSvg");
+      const zoomLabel = document.getElementById("zoomLabel");
+
+      let scale = 1;
+      let panX = 0;
+      let panY = 0;
+      let isPanning = false;
+      let startPanX = 0;
+      let startPanY = 0;
+
+      function applyTransform() {
+        board.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+        zoomLabel.textContent = `${Math.round(scale * 100)}%`;
+      }
+
+      function fitToScreen() {
+        const vw = viewport.clientWidth;
+        const vh = viewport.clientHeight;
+        scale = Math.min(vw / 2460, vh / 1600, 1);
+        scale = Math.max(0.32, scale);
+        panX = (vw - 2400 * scale) * 0.5;
+        panY = (vh - 1560 * scale) * 0.5;
+        applyTransform();
+      }
+
+      // Dibuja curvas Bézier dinámicas desde el nodo central hacia todos los demás nodos
+      function updateEdges() {
+        const defs = edgesSvg.querySelector("defs").outerHTML;
+        const core = document.getElementById("node-core");
+        const cx = core.offsetLeft + core.offsetWidth * 0.5;
+        const cy = core.offsetTop + core.offsetHeight * 0.5;
+
+        const targets = board.querySelectorAll(".node[data-from]");
+        let paths = "";
+        targets.forEach((node) => {
+          const nx = node.offsetLeft + node.offsetWidth * 0.5;
+          const ny = node.offsetTop + node.offsetHeight * 0.5;
+          const dx = nx - cx;
+          const dy = ny - cy;
+          const c1x = cx + dx * 0.45;
+          const c1y = cy + dy * 0.12;
+          const c2x = cx + dx * 0.55;
+          const c2y = cy + dy * 0.88;
+          const isCrimson = node.dataset.color === "crimson";
+          const color = isCrimson ? "#ff2e4c" : "#d7ff3b";
+          const marker = isCrimson ? "url(#arrCrimson)" : "url(#arrAcid)";
+          paths += `<path d="M ${cx} ${cy} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${nx} ${ny}" fill="none" stroke="${color}" stroke-width="2.8" stroke-dasharray="8 6" marker-end="${marker}" opacity="0.88"/>`;
+          paths += `<circle cx="${nx}" cy="${ny}" r="6" fill="${color}"/>`;
+        });
+        edgesSvg.innerHTML = defs + paths;
+      }
+
+      // Hacer arrastrables todos los nodos
+      function makeDraggable(node) {
+        let dragging = false;
+        let startX = 0, startY = 0;
+        let origLeft = 0, origTop = 0;
+
+        node.addEventListener("pointerdown", (e) => {
+          if (e.target.isContentEditable && document.activeElement === e.target) return;
+          e.stopPropagation();
+          dragging = true;
+          node.classList.add("is-dragging");
+          node.setPointerCapture(e.pointerId);
+          startX = e.clientX;
+          startY = e.clientY;
+          origLeft = node.offsetLeft;
+          origTop = node.offsetTop;
+        });
+
+        node.addEventListener("pointermove", (e) => {
+          if (!dragging) return;
+          const dx = (e.clientX - startX) / scale;
+          const dy = (e.clientY - startY) / scale;
+          node.style.left = `${Math.round(origLeft + dx)}px`;
+          node.style.top = `${Math.round(origTop + dy)}px`;
+          updateEdges();
+        });
+
+        const stop = () => {
+          dragging = false;
+          node.classList.remove("is-dragging");
+        };
+        node.addEventListener("pointerup", stop);
+        node.addEventListener("pointercancel", stop);
+      }
+
+      board.querySelectorAll(".node").forEach(makeDraggable);
+
+      // Pan del lienzo arrastrando el fondo
+      viewport.addEventListener("pointerdown", (e) => {
+        if (e.target.closest(".node")) return;
+        isPanning = true;
+        viewport.classList.add("is-panning");
+        startPanX = e.clientX - panX;
+        startPanY = e.clientY - panY;
+      });
+      window.addEventListener("pointermove", (e) => {
+        if (!isPanning) return;
+        panX = e.clientX - startPanX;
+        panY = e.clientY - startPanY;
+        applyTransform();
+      });
+      window.addEventListener("pointerup", () => {
+        isPanning = false;
+        viewport.classList.remove("is-panning");
+      });
+
+      // Zoom con rueda
+      viewport.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.1 : 0.9;
+        const nextScale = Math.min(1.8, Math.max(0.3, scale * factor));
+        const rect = viewport.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        panX = mx - ((mx - panX) / scale) * nextScale;
+        panY = my - ((my - panY) / scale) * nextScale;
+        scale = nextScale;
+        applyTransform();
+      }, { passive: false });
+
+      document.getElementById("zoomInBtn").addEventListener("click", () => {
+        scale = Math.min(1.8, scale * 1.15);
+        applyTransform();
+      });
+      document.getElementById("zoomOutBtn").addEventListener("click", () => {
+        scale = Math.max(0.3, scale * 0.87);
+        applyTransform();
+      });
+      document.getElementById("fitBtn").addEventListener("click", fitToScreen);
+      document.getElementById("themeBtn").addEventListener("click", () => {
+        document.body.classList.toggle("is-light");
+      });
+      document.getElementById("printBtn").addEventListener("click", () => window.print());
+
+      // Añadir un nuevo nodo editable al mapa
+      let customCount = 7;
+      document.getElementById("addNodeBtn").addEventListener("click", () => {
+        const n = document.createElement("article");
+        n.className = "node";
+        n.dataset.from = "node-core";
+        n.dataset.color = customCount % 2 === 0 ? "acid" : "crimson";
+        n.style.left = `${1020 + (customCount % 3) * 80}px`;
+        n.style.top = `${360 + (customCount % 3) * 60}px`;
+        n.style.width = "420px";
+        n.innerHTML = `
+          <div class="node__head">
+            <span contenteditable="true">0${customCount} · NUEVA IDEA / RAMA</span>
+            <span class="node__grip">⋮⋮</span>
+          </div>
+          <div class="node__body">
+            <h2 class="node__title" contenteditable="true">NUEVA <em>constelación</em></h2>
+            <ul class="node__list" contenteditable="true">
+              <li>Haz doble clic aquí para escribir tu idea, línea de ropa, colaboración o referencia visual.</li>
+              <li>Arrastra esta tarjeta a cualquier coordenada del mapa.</li>
+            </ul>
+          </div>
+        `;
+        customCount++;
+        board.appendChild(n);
+        makeDraggable(n);
+        updateEdges();
+      });
+
+      window.addEventListener("resize", fitToScreen);
+      updateEdges();
+      fitToScreen();
+    })();
+  </script>
+</body>
+</html>

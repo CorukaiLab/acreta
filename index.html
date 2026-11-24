@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACR✶TA — Prendas que explotan y vuelven a nacer</title>
+  <meta name="description" content="Acreta: moda de segunda vida. Prendas recuperadas e intervenidas a mano. Piezas únicas, sin reposición." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="is-intro">
+
+  <!-- DEFINICIÓN SVG GLOBAL DE LA ESTRELLA EN ACR✦TA -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <!-- Estrella pura proporcionada con la altura de las letras de ACRETA -->
+      <g id="glyphStarE">
+        <!-- Estrella principal de 4 puntas alargadas + 4 destellos diagonales -->
+        <path d="
+          M 44 0
+          L 53 37
+          L 76 18
+          L 59 46
+          L 88 55
+          L 59 64
+          L 76 92
+          L 53 73
+          L 44 110
+          L 35 73
+          L 12 92
+          L 29 64
+          L 0 55
+          L 29 46
+          L 12 18
+          L 35 37
+          Z" fill="currentColor"/>
+        <!-- Punto central en contraste -->
+        <circle cx="44" cy="55" r="5.5" fill="#070709"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"><span class="cursor__ring"></span><span class="cursor__label" id="cursorLabel"></span></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="flash" id="flash" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" data-cursor="Inicio" aria-label="Acreta">
+      <span>ACR</span><svg class="star-e star-e--nav" viewBox="0 0 88 110" aria-hidden="true"><use href="#glyphStarE"/></svg><span>TA</span>
+    </a>
+    <nav class="nav__links">
+      <a href="#manifiesto" class="scramble">Manifiesto</a>
+      <a href="#drop" class="scramble">Drop 001</a>
+      <a href="#proceso" class="scramble">Proceso</a>
+      <a href="#avistamientos" class="scramble">Avistamientos</a>
+      <a href="#carta" class="scramble">Ruta de Novas</a>
+    </nav>
+    <button class="nav__bag" id="bagBtn" data-cursor="Bolsa">Bolsa <b id="bagCount">0</b></button>
+  </header>
+
+  <main id="top">
+
+    <!-- ================= HERO A PANTALLA COMPLETA: EXPLOSIÓN → FIGURA ================= -->
+    <section class="hero" id="hero">
+      <canvas id="bang"></canvas>
+
+      <!-- Telemetría durante la explosión inicial -->
+      <div class="intro" id="intro">
+        <span class="mono intro__kicker">IGNICIÓN ESTELAR · DROP 001</span>
+        <strong class="intro__phase" id="introT">CONCENTRANDO MATERIA…</strong>
+        <div class="intro__bar"><i id="introBar"></i></div>
+      </div>
+
+      <div class="hero__ui">
+        <div class="hero__top mono">
+          <span>Drop 001 / Enana Blanca · 星屑</span>
+          <span id="heroStatus">Fase: Acreción completada</span>
+          <span id="heroCount">0 estrellas</span>
+          <span>AR <b id="coordRA">05h 34m</b> · DEC <b id="coordDEC">+22°</b></span>
+        </div>
+
+        <!-- Nombre accesible para lectores de pantalla (el logo visual ACR✶TA se forma con las partículas en el canvas central) -->
+        <h1 class="sr-only">ACRETA</h1>
+
+        <div class="hero__OverlayBottom">
+          <div class="hero__brand">
+            <span class="mono hero__jp">第二の命 · SEGUNDA VIDA TEXTIL · 1 DE 1</span>
+            <p class="hero__serif">la ropa también <em>explota y vuelve a nacer</em></p>
+          </div>
+
+          <div class="hero__rightPanel">
+            <div class="sticker sticker--spin hero__sticker" aria-hidden="true">
+              <svg viewBox="0 0 200 200">
+                <defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+                <text><textPath href="#circ">PIEZA ÚNICA ✶ SIN REPOSICIÓN ✶ 1 DE 1 ✶ SEGUNDA VIDA ✶ </textPath></text>
+              </svg>
+              <span>1/1</span>
+            </div>
+
+            <div class="hero__controls mono">
+              <button type="button" class="chip is-on" id="boomBtn" data-cursor="¡Boom!">💥 Repetir explosión</button>
+              <button type="button" class="chip" id="modeBtn" data-cursor="Cambiar">Fondo: Lienzo / Cosmos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__bottom mono">
+          <span class="hero__hint"><i></i> Pasa el cursor sobre el logo ACR✶TA para dispersar los puntos · Baja para entrar a la web</span>
+          <div class="hero__actions">
+            <a href="#drop" class="hero__cta" data-cursor="Explorar">Entrar al Drop 001 ↓</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CINTAS ================= -->
+    <div class="tapes" aria-hidden="true">
+      <div class="tape tape--acid"><div class="tape__track">
+        <span>Sin reposición ✶ Pieza única ✶ Hecho a mano ✶ Segunda vida ✶ Polvo de estrellas ✶ </span><span>Sin reposición ✶ Pieza única ✶ Hecho a mano ✶ Segunda vida ✶ Polvo de estrellas ✶ </span>
+      </div></div>
+      <div class="tape tape--ink"><div class="tape__track tape__track--rev">
+        <span>ACR✶TA · RUTA DE NOVAS · ACR✶TA · RUTA DE NOVAS · ACR✶TA · RUTA DE NOVAS · </span><span>ACR✶TA · RUTA DE NOVAS · ACR✶TA · RUTA DE NOVAS · ACR✶TA · RUTA DE NOVAS · </span>
+      </div></div>
+    </div>
+
+    <!-- ================= MANIFIESTO ================= -->
+    <section class="manifesto" id="manifiesto">
+      <div class="manifesto__label mono"><span>( 01 )</span><span>Manifiesto</span><span>acreción, f. — materia dispersa que tras una explosión se une hasta formar un cuerpo nuevo</span></div>
+      <p class="manifesto__text skew" id="manifestoText">
+        <span class="w">NADA</span> <span class="w">SE</span> <span class="w">CREA</span>
+        <span class="w pill"><img src="assets/img/detalle.jpg" alt="" /></span>
+        <span class="w">DE</span> <span class="w">CERO.</span>
+        <span class="w">LAS</span> <em class="w">estrellas</em> <span class="w">NACEN</span>
+        <span class="w">DE</span> <span class="w">UNA</span> <span class="w hl">EXPLOSIÓN.</span>
+        <span class="w pill pill--b"><img src="assets/img/look-03.jpg" alt="" /></span>
+        <span class="w">NOSOTRAS</span> <em class="w">hacemos</em> <em class="w">lo</em> <em class="w">mismo</em>
+        <span class="w">CON</span> <span class="w">LA</span> <span class="w">ROPA.</span>
+      </p>
+      <div class="sticker sticker--tag manifesto__sticker" aria-hidden="true">100%<br>recuperado</div>
+    </section>
+
+    <!-- ================= DROP 001 ================= -->
+    <section class="drop" id="drop">
+      <div class="drop__bgword" aria-hidden="true"><span id="dropWord">NOVA 001 ✶ ENANA BLANCA ✶ NOVA 001 ✶ </span></div>
+
+      <div class="drop__label mono"><span>( 02 )</span><span>Nova 001 — «Polvo de estrellas»</span></div>
+
+      <div class="drop__grid">
+        <div class="drop__media">
+          <div class="glitch" id="glitch" data-cursor="Mira">
+            <img src="assets/img/look-02.jpg" alt="Camisa Enana Blanca" class="glitch__img" id="productImg" />
+            <img src="assets/img/look-02.jpg" alt="" class="glitch__layer glitch__layer--a" aria-hidden="true" />
+            <img src="assets/img/look-02.jpg" alt="" class="glitch__layer glitch__layer--b" aria-hidden="true" />
+          </div>
+          <div class="sticker sticker--spin drop__sticker" aria-hidden="true">
+            <svg viewBox="0 0 200 200">
+              <defs><path id="circ2" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+              <text><textPath href="#circ2">ÚNICA EN EL UNIVERSO ✶ ÚNICA EN EL UNIVERSO ✶ </textPath></text>
+            </svg>
+            <span>Nº<br>001</span>
+          </div>
+          <div class="thumbs" id="thumbs">
+            <button class="is-active" data-src="assets/img/look-02.jpg" data-cursor="Ver"><img src="assets/img/look-02.jpg" alt="" /></button>
+            <button data-src="assets/img/detalle.jpg" data-cursor="Ver"><img src="assets/img/detalle.jpg" alt="" /></button>
+            <button data-src="assets/img/look-03.jpg" data-cursor="Ver"><img src="assets/img/look-03.jpg" alt="" /></button>
+            <button data-src="assets/img/look-01.jpg" data-cursor="Ver"><img src="assets/img/look-01.jpg" alt="" /></button>
+          </div>
+        </div>
+
+        <div class="drop__info">
+          <h2 class="drop__name">ENANA<br><em>blanca</em></h2>
+          <p class="drop__lead">Camisa blanca recuperada, dibujada a mano con puntillismo. Miles de puntos de tinta: de cerca, una constelación; de lejos, una sonrisa que no se olvida.</p>
+
+          <div class="ticket">
+            <div class="ticket__head mono"><span>Registro de Nova</span><span>#001</span></div>
+            <dl>
+              <div><dt>Origen</dt><dd>Camisa de algodón · 2ª mano</dd></div>
+              <div><dt>Técnica</dt><dd>Puntillismo · tinta textil</dd></div>
+              <div><dt>Puntos</dt><dd>≈ <span data-count="40000">0</span> estrellas</dd></div>
+              <div><dt>Talla</dt><dd>S</dd></div>
+              <div><dt>Unidades</dt><dd>1 / 1 (Sin reposición)</dd></div>
+            </dl>
+            <div class="ticket__bar" aria-hidden="true"></div>
+          </div>
+
+          <div class="drop__buy">
+            <span class="drop__price">85€</span>
+            <button class="btn-acid magnetic" id="claimBtn" data-cursor="¡Mía!"><span>Reclamar pieza</span> <i>→</i></button>
+          </div>
+          <p class="mono drop__note">✶ Cuando se va, se va. Cada drop es una explosión irrepetible.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROCESO: CARTAS APILADAS ================= -->
+    <section class="process" id="proceso">
+      <div class="process__label mono"><span>( 03 )</span><span>Fases de formación estelar</span></div>
+      <div class="stack">
+        <article class="card card--1">
+          <span class="card__n">01</span>
+          <div class="card__body">
+            <h3>Materia<br><em>dispersa</em></h3>
+            <p>Rescatamos prendas que alguien dejó atrás. Camisas, vaqueros, chaquetas con historia esperando una segunda órbita.</p>
+          </div>
+          <span class="mono card__tag">Fase de recolección</span>
+        </article>
+        <article class="card card--2">
+          <span class="card__n">02</span>
+          <div class="card__body">
+            <h3>Grave<br><em>dad</em></h3>
+            <p>Lavamos, estudiamos el tejido y la caída. La prenda decide en qué constelación se va a convertir.</p>
+          </div>
+          <span class="mono card__tag">Fase de atracción</span>
+        </article>
+        <article class="card card--3">
+          <span class="card__n">03</span>
+          <div class="card__body">
+            <h3>Interven<br><em>ción</em></h3>
+            <p>Dibujo a mano punto a punto, o combinación de textiles asiáticos y occidentales. Horas sobre una sola prenda.</p>
+          </div>
+          <span class="mono card__tag">Fase de fusión</span>
+        </article>
+        <article class="card card--4">
+          <span class="card__n">04</span>
+          <div class="card__body">
+            <h3>Explosión<br><em>de Nova</em></h3>
+            <p>La pieza se firma, se numera y estalla en el catálogo. Una sola unidad. Cuando encuentra dueña, pasa a la historia.</p>
+          </div>
+          <span class="mono card__tag">Fase supernova</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= AVISTAMIENTOS: RASTRO DE IMÁGENES ================= -->
+    <section class="sightings" id="avistamientos" data-cursor="Mueve">
+      <div class="sightings__trail" id="trail"></div>
+      <div class="sightings__center">
+        <span class="mono">( 04 ) Lookbook</span>
+        <h2 class="sightings__title skew">AVISTA<br><em>mientos</em></h2>
+        <span class="mono">Mueve el cursor: deja un rastro de observaciones</span>
+      </div>
+    </section>
+
+    <div class="strip">
+      <figure><img src="assets/img/look-01.jpg" alt="Look 01" /><figcaption class="mono">Obs. 01 · Enana Blanca</figcaption></figure>
+      <figure><img src="assets/img/detalle.jpg" alt="Detalle" /><figcaption class="mono">Obs. 02 · Puntillismo</figcaption></figure>
+      <figure><img src="assets/img/look-03.jpg" alt="Look 03" /><figcaption class="mono">Obs. 03 · Perfil</figcaption></figure>
+      <figure><img src="assets/img/look-04.jpg" alt="Look 04" /><figcaption class="mono">Obs. 04 · Completo</figcaption></figure>
+    </div>
+
+    <!-- ================= RUTA DE NOVAS / CONSTELACIÓN DE DROPS ================= -->
+    <section class="chart" id="carta">
+      <div class="chart__head">
+        <div>
+          <span class="mono">( 05 ) Constelación Acreta · Cada Drop es una Explosión de Nova</span>
+          <h2 class="chart__title skew">RUTA DE<br><em>novas</em></h2>
+        </div>
+        <p class="chart__desc">
+          Cada prenda de Acreta nace como una <strong>Nova</strong> dentro de una ruta estelar. Haz clic en cualquier estrella o paso de la ruta para <strong>provocar su explosión de nova</strong> y descubrir la prenda que se está gestando en esa coordenada.
+        </p>
+      </div>
+
+      <!-- Barra de ruta paso a paso (Drop 001 -> Drop 007) -->
+      <div class="route-steps mono" id="routeSteps" aria-label="Ruta de Drops"></div>
+
+      <div class="chart__map" id="chartMap">
+        <!-- Canvas para explosiones de Nova y pulsos viajeros por la ruta -->
+        <canvas class="chart__canvas" id="chartCanvas"></canvas>
+        <!-- Líneas de constelación y ruta -->
+        <svg class="chart__lines" id="chartLines" viewBox="0 0 1000 560" preserveAspectRatio="none"></svg>
+
+        <!-- Tarjeta de detalle de la Nova seleccionada -->
+        <div class="chart__card is-visible" id="chartCard">
+          <div class="chart__cardTop mono">
+            <span id="cardN">NOVA 001</span>
+            <span class="chart__badge" id="cardBadge">EN ÓRBITA</span>
+          </div>
+          <h4 id="cardName">Enana Blanca</h4>
+          <p class="mono chart__tech" id="cardTech">Técnica: Puntillismo a mano</p>
+          <p id="cardDesc"></p>
+          <div class="chart__bar"><i id="cardBar"></i></div>
+          <div class="chart__cardFoot mono">
+            <span id="cardState"></span>
+            <button type="button" class="chart__next" id="nextNovaBtn" data-cursor="Viajar">Siguiente Nova →</button>
+          </div>
+        </div>
+
+        <div class="chart__legend mono">
+          <span><i class="lg lg--born"></i> Nova activa (Drop disponible)</span>
+          <span><i class="lg lg--forming"></i> Proto-estrella (Próximo drop en ruta)</span>
+          <span>✶ Clic en una estrella = Detonar Nova</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ÓRBITA ================= -->
+    <section class="orbit" id="orbita">
+      <span class="mono">( 06 ) La próxima Nova (Drop 002 · Nebulosa Índigo) explota en</span>
+      <div class="countdown" id="countdown">
+        <b data-cd="d">00</b><i>/</i><b data-cd="h">00</b><i>/</i><b data-cd="m">00</b><i>/</i><b data-cd="s">00</b>
+      </div>
+      <div class="countdown__legend mono"><span>Días</span><span>Horas</span><span>Min</span><span>Seg</span></div>
+      <h2 class="orbit__title">ÚNETE A <em>la órbita</em></h2>
+      <form class="orbit__form" id="orbitForm">
+        <input type="email" required placeholder="tu@correo.com" aria-label="Correo" />
+        <button type="submit" class="btn-acid magnetic" data-cursor="Dentro"><span>Entrar</span> <i>→</i></button>
+      </form>
+      <p class="mono orbit__msg" id="orbitMsg"></p>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__cols mono">
+      <a href="mailto:hola@acreta.com">hola@acreta.com</a>
+      <a href="#" data-cursor="Seguir">Instagram</a>
+      <a href="#" data-cursor="Seguir">TikTok</a>
+      <span>✶ Hecho con materia recuperada · © 2026</span>
+    </div>
+    <div class="footer__big" id="footerBig" aria-label="Acreta">
+      <span>ACR</span><svg class="star-e star-e--footer" viewBox="0 0 88 110" aria-hidden="true"><use href="#glyphStarE"/></svg><span>TA</span>
+    </div>
+  </footer>
+
+  <!-- BOLSA -->
+  <aside class="bag" id="bag" aria-hidden="true">
+    <div class="bag__panel">
+      <header><span class="mono">Tu bolsa</span><button id="bagClose" class="mono" data-cursor="Cerrar">Cerrar ✕</button></header>
+      <div class="bag__body" id="bagBody"></div>
+      <footer class="bag__foot">
+        <div><span class="mono">Total</span><b id="bagTotal">0€</b></div>
+        <button class="btn-acid" data-cursor="Pagar"><span>Finalizar compra</span> <i>→</i></button>
+      </footer>
+    </div>
+  </aside>
+  <div class="toast mono" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="img-data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
