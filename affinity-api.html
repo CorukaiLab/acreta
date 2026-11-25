@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACR✶TA — API Bridge &amp; Visión en Vivo para Affinity 3.3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #070709;
+      --ink-2: #111118;
+      --bone: #ece8e0;
+      --acid: #d7ff3b;
+      --crimson: #ff2e4c;
+      --disp: "Anton", Impact, sans-serif;
+      --mono: "Space Mono", monospace;
+      --sans: "Manrope", system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--ink); color: var(--bone);
+      font-family: var(--sans); min-height: 100vh;
+      padding: 1.5rem 2rem 3rem;
+    }
+    .top {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      padding-bottom: 1.1rem; margin-bottom: 1.6rem;
+      border-bottom: 2px solid var(--acid);
+    }
+    .top__title {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .top__title h1 {
+      font-family: var(--disp); font-size: 2.2rem; letter-spacing: .04em; text-transform: uppercase;
+    }
+    .pill-status {
+      font-family: var(--mono); font-size: .72rem; font-weight: 700; text-transform: uppercase;
+      padding: .35rem .8rem; background: var(--acid); color: var(--ink);
+      box-shadow: 4px 4px 0 var(--crimson);
+    }
+    .pill-status.is-off {
+      background: var(--crimson); color: var(--bone); box-shadow: 4px 4px 0 var(--ink);
+    }
+    .nav-btns { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--mono); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: .65rem 1.05rem; border: 2px solid var(--bone);
+      background: var(--ink-2); color: var(--bone); cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: .45rem;
+      transition: transform .15s, background .15s, color .15s, box-shadow .15s;
+    }
+    .btn:hover {
+      background: var(--acid); color: var(--ink); border-color: var(--ink);
+      transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--crimson);
+    }
+    .btn--acid {
+      background: var(--acid); color: var(--ink); border-color: var(--ink);
+      box-shadow: 5px 5px 0 var(--crimson);
+    }
+    .btn--crimson {
+      background: var(--crimson); color: var(--bone); border-color: var(--bone);
+      box-shadow: 5px 5px 0 var(--acid);
+    }
+
+    .grid {
+      display: grid; grid-template-columns: 1.05fr 1.25fr; gap: 1.6rem;
+    }
+    @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--ink-2); border: 2px solid var(--bone);
+      box-shadow: 8px 8px 0 var(--acid);
+    }
+    .card--crimson { box-shadow: 8px 8px 0 var(--crimson); }
+    .card__head {
+      padding: .65rem 1.1rem;
+      background: var(--acid); color: var(--ink);
+      font-family: var(--mono); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 2px solid var(--ink);
+    }
+    .card--crimson .card__head {
+      background: var(--crimson); color: var(--bone);
+    }
+    .card__body { padding: 1.25rem; }
+
+    .kv {
+      display: grid; gap: .6rem; font-family: var(--mono); font-size: .76rem; margin-bottom: 1.1rem;
+    }
+    .kv div {
+      display: flex; justify-content: space-between; gap: 1rem;
+      padding-bottom: .45rem; border-bottom: 1px dashed rgba(236, 232, 224, .2);
+    }
+    .kv dt { color: #9d988e; }
+    .kv dd { color: var(--acid); font-weight: 700; text-align: right; word-break: break-all; }
+
+    .log-box {
+      background: #050507; border: 1.5px solid rgba(236,232,224,.25);
+      padding: .85rem; font-family: var(--mono); font-size: .68rem; color: #b8ff6b;
+      max-height: 170px; overflow: auto; white-space: pre-wrap; line-height: 1.45;
+    }
+
+    .vision-box {
+      position: relative; background: #050507; border: 2px dashed rgba(215,255,59,.45);
+      min-height: 340px; display: grid; place-items: center; overflow: hidden;
+      margin-top: 1rem;
+    }
+    .vision-box video, .vision-box img {
+      width: 100%; height: auto; max-height: 480px; object-fit: contain; display: block;
+    }
+    .vision-placeholder {
+      padding: 2rem; text-align: center; max-width: 46ch;
+    }
+    .vision-placeholder h3 {
+      font-family: var(--disp); font-size: 1.65rem; color: var(--acid); margin-bottom: .5rem;
+    }
+    .vision-placeholder p {
+      font-size: .9rem; line-height: 1.5; color: #cbc6bc; margin-bottom: 1rem;
+    }
+
+    .endpoints {
+      margin-top: 1.1rem; display: grid; gap: .45rem;
+      font-family: var(--mono); font-size: .7rem;
+    }
+    .ep {
+      background: #07070b; border: 1px solid rgba(236,232,224,.22);
+      padding: .45rem .7rem; display: flex; justify-content: space-between; gap: 1rem;
+    }
+    .ep b { color: var(--acid); }
+    .toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200;
+      background: var(--acid); color: var(--ink); font-family: var(--mono); font-size: .74rem; font-weight: 700;
+      padding: .75rem 1.2rem; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--crimson);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top">
+    <div class="top__title">
+      <h1>ACR✶TA ⇄ AFFINITY 3.3 API BRIDGE</h1>
+      <span class="pill-status" id="connBadge">CONECTANDO CON AFFINITY…</span>
+    </div>
+    <div class="nav-btns">
+      <button type="button" class="btn btn--acid" id="openInAffinityBtn">⚡ Enviar Mapa Conceptual a Affinity Ahora</button>
+      <a href="mapa-conceptual.html" class="btn">🪐 Abrir Lienzo Interactivo</a>
+      <a href="index.html" class="btn">← Web ACR✶TA</a>
+    </div>
+  </header>
+
+  <main class="grid">
+    <!-- PANEL 1: ESTADO IPC Y TELEMETRÍA DE AFFINITY 3.3 -->
+    <section class="card">
+      <div class="card__head">
+        <span>01 · TELEMETRÍA EN VIVO DE CANVA AFFINITY</span>
+        <span id="lastPoll">Actualizando…</span>
+      </div>
+      <div class="card__body">
+        <dl class="kv">
+          <div><dt>Aplicación detectada</dt><dd id="stApp">—</dd></div>
+          <div><dt>Canal IPC Named Pipe</dt><dd id="stPipe">—</dd></div>
+          <div><dt>PID / Sesión Windows</dt><dd id="stPid">—</dd></div>
+          <div><dt>Documentos .autosave abiertos</dt><dd id="stAutosave">—</dd></div>
+          <div><dt>Archivo SVG vinculado</dt><dd id="stSvg">mapa-conceptual-acreta.svg</dd></div>
+          <div><dt>Visión del Agente (Frame PNG)</dt><dd id="stVision">—</dd></div>
+        </dl>
+
+        <div style="margin-bottom:.45rem; font-family:var(--mono); font-size:.68rem; color:var(--acid);">
+          REGISTRO DEL SERVIDOR IPC DE AFFINITY (C:\Users\PcVIP\.affinity\Affinity\3.0\ipc.log):
+        </div>
+        <div class="log-box" id="ipcLogBox">Cargando registro IPC…</div>
+
+        <div class="endpoints">
+          <div class="ep"><span><b>GET</b> /api/affinity/status</span><span>Estado del proceso, pipe IPC y autosaves</span></div>
+          <div class="ep"><span><b>POST</b> /api/affinity/open</span><span>Abre/recarga el SVG dentro de Affinity 3.3</span></div>
+          <div class="ep"><span><b>POST</b> /api/affinity/sync-svg</span><span>Actualiza el SVG y lo inyecta en Affinity</span></div>
+          <div class="ep"><span><b>POST</b> /api/affinity/frame</span><span>Envía captura en vivo de Affinity al Agente IA</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 2: PUENTE DE VISIÓN EN VIVO PARA EL AGENTE -->
+    <section class="card card--crimson">
+      <div class="card__head">
+        <span>02 · VISIÓN EN VIVO DE TU VENTANA DE AFFINITY PARA EL AGENTE</span>
+        <span id="streamState">MODO ESPERA</span>
+      </div>
+      <div class="card__body">
+        <div style="display:flex; gap:.65rem; flex-wrap:wrap;">
+          <button type="button" class="btn btn--crimson" id="startShareBtn">👁️ 1. Seleccionar Ventana de Affinity para que el Agente la vea</button>
+          <button type="button" class="btn" id="snapNowBtn" disabled>📸 Capturar Fotograma Ahora</button>
+        </div>
+
+        <div class="vision-box" id="visionBox">
+          <video id="liveVideo" autoplay playsinline muted style="display:none"></video>
+          <img id="lastSavedImg" alt="Última captura vista por el Agente" style="display:none" />
+          <div class="vision-placeholder" id="visionPlaceholder">
+            <h3>CONECTA LA VISIÓN DE TU VENTANA DE AFFINITY</h3>
+            <p>
+              Pulsa el botón rojo de arriba y elige la ventana de <strong>Affinity</strong>. La API enviará automáticamente una captura en alta resolución cada 2,5 segundos a <code>affinity-live-frame.png</code> para que el Agente pueda ver en tiempo real lo que estás diseñando.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <canvas id="captureCanvas" style="display:none"></canvas>
+
+  <script>
+    (() => {
+      const connBadge = document.getElementById("connBadge");
+      const toast = document.getElementById("toast");
+      const video = document.getElementById("liveVideo");
+      const lastImg = document.getElementById("lastSavedImg");
+      const placeholder = document.getElementById("visionPlaceholder");
+      const canvas = document.getElementById("captureCanvas");
+      const snapBtn = document.getElementById("snapNowBtn");
+      const streamState = document.getElementById("streamState");
+
+      let mediaStream = null;
+      let snapInterval = null;
+
+      function notify(msg) {
+        toast.textContent = msg;
+        toast.style.display = "block";
+        clearTimeout(notify._t);
+        notify._t = setTimeout(() => { toast.style.display = "none"; }, 3200);
+      }
+
+      async function pollStatus() {
+        try {
+          const r = await fetch("/api/affinity/status");
+          const d = await r.json();
+          document.getElementById("lastPoll").textContent = new Date().toLocaleTimeString();
+          connBadge.textContent = d.connected ? "● CONECTADO A AFFINITY 3.3.3" : "○ AFFINITY NO DETECTADO";
+          connBadge.classList.toggle("is-off", !d.connected);
+
+          document.getElementById("stApp").textContent = d.app;
+          document.getElementById("stPipe").textContent = d.ipcPipe;
+          document.getElementById("stPid").textContent = d.process
+            ? `PID ${d.process.Id} · Sesión ${d.process.SessionId} (${Math.round((d.process.WorkingSet64 || 0) / 1048576)} MB RAM)`
+            : "—";
+          document.getElementById("stAutosave").textContent = d.activeAutosaves && d.activeAutosaves.length
+            ? `${d.activeAutosaves.length} documento(s) activo(s) (${d.activeAutosaves.map(a => a.file).join(", ")})`
+            : "0 documentos sin guardar";
+          document.getElementById("stSvg").textContent = d.svgFile
+            ? `mapa-conceptual-acreta.svg (${(d.svgFile.size / 1024).toFixed(1)} KB)`
+            : "No encontrado";
+          document.getElementById("stVision").textContent = d.liveVision && d.liveVision.available
+            ? `ACTIVA · ${(d.liveVision.size / 1024).toFixed(0)} KB (${new Date(d.liveVision.capturedAt).toLocaleTimeString()})`
+            : "Esperando conexión de ventana";
+
+          document.getElementById("ipcLogBox").textContent = (d.ipcLog || []).join("\n") || "Sin entradas IPC";
+
+          if (!mediaStream && d.liveVision && d.liveVision.available) {
+            lastImg.src = "/api/affinity/frame?t=" + Date.now();
+            lastImg.style.display = "block";
+            placeholder.style.display = "none";
+          }
+        } catch (e) {
+          connBadge.textContent = "ERROR DE CONEXIÓN CON API LOCAL";
+          connBadge.classList.add("is-off");
+        }
+      }
+
+      document.getElementById("openInAffinityBtn").addEventListener("click", async () => {
+        notify("⚡ Enviando mapa-conceptual-acreta.svg a Affinity 3.3…");
+        const r = await fetch("/api/affinity/open", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ file: "mapa-conceptual-acreta.svg" }),
+        });
+        const d = await r.json();
+        if (d.ok) notify("✶ ¡Mapa conceptual abierto/actualizado en tu ventana de Affinity!");
+        pollStatus();
+      });
+
+      async function captureAndSendFrame() {
+        if (!mediaStream || !video.videoWidth) return;
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL("image/png");
+        await fetch("/api/affinity/frame", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image: dataUrl }),
+        });
+        streamState.textContent = "TRANSMITIENDO AL AGENTE (" + new Date().toLocaleTimeString() + ")";
+        pollStatus();
+      }
+
+      document.getElementById("startShareBtn").addEventListener("click", async () => {
+        try {
+          mediaStream = await navigator.mediaDevices.getDisplayMedia({
+            video: { cursor: "always" },
+            audio: false,
+          });
+          video.srcObject = mediaStream;
+          video.style.display = "block";
+          lastImg.style.display = "none";
+          placeholder.style.display = "none";
+          snapBtn.disabled = false;
+          streamState.textContent = "EN VIVO · CONECTADO";
+          notify("👁️ Ventana de Affinity conectada. Enviando primera captura al Agente…");
+
+          video.onloadedmetadata = () => {
+            setTimeout(captureAndSendFrame, 400);
+          };
+          clearInterval(snapInterval);
+          snapInterval = setInterval(captureAndSendFrame, 2500);
+
+          mediaStream.getVideoTracks()[0].addEventListener("ended", () => {
+            clearInterval(snapInterval);
+            mediaStream = null;
+            streamState.textContent = "TRANSMISIÓN DETENIDA";
+          });
+        } catch (err) {
+          notify("Cancelado o permiso denegado: " + err.message);
+        }
+      });
+
+      snapBtn.addEventListener("click", async () => {
+        await captureAndSendFrame();
+        notify("📸 Fotograma de Affinity enviado al Agente");
+      });
+
+      pollStatus();
+      setInterval(pollStatus, 3000);
+    })();
+  </script>
+</body>
+</html>
