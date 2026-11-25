@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ACR✶TA — Mapa Conceptual &amp; Brand Canvas (Affinity / Vector)</title>
+  <title>ACR✶TA — Master Mapa Conceptual, Brainstorming de Logos &amp; Laboratorio de Color</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink: #070709;
-      --ink-2: #121218;
+      --ink-2: #111117;
       --bone: #ece8e0;
       --acid: #d7ff3b;
       --crimson: #ff2e4c;
+      --cyan: #38e4ae;
       --mute: #8e8a80;
-      --line: rgba(236, 232, 224, 0.16);
+      --line: rgba(236, 232, 224, 0.14);
       --disp: "Anton", Impact, sans-serif;
       --serif: "Instrument Serif", Georgia, serif;
       --mono: "Space Mono", monospace;
@@ -37,234 +38,236 @@
       user-select: none;
     }
 
-    /* ---------- BARRA SUPERIOR ESTILO AFFINITY / ESTUDIO ---------- */
+    /* ---------- BARRA SUPERIOR ESTILO AFFINITY ---------- */
     .toolbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-      padding: .75rem 1.25rem;
-      background: rgba(7, 7, 9, 0.92); color: #ece8e0;
-      border-bottom: 2px solid #d7ff3b;
+      display: flex; align-items: center; justify-content: space-between; gap: .8rem; flex-wrap: wrap;
+      padding: .7rem 1.25rem;
+      background: rgba(7, 7, 9, 0.94); color: #ece8e0;
+      border-bottom: 2px solid var(--acid);
       backdrop-filter: blur(10px);
     }
-    .toolbar__brand {
-      display: flex; align-items: center; gap: .9rem;
-    }
+    .toolbar__brand { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; }
     .toolbar__logo {
       font-family: var(--disp); font-size: 1.55rem; letter-spacing: .04em; color: #ece8e0;
       text-decoration: none; display: inline-flex; align-items: center;
     }
-    .toolbar__logo svg { height: .78em; width: auto; color: #d7ff3b; margin: 0 .03em; }
+    .toolbar__logo svg { height: .78em; width: auto; color: var(--acid); margin: 0 .03em; }
     .toolbar__tag {
-      font-family: var(--mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .12em;
-      background: #d7ff3b; color: #070709; font-weight: 700;
-      padding: .22rem .55rem; box-shadow: 3px 3px 0 #ff2e4c;
+      font-family: var(--mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .12em;
+      background: var(--acid); color: #070709; font-weight: 700;
+      padding: .22rem .55rem; box-shadow: 3px 3px 0 var(--crimson);
     }
     .toolbar__hint {
-      font-family: var(--mono); font-size: .64rem; color: #b9b4a8; letter-spacing: .08em;
+      font-family: var(--mono); font-size: .62rem; color: #b9b4a8; letter-spacing: .06em;
     }
-    .toolbar__actions {
-      display: flex; align-items: center; gap: .55rem; flex-wrap: wrap;
-    }
+    .toolbar__actions { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; }
     .tbtn {
-      font-family: var(--mono); font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      padding: .5rem .85rem; border: 1.5px solid #ece8e0;
+      font-family: var(--mono); font-size: .64rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: .48rem .8rem; border: 1.5px solid #ece8e0;
       background: #14141c; color: #ece8e0; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: .4rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .38rem;
       transition: transform .15s, background .15s, color .15s, box-shadow .15s;
     }
     .tbtn:hover {
-      background: #d7ff3b; color: #070709; border-color: #070709;
-      transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #ff2e4c;
+      background: var(--acid); color: #070709; border-color: #070709;
+      transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--crimson);
     }
     .tbtn--primary {
-      background: #d7ff3b; color: #070709; border-color: #070709;
-      box-shadow: 4px 4px 0 #ff2e4c;
-    }
-    .tbtn--primary:hover {
-      background: #ff2e4c; color: #ece8e0; border-color: #ece8e0;
-      box-shadow: 4px 4px 0 #d7ff3b;
+      background: var(--acid); color: #070709; border-color: #070709;
+      box-shadow: 4px 4px 0 var(--crimson);
     }
 
-    /* ---------- LIENZO INFINITO / ARTBOARD ---------- */
+    /* ---------- LIENZO INFINITO 3600x2600 ---------- */
     .viewport {
-      position: fixed; inset: 56px 0 38px 0;
-      overflow: hidden;
-      cursor: grab;
+      position: fixed; inset: 54px 0 38px 0;
+      overflow: hidden; cursor: grab;
       background:
         radial-gradient(circle at 50% 50%, rgba(215, 255, 59, 0.05) 0%, transparent 65%),
-        linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 40px 40px,
-        linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 40px 40px;
+        linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 45px 45px,
+        linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 45px 45px;
     }
     .viewport.is-panning { cursor: grabbing; }
 
     .board {
       position: absolute; top: 0; left: 0;
-      width: 2400px; height: 1560px;
+      width: 3600px; height: 2600px;
       transform-origin: 0 0;
       will-change: transform;
     }
-
-    /* Órbitas decorativas de fondo */
-    .board__orbits {
-      position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+    .board__orbits, .board__edges {
+      position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
     }
-    /* Líneas de conexión dinámicas entre nodos */
-    .board__edges {
-      position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;
-    }
+    .board__orbits { z-index: 0; }
+    .board__edges { z-index: 1; }
 
-    /* ---------- TARJETAS / NODOS DEL MAPA CONCEPTUAL ---------- */
+    /* ---------- TARJETAS / NODOS ---------- */
     .node {
       position: absolute; z-index: 3;
-      background: #111117; color: #ece8e0;
+      background: #101016; color: #ece8e0;
       border: 2.5px solid #ece8e0;
-      box-shadow: 9px 9px 0 #d7ff3b;
+      box-shadow: 10px 10px 0 var(--acid);
       cursor: move;
       transition: box-shadow .2s;
     }
     .node:hover, .node.is-dragging {
-      z-index: 10;
-      box-shadow: 13px 13px 0 #ff2e4c;
+      z-index: 15;
+      box-shadow: 14px 14px 0 var(--crimson);
     }
     .node--core {
-      background: #d7ff3b; color: #070709;
+      background: var(--acid); color: #070709;
       border: 3.5px solid #070709;
-      box-shadow: 14px 14px 0 #ff2e4c;
+      box-shadow: 16px 16px 0 var(--crimson);
     }
     .node--bone {
       background: #ece8e0; color: #070709;
       border: 2.5px solid #070709;
-      box-shadow: 9px 9px 0 #d7ff3b;
+      box-shadow: 10px 10px 0 var(--crimson);
     }
-    .node--crimson {
-      box-shadow: 9px 9px 0 #ff2e4c;
-    }
+    .node--crimson { box-shadow: 10px 10px 0 var(--crimson); }
+    .node--cyan { box-shadow: 10px 10px 0 var(--cyan); }
 
     .node__head {
       display: flex; align-items: center; justify-content: space-between; gap: .6rem;
-      padding: .55rem .95rem;
-      font-family: var(--mono); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-      background: #d7ff3b; color: #070709;
+      padding: .6rem 1rem;
+      font-family: var(--mono); font-size: .74rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+      background: var(--acid); color: #070709;
       border-bottom: 2px solid #070709;
     }
-    .node--core .node__head {
-      background: #070709; color: #d7ff3b;
-    }
-    .node--bone .node__head {
-      background: #070709; color: #d7ff3b;
+    .node--core .node__head, .node--bone .node__head {
+      background: #070709; color: var(--acid);
     }
     .node--crimson .node__head {
-      background: #ff2e4c; color: #ece8e0; border-bottom-color: #ece8e0;
+      background: var(--crimson); color: #ece8e0; border-bottom-color: #ece8e0;
     }
-    .node__grip { opacity: .65; font-size: .8rem; }
+    .node--cyan .node__head {
+      background: var(--cyan); color: #070709;
+    }
+    .node__body { padding: 1.2rem 1.35rem 1.35rem; }
 
-    .node__body {
-      padding: 1.15rem 1.3rem 1.25rem;
-    }
     .node__title {
-      font-family: var(--disp); font-size: 2.3rem; line-height: .92; text-transform: uppercase;
-      margin-bottom: .7rem;
+      font-family: var(--disp); font-size: 2.35rem; line-height: .92; text-transform: uppercase;
+      margin-bottom: .75rem;
     }
     .node__title em {
       font-family: var(--serif); font-style: italic; font-weight: 400; text-transform: lowercase;
-      color: #d7ff3b; font-size: 1.06em;
+      color: var(--acid); font-size: 1.06em;
     }
-    .node--bone .node__title em,
-    .node--core .node__title em {
-      color: #ff2e4c;
+    .node--bone .node__title em, .node--core .node__title em { color: var(--crimson); }
+
+    /* ---------- BRAINSTORMING DE LOGOS (6 TARJETAS) ---------- */
+    .logos-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem;
+    }
+    .logo-card {
+      background: #16161f; border: 1.5px solid #353548;
+      display: flex; flex-direction: column;
+    }
+    .logo-card__top {
+      background: #222230; padding: .42rem .7rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--mono); font-size: .62rem; font-weight: 700; color: var(--acid);
+    }
+    .logo-card__tag {
+      background: var(--acid); color: #070709; padding: .1rem .4rem; font-size: .56rem;
+    }
+    .logo-card__tag--rec { background: var(--crimson); color: #ece8e0; }
+    .logo-stage {
+      height: 150px; margin: .7rem; border: 1.5px solid #343446;
+      background: #070709; display: grid; place-items: center;
+      position: relative; overflow: hidden;
+    }
+    .logo-stage--light { background: #ece8e0; color: #070709; border-color: #070709; }
+    .logo-stage--acid { background: var(--acid); color: #070709; border-color: #070709; }
+    .logo-stage svg { width: 92%; height: 86%; }
+    .logo-card__body { padding: 0 .85rem .9rem; flex: 1; display: flex; flex-direction: column; gap: .45rem; }
+    .logo-card__body h4 { font-family: var(--disp); font-size: 1.35rem; letter-spacing: .02em; color: #ece8e0; }
+    .logo-card__body p { font-size: .8rem; line-height: 1.4; color: #cbc6bc; }
+    .logo-card__pro { font-family: var(--mono); font-size: .63rem; color: var(--acid); margin-top: auto; }
+    .logo-card__use {
+      font-family: var(--mono); font-size: .6rem; text-align: center;
+      padding: .38rem; background: #0d0d13; border: 1px solid rgba(215,255,59,.35); color: #ece8e0;
     }
 
-    /* Logo gigante en el nodo central */
+    /* ---------- LABORATORIO DE COLOR ---------- */
+    .palette-box {
+      background: #16161f; border: 2px solid #343446; padding: .95rem 1.1rem; margin-bottom: .9rem;
+    }
+    .palette-box--active { border-color: var(--acid); }
+    .palette-head {
+      display: flex; justify-content: space-between; align-items: center; gap: .6rem;
+      margin-bottom: .7rem; font-family: var(--mono); font-size: .68rem; font-weight: 700;
+    }
+    .palette-try {
+      font-family: var(--mono); font-size: .6rem; font-weight: 700; text-transform: uppercase;
+      padding: .25rem .6rem; background: var(--acid); color: #070709; border: 0; cursor: pointer;
+    }
+    .palette-try:hover { background: var(--crimson); color: #ece8e0; }
+    .swatches-5 {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: .55rem; margin-bottom: .6rem;
+    }
+    .sw {
+      border: 1.5px solid rgba(236,232,224,.35); padding: .35rem; text-align: center;
+      font-family: var(--mono); font-size: .58rem; background: #0b0b10; color: #ece8e0;
+    }
+    .sw i { display: block; height: 42px; margin-bottom: .3rem; border: 1px solid rgba(255,255,255,.2); }
+    .palettes-2col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .85rem;
+    }
+
+    /* ---------- SUB-BLOQUES Y TARJETAS INTERNAS ---------- */
+    .subgrid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    .subgrid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; }
+    .subgrid-7 { display: grid; grid-template-columns: repeat(7, 1fr); gap: .65rem; }
+    .subcard {
+      background: #171721; border: 1.5px solid #353548; padding: .85rem 1rem;
+    }
+    .node--bone .subcard {
+      background: #ffffff; border: 2px solid #070709;
+    }
+    .subcard h4 {
+      font-family: var(--mono); font-size: .72rem; font-weight: 700; color: var(--acid);
+      margin-bottom: .45rem; text-transform: uppercase;
+    }
+    .node--bone .subcard h4 { color: var(--crimson); }
+    .subcard h3 {
+      font-family: var(--disp); font-size: 1.65rem; line-height: .95; margin-bottom: .45rem;
+    }
+    .subcard p, .subcard li { font-size: .84rem; line-height: 1.42; color: #d5d0c5; }
+    .node--bone .subcard p, .node--bone .subcard li { color: #222222; }
+    .subcard ul { list-style: none; display: grid; gap: .35rem; }
+    .subcard ul li::before { content: "• "; color: var(--acid); font-weight: 700; }
+    .node--bone .subcard ul li::before { color: var(--crimson); }
+
     .core-logo {
-      font-family: var(--disp); font-size: 5.4rem; line-height: .86;
+      font-family: var(--disp); font-size: 6rem; line-height: .84;
       display: flex; align-items: center; justify-content: center;
-      margin: .3rem 0 .5rem; color: #070709;
+      margin: .2rem 0 .45rem; color: #070709;
     }
     .core-logo svg {
-      height: .78em; width: auto; color: #ff2e4c; margin: 0 .03em;
+      height: .78em; width: auto; color: var(--crimson); margin: 0 .03em;
       filter: drop-shadow(3px 3px 0 #070709);
     }
     .core-quote {
-      font-family: var(--serif); font-style: italic; font-size: 1.75rem;
-      text-align: center; line-height: 1.05; margin-bottom: .75rem;
+      font-family: var(--serif); font-style: italic; font-size: 1.9rem;
+      text-align: center; line-height: 1.05; margin-bottom: .7rem;
     }
     .core-desc {
-      font-size: .92rem; font-weight: 600; line-height: 1.45; text-align: center;
-      border-top: 1.5px dashed #070709; padding-top: .65rem;
+      font-size: .95rem; font-weight: 600; line-height: 1.48; text-align: center;
+      border-top: 2px dashed #070709; padding-top: .7rem;
     }
 
-    .node__list {
-      list-style: none; display: grid; gap: .55rem;
-      font-size: .92rem; line-height: 1.45;
+    .thumbs-4 {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; margin-top: .65rem;
     }
-    .node__list li {
-      position: relative; padding-left: 1.1rem;
-    }
-    .node__list li::before {
-      content: "✶"; position: absolute; left: 0; top: 0;
-      color: #d7ff3b; font-size: .78rem;
-    }
-    .node--bone .node__list li::before { color: #ff2e4c; }
-
-    /* Píldoras / etiquetas */
-    .badges {
-      display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .95rem;
-    }
-    .badge {
-      font-family: var(--mono); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      padding: .28rem .6rem; border: 1.5px solid currentColor;
-    }
-    .badge--acid { color: #d7ff3b; background: rgba(215, 255, 59, 0.1); }
-    .badge--crimson { color: #ff2e4c; background: rgba(255, 46, 76, 0.12); }
-    .badge--dark { color: #070709; background: #d7ff3b; border-color: #070709; }
-
-    /* Muestras de color (ADN visual) */
-    .swatches {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: .55rem; margin-top: .9rem;
-    }
-    .swatch {
-      border: 1.5px solid #ece8e0; padding: .4rem; text-align: center;
-      font-family: var(--mono); font-size: .6rem;
-    }
-    .swatch i {
-      display: block; height: 34px; margin-bottom: .35rem; border: 1px solid rgba(255,255,255,.25);
-    }
-
-    /* Mini tarjetas de proceso y horizonte */
-    .steps-grid {
-      display: grid; gap: .55rem; margin-top: .4rem;
-    }
-    .step-box {
-      padding: .6rem .8rem;
-      background: rgba(255, 255, 255, 0.04);
-      border-left: 4px solid #d7ff3b;
-    }
-    .node--bone .step-box {
-      background: #ffffff; border: 1.5px solid #070709; border-left: 6px solid #ff2e4c;
-    }
-    .step-box strong {
-      display: block; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em;
-      text-transform: uppercase; color: #d7ff3b; margin-bottom: .18rem;
-    }
-    .node--bone .step-box strong { color: #ff2e4c; }
-    .step-box p { font-size: .84rem; line-height: 1.38; }
-
-    /* Fotos de referencia visual en el mapa */
-    .thumbs-row {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-top: .85rem;
-    }
-    .thumbs-row img {
-      width: 100%; height: 84px; object-fit: cover;
-      border: 1.5px solid #070709;
+    .thumbs-4 img {
+      width: 100%; height: 74px; object-fit: cover; border: 1.5px solid #ece8e0;
     }
 
     [contenteditable="true"]:focus {
-      outline: 2px dashed #d7ff3b;
-      outline-offset: 4px;
-      cursor: text;
+      outline: 2px dashed var(--acid); outline-offset: 4px; cursor: text;
     }
 
-    /* ---------- BARRA INFERIOR DE ESTADO / CONTROLES DE ZOOM ---------- */
     .statusbar {
       position: fixed; bottom: 0; left: 0; right: 0; height: 38px; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -273,67 +276,76 @@
       border-top: 1px solid rgba(236, 232, 224, 0.2);
       font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
     }
-    .zoom-controls {
-      display: flex; align-items: center; gap: .4rem;
-    }
+    .zoom-controls { display: flex; align-items: center; gap: .4rem; }
     .zbtn {
       background: #171720; color: #ece8e0; border: 1px solid rgba(236,232,224,.35);
       padding: .18rem .55rem; font-family: var(--mono); font-size: .68rem; cursor: pointer;
     }
-    .zbtn:hover { background: #d7ff3b; color: #070709; }
-
-    @media print {
-      .toolbar, .statusbar { display: none !important; }
-      .viewport { position: static; inset: 0; overflow: visible; }
-    }
+    .zbtn:hover { background: var(--acid); color: #070709; }
   </style>
 </head>
 <body>
 
-  <!-- DEFINICIÓN SVG DE LA ESTRELLA ACR✶TA -->
+  <!-- GLIFOS VECTORIALES REUTILIZABLES -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <g id="glyphStarE">
         <path d="M 44 0 L 53 37 L 76 18 L 59 46 L 88 55 L 59 64 L 76 92 L 53 73 L 44 110 L 35 73 L 12 92 L 29 64 L 0 55 L 29 46 L 12 18 L 35 37 Z" fill="currentColor"/>
         <circle cx="44" cy="55" r="5.5" fill="#070709"/>
       </g>
+      <g id="star8Center">
+        <polygon points="0,-42 9,-11 28,-25 14,-3 39,0 14,3 28,25 9,11 0,42 -9,11 -28,25 -14,3 -39,0 -14,-3 -28,-25 -9,-11" fill="currentColor"/>
+        <circle cx="0" cy="0" r="4.8" fill="#070709"/>
+      </g>
+      <g id="starStippleCenter">
+        <circle cx="0" cy="0" r="4.5" fill="#ff2e4c"/>
+        <circle cx="0" cy="-10" r="3.8" fill="currentColor"/><circle cx="0" cy="-19" r="3.2" fill="currentColor"/><circle cx="0" cy="-28" r="2.5" fill="currentColor"/><circle cx="0" cy="-36" r="1.8" fill="currentColor"/><circle cx="0" cy="-42" r="1.2" fill="#ff2e4c"/>
+        <circle cx="0" cy="10" r="3.8" fill="currentColor"/><circle cx="0" cy="19" r="3.2" fill="currentColor"/><circle cx="0" cy="28" r="2.5" fill="currentColor"/><circle cx="0" cy="36" r="1.8" fill="currentColor"/><circle cx="0" cy="42" r="1.2" fill="#ff2e4c"/>
+        <circle cx="-10" cy="0" r="3.6" fill="currentColor"/><circle cx="-19" cy="0" r="3.0" fill="currentColor"/><circle cx="-27" cy="0" r="2.2" fill="currentColor"/><circle cx="-35" cy="0" r="1.5" fill="#ff2e4c"/>
+        <circle cx="10" cy="0" r="3.6" fill="currentColor"/><circle cx="19" cy="0" r="3.0" fill="currentColor"/><circle cx="27" cy="0" r="2.2" fill="currentColor"/><circle cx="35" cy="0" r="1.5" fill="#ff2e4c"/>
+        <circle cx="-8" cy="-8" r="2.8" fill="currentColor"/><circle cx="-15" cy="-15" r="2.2" fill="currentColor"/><circle cx="-22" cy="-22" r="1.5" fill="#ff2e4c"/>
+        <circle cx="8" cy="-8" r="2.8" fill="currentColor"/><circle cx="15" cy="-15" r="2.2" fill="currentColor"/><circle cx="22" cy="-22" r="1.5" fill="#ff2e4c"/>
+        <circle cx="-8" cy="8" r="2.8" fill="currentColor"/><circle cx="-15" cy="15" r="2.2" fill="currentColor"/><circle cx="-22" cy="22" r="1.5" fill="#ff2e4c"/>
+        <circle cx="8" cy="8" r="2.8" fill="currentColor"/><circle cx="15" cy="15" r="2.2" fill="currentColor"/><circle cx="22" cy="22" r="1.5" fill="#ff2e4c"/>
+      </g>
     </defs>
   </svg>
 
-  <!-- BARRA DE HERRAMIENTAS SUPERIOR -->
+  <!-- BARRA SUPERIOR -->
   <header class="toolbar">
     <div class="toolbar__brand">
-      <a href="index.html" class="toolbar__logo" title="Volver a la web de ACR✶TA">
+      <a href="index.html" class="toolbar__logo">
         <span>ACR</span><svg viewBox="0 0 88 110"><use href="#glyphStarE"/></svg><span>TA</span>
       </a>
-      <span class="toolbar__tag">MAPA CONCEPTUAL · BRAND CANVAS</span>
-      <span class="toolbar__hint">Arrastra cualquier bloque · Doble clic en un texto para editarlo</span>
+      <span class="toolbar__tag">MASTER BRAND MAP v2 · 3600×2600</span>
+      <span class="toolbar__hint">Arrastra tarjetas · Doble clic para editar · Prueba las 5 paletas en vivo</span>
     </div>
 
     <div class="toolbar__actions">
-      <button type="button" class="tbtn" id="addNodeBtn">+ Añadir Nodo</button>
+      <button type="button" class="tbtn" id="addNodeBtn">+ Añadir Idea</button>
       <button type="button" class="tbtn" id="themeBtn">Fondo: Cosmos / Lienzo</button>
-      <button type="button" class="tbtn" id="fitBtn">Centrar Mapa</button>
-      <a href="mapa-conceptual-acreta.svg" download="ACR-TA-Mapa-Conceptual-Affinity.svg" class="tbtn tbtn--primary" id="downloadSvgBtn">
-        ⬇ Descargar .SVG para Affinity Designer
-      </a>
-      <a href="index.html" class="tbtn">← Ver Web ACR✶TA</a>
+      <button type="button" class="tbtn" id="fitBtn">Ver Todo el Mapa</button>
+      <button type="button" class="tbtn tbtn--primary" id="pushAffinityBtn">⚡ Abrir en tu Affinity 3.3</button>
+      <a href="affinity-api.html" class="tbtn">👁️ Consola API Affinity</a>
+      <a href="mapa-conceptual-acreta.svg" download="ACR-TA-Master-Brand-Map-Affinity.svg" class="tbtn">⬇ Descargar .SVG</a>
+      <a href="index.html" class="tbtn">← Web ACR✶TA</a>
     </div>
   </header>
 
-  <!-- LIENZO INTERACTIVO -->
+  <!-- LIENZO INTERACTIVO 3600x2600 -->
   <div class="viewport" id="viewport">
     <div class="board" id="board">
 
-      <!-- Órbitas de fondo -->
-      <svg class="board__orbits" viewBox="0 0 2400 1560">
-        <circle cx="1200" cy="760" r="280" fill="none" stroke="rgba(215,255,59,0.18)" stroke-width="1.5" stroke-dasharray="8 8"/>
-        <circle cx="1200" cy="760" r="520" fill="none" stroke="rgba(236,232,224,0.14)" stroke-width="1.5" stroke-dasharray="10 10"/>
-        <circle cx="1200" cy="760" r="760" fill="none" stroke="rgba(255,46,76,0.16)" stroke-width="1.5" stroke-dasharray="12 10"/>
+      <!-- Órbitas gravitacionales de fondo -->
+      <svg class="board__orbits" viewBox="0 0 3600 2600">
+        <circle cx="1630" cy="1165" r="330" fill="none" stroke="rgba(215,255,59,0.18)" stroke-width="1.8" stroke-dasharray="10 10"/>
+        <circle cx="1630" cy="1165" r="640" fill="none" stroke="rgba(236,232,224,0.14)" stroke-width="1.8" stroke-dasharray="12 10"/>
+        <circle cx="1630" cy="1165" r="980" fill="none" stroke="rgba(255,46,76,0.15)" stroke-width="1.8" stroke-dasharray="14 12"/>
+        <circle cx="1630" cy="1165" r="1320" fill="none" stroke="rgba(56,228,174,0.13)" stroke-width="1.8" stroke-dasharray="16 12"/>
       </svg>
 
-      <!-- Conectores dinámicos entre tarjetas -->
-      <svg class="board__edges" id="edgesSvg" viewBox="0 0 2400 1560">
+      <!-- Líneas dinámicas entre nodos -->
+      <svg class="board__edges" id="edgesSvg" viewBox="0 0 3600 2600">
         <defs>
           <marker id="arrAcid" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M 0 1 L 10 5 L 0 9 z" fill="#d7ff3b"/>
@@ -344,158 +356,467 @@
         </defs>
       </svg>
 
-      <!-- ================= NODO 00: NÚCLEO CENTRAL ACR✶TA ================= -->
-      <article class="node node--core" id="node-core" style="left: 950px; top: 610px; width: 500px;">
+      <!-- ========================================================================
+           01. ZONA SUPERIOR: BRAINSTORMING DE 6 MEJORAS Y VARIANTES DE LOGO
+           ======================================================================== -->
+      <article class="node" id="node-logos" data-from="node-core" data-color="acid" style="left: 60px; top: 50px; width: 3480px;">
         <div class="node__head">
-          <span>✶ NÚCLEO DEL PROYECTO · SEGUNDA VIDA TEXTIL</span>
-          <span class="node__grip">⋮⋮</span>
+          <span>01 · BRAINSTORMING DE LOGOTIPO E ISOTIPO — 6 CAMINOS VISUALES PARA ACR✶TA (COMPARATIVA VECTORIAL)</span>
+          <span>⋮⋮ ARRASTRAR</span>
         </div>
         <div class="node__body">
-          <div class="core-logo" aria-label="ACRETA">
+          <div class="logos-grid">
+
+            <!-- OPCIÓN A -->
+            <div class="logo-card">
+              <div class="logo-card__top"><span>OPCIÓN A · ESTRELLA 8 PUNTAS</span><span class="logo-card__tag">ACTUAL WEB V2</span></div>
+              <div class="logo-stage">
+                <svg viewBox="0 0 420 140">
+                  <text x="28" y="102" font-family="Anton, Impact, sans-serif" font-size="82" fill="#ece8e0">ACR</text>
+                  <g transform="translate(216, 72) scale(0.88)" color="#d7ff3b"><use href="#star8Center"/></g>
+                  <text x="256" y="102" font-family="Anton, Impact, sans-serif" font-size="82" fill="#ece8e0">TA</text>
+                </svg>
+              </div>
+              <div class="logo-card__body" contenteditable="true">
+                <h4>IMPACTO DIRECTO &amp; LECTURA CLARA</h4>
+                <p>La estrella de 8 puntas sustituye a la E sin barras horizontales, con un núcleo hueco que simula la ignición de una nova.</p>
+                <div class="logo-card__pro">✔ Muy sólido en cabeceras web y carteles.</div>
+                <div class="logo-card__use">USO IDEAL: CABECERA WEB · STICKERS</div>
+              </div>
+            </div>
+
+            <!-- OPCIÓN B -->
+            <div class="logo-card">
+              <div class="logo-card__top"><span>OPCIÓN B · ESTRELLA PUNTILLISMO</span><span class="logo-card__tag logo-card__tag--rec">★ RECOMENDADA</span></div>
+              <div class="logo-stage logo-stage--light">
+                <svg viewBox="0 0 420 140">
+                  <text x="28" y="102" font-family="Anton, Impact, sans-serif" font-size="82" fill="#070709">ACR</text>
+                  <g transform="translate(216, 72) scale(0.95)" color="#070709"><use href="#starStippleCenter"/></g>
+                  <text x="256" y="102" font-family="Anton, Impact, sans-serif" font-size="82" fill="#070709">TA</text>
+                </svg>
+              </div>
+              <div class="logo-card__body" contenteditable="true">
+                <h4>ESTRELLA FORMADA POR 33 PUNTOS</h4>
+                <p>En lugar de un bloque plano, la estrella central está dibujada con puntos de tinta de distintos calibres que explotan del centro.</p>
+                <div class="logo-card__pro">✔ Conecta el logo al 100% con vuestro puntillismo.</div>
+                <div class="logo-card__use">USO IDEAL: ETIQUETAS · SERIGRAFÍA EN TELA</div>
+              </div>
+            </div>
+
+            <!-- OPCIÓN C -->
+            <div class="logo-card">
+              <div class="logo-card__top"><span>OPCIÓN C · ANILLO DE ACRECIÓN</span><span class="logo-card__tag">ORBITAL</span></div>
+              <div class="logo-stage">
+                <svg viewBox="0 0 420 140">
+                  <ellipse cx="210" cy="74" rx="185" ry="44" transform="rotate(-14 210 74)" fill="none" stroke="#ff2e4c" stroke-width="2.5" stroke-dasharray="7 5"/>
+                  <text x="28" y="102" font-family="Anton, Impact, sans-serif" font-size="82" fill="#ece8e0">ACR</text>
+                  <g transform="translate(216, 72) scale(0.88)" color="#d7ff3b"><use href="#star8Center"/></g>
+                  <text x="256" y="102" font-family="Anton, Impact, sans-serif" font-size="82" fill="#ece8e0">TA</text>
+                  <circle cx="48" cy="112" r="5.5" fill="#d7ff3b"/>
+                  <circle cx="375" cy="34" r="4.5" fill="#ff2e4c"/>
+                </svg>
+              </div>
+              <div class="logo-card__body" contenteditable="true">
+                <h4>DISCO DE GRAVEDAD Y SATÉLITES</h4>
+                <p>Una órbita elíptica inclinada (-14°) abraza la palabra ACR✶TA con dos satélites orbitando la estrella central.</p>
+                <div class="logo-card__pro">✔ Silueta muy potente para bordar en espalda o pecho.</div>
+                <div class="logo-card__use">USO IDEAL: BORDADO TEXTIL · MERCH</div>
+              </div>
+            </div>
+
+            <!-- OPCIÓN D -->
+            <div class="logo-card">
+              <div class="logo-card__top"><span>OPCIÓN D · CHOQUE EDITORIAL SERIF</span><span class="logo-card__tag">ALTA MODA</span></div>
+              <div class="logo-stage">
+                <svg viewBox="0 0 420 140">
+                  <text x="34" y="98" font-family="Anton, Impact, sans-serif" font-size="78" fill="#ece8e0">AC</text>
+                  <text x="132" y="98" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="96" fill="#d7ff3b">r</text>
+                  <g transform="translate(206, 68) scale(0.84)" color="#ff2e4c"><use href="#star8Center"/></g>
+                  <text x="246" y="98" font-family="Anton, Impact, sans-serif" font-size="78" fill="#ece8e0">T</text>
+                  <text x="292" y="98" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="94" fill="#ece8e0">a</text>
+                  <text x="210" y="128" text-anchor="middle" font-family="Space Mono, monospace" font-size="9.5" fill="#8e8a80">第二の命 · ESTUDIO DE ACRECIÓN · 1/1</text>
+                </svg>
+              </div>
+              <div class="logo-card__body" contenteditable="true">
+                <h4>PATCHWORK TIPOGRÁFICO (CALLE + GALERÍA)</h4>
+                <p>Mezcla letras en bloque industrial (Anton) con cursivas poéticas (Instrument Serif), igual que combináis tejidos distintos.</p>
+                <div class="logo-card__pro">✔ Toque de firma de autor / vanguardia japonesa.</div>
+                <div class="logo-card__use">USO IDEAL: LOOKBOOKS · TARJETAS · PRENSA</div>
+              </div>
+            </div>
+
+            <!-- OPCIÓN E -->
+            <div class="logo-card">
+              <div class="logo-card__top"><span>OPCIÓN E · MONOGRAMA «A✶» SASHIKO</span><span class="logo-card__tag logo-card__tag--rec">★ ISOTIPO CORTO</span></div>
+              <div class="logo-stage">
+                <svg viewBox="0 0 420 140">
+                  <circle cx="210" cy="70" r="58" fill="#12121a" stroke="#ece8e0" stroke-width="2"/>
+                  <circle cx="210" cy="70" r="49" fill="none" stroke="#d7ff3b" stroke-width="1.8" stroke-dasharray="6 4"/>
+                  <path d="M 210 26 L 182 108 M 210 26 L 238 108" stroke="#ece8e0" stroke-width="9" stroke-linecap="square"/>
+                  <g transform="translate(210, 74) scale(0.58)" color="#ff2e4c"><use href="#star8Center"/></g>
+                  <text x="96" y="74" font-family="Space Mono, monospace" font-size="11" fill="#d7ff3b">第二の命</text>
+                  <text x="288" y="74" font-family="Space Mono, monospace" font-size="11" fill="#d7ff3b">1 DE 1</text>
+                </svg>
+              </div>
+              <div class="logo-card__body" contenteditable="true">
+                <h4>SELLO CIRCULAR CON COSTURA SASHIKO</h4>
+                <p>Una «A» cuyo travesaño central es la estrella ✶, encerrada en un aro de puntadas de hilo Sashiko japonés.</p>
+                <div class="logo-card__pro">✔ Indispensable como icono corto (botones, nuca, favicon).</div>
+                <div class="logo-card__use">USO IDEAL: PARCHE EN NUCA · LACRE · FAVICON</div>
+              </div>
+            </div>
+
+            <!-- OPCIÓN F -->
+            <div class="logo-card">
+              <div class="logo-card__top"><span>OPCIÓN F · TAMPÓN ESTÉNCIL TALLER</span><span class="logo-card__tag">SELLO FÍSICO</span></div>
+              <div class="logo-stage logo-stage--acid">
+                <svg viewBox="0 0 420 140">
+                  <path d="M 16 16 L 36 16 M 16 16 L 16 36 M 404 16 L 384 16 M 404 16 L 404 36 M 16 124 L 36 124 M 16 124 L 16 104 M 404 124 L 384 124 M 404 124 L 404 104" stroke="#070709" stroke-width="2.5"/>
+                  <text x="28" y="102" font-family="Anton, Impact, sans-serif" font-size="82" fill="#070709">ACR</text>
+                  <g transform="translate(216, 72) scale(0.88)" color="#ff2e4c"><use href="#star8Center"/></g>
+                  <text x="256" y="102" font-family="Anton, Impact, sans-serif" font-size="82" fill="#070709">TA</text>
+                  <line x1="20" y1="70" x2="400" y2="70" stroke="#d7ff3b" stroke-width="3.5" stroke-dasharray="12 7"/>
+                </svg>
+              </div>
+              <div class="logo-card__body" contenteditable="true">
+                <h4>PLANTILLA DE CORTE &amp; TAMPÓN DE CAUCHO</h4>
+                <p>Con puentes de esténcil y marcas de patronaje para fabricar un sello de caucho real y estampar cada prenda a mano.</p>
+                <div class="logo-card__pro">✔ Coste casi cero para marcar prendas por dentro.</div>
+                <div class="logo-card__use">USO IDEAL: SELLO DE TINTA EN TALLER · CAJAS</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- ========================================================================
+           02. NÚCLEO CENTRAL: CONCEPTO FUNDACIONAL ACR✶TA
+           ======================================================================== -->
+      <article class="node node--core" id="node-core" style="left: 1320px; top: 960px; width: 620px;">
+        <div class="node__head">
+          <span>✶ CORAZÓN DEL PROYECTO · CONCEPTO FUNDACIONAL</span>
+          <span>⋮⋮</span>
+        </div>
+        <div class="node__body">
+          <div class="core-logo">
             <span>ACR</span><svg viewBox="0 0 88 110"><use href="#glyphStarE"/></svg><span>TA</span>
           </div>
-          <p class="core-quote" contenteditable="true">«La ropa también explota y vuelve a nacer»</p>
+          <p class="core-quote" contenteditable="true">«Nada se crea de cero. Las estrellas nacen de una explosión.»</p>
           <p class="core-desc" contenteditable="true">
-            <strong>Acreción:</strong> fenómeno astrofísico por el que la materia dispersa tras la explosión de una estrella se une por gravedad hasta formar un cuerpo nuevo. Aplicado a la moda: rescatar prendas olvidadas e intervenirlas a mano en ediciones <strong>1 de 1</strong>.
+            <strong>¿De dónde viene ACRETA?</strong> De <em>acreción</em>: cuando una estrella explota en supernova, su materia dispersa se vuelve a unir por gravedad hasta dar vida a un astro nuevo.<br><br>
+            <strong>Aplicado a la moda (第二の命 · Segunda Vida):</strong> Rescatamos prendas olvidadas con historia y las intervenimos a mano con <strong>puntillismo (~40.000 puntos)</strong> o <strong>fusión textil</strong> para crear piezas irrepetibles <strong>1 de 1</strong>.
           </p>
         </div>
       </article>
 
-      <!-- ================= NODO 01: ¿CÓMO SOMOS? (ADN Y MANIFIESTO) ================= -->
-      <article class="node" id="node-adn" data-from="node-core" data-color="acid" style="left: 90px; top: 110px; width: 510px;">
+      <!-- ========================================================================
+           03. ZONA IZQUIERDA ARRIBA: ¿CÓMO SOMOS? (LOS CONCEPTOS DEL PRINCIPIO)
+           ======================================================================== -->
+      <article class="node" id="node-somos" data-from="node-core" data-color="acid" style="left: 60px; top: 660px; width: 1120px;">
         <div class="node__head">
-          <span>01 · ¿CÓMO SOMOS? (ADN Y VALORES)</span>
-          <span class="node__grip">⋮⋮</span>
+          <span>02 · ¿CÓMO SOMOS? — LOS CONCEPTOS DEL PRINCIPIO AMPLIADOS (FILOSOFÍA, MANIFIESTO Y VOZ)</span>
+          <span>⋮⋮</span>
         </div>
         <div class="node__body">
-          <h2 class="node__title" contenteditable="true">ANTI-FAST FASHION <em>&amp; arte lento</em></h2>
-          <ul class="node__list" contenteditable="true">
-            <li><strong>Nada se crea de cero:</strong> partimos siempre de prendas existentes con historia (segunda vida textil / 第二の命).</li>
-            <li><strong>Exclusividad radical (1 de 1):</strong> sin reposición ni tallas en serie. Cuando una prenda encuentra dueña, pasa al archivo histórico.</li>
-            <li><strong>Oficio visible:</strong> celebramos las horas de taller, el trazo humano y el valor de una prenda irrepetible frente a la producción masiva.</li>
-            <li><strong>Personalidad:</strong> cósmica, rebelde, poética y callejera; mezcla de galería de arte y cultura de <em>drops</em>.</li>
-          </ul>
-          <div class="badges">
-            <span class="badge badge--acid">100% RECUPERADO</span>
-            <span class="badge badge--crimson">PIEZA ÚNICA 1/1</span>
-            <span class="badge badge--acid">HECHO A MANO</span>
+          <h2 class="node__title" contenteditable="true">SOSTENIBILIDAD REBELDE <em>(no somos moda eco-beige)</em></h2>
+          <div class="subgrid-2" contenteditable="true">
+            <div class="subcard">
+              <h4>✦ 1. EDICIÓN 1 DE 1 RADICAL (SIN REPOSICIÓN)</h4>
+              <ul>
+                <li>Cada prenda es una obra única firmada y numerada (#001, #002…).</li>
+                <li>Sin tallaje industrial en serie: la prenda encontrada dicta la talla.</li>
+                <li>Cuando una Nova se reclama, no se vuelve a fabricar jamás.</li>
+              </ul>
+            </div>
+            <div class="subcard">
+              <h4>✦ 2. SEGUNDA VIDA TEXTIL (第二の命 · UPCYCLING DE AUTOR)</h4>
+              <ul>
+                <li>0% producción de tejido virgen: todo parte de ropa ya existente.</li>
+                <li>Rescatamos camisas, vaqueros, chaquetas y retales de kimono.</li>
+                <li>La huella del pasado de la prenda se honra y se transforma en arte.</li>
+              </ul>
+            </div>
+            <div class="subcard">
+              <h4>✦ 3. EL TIEMPO HUMANO COMO VERDADERO LUJO</h4>
+              <ul>
+                <li>Frente al fast-fashion de 3 minutos, cada prenda lleva días de taller.</li>
+                <li>Cada punto de tinta se hace a mano uno a uno (~40.000 puntos).</li>
+                <li>Transparencia total en el ticket: origen, técnica y nº de estrellas.</li>
+              </ul>
+            </div>
+            <div class="subcard">
+              <h4>✦ 4. UNIVERSO VERBAL PROPIO (DICCIONARIO ACR✶TA)</h4>
+              <ul>
+                <li>No lanzamos «colecciones» → Detonamos <strong>Novas (Drops 1/1)</strong>.</li>
+                <li>No tenemos «catálogo» → Registramos <strong>Avistamientos</strong>.</li>
+                <li>No tenemos «newsletter» → Invitamos a entrar en <strong>La Órbita</strong>.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </article>
 
-      <!-- ================= NODO 02: UNIVERSO NARRATIVO (METÁFORA ESTELAR) ================= -->
-      <article class="node node--bone" id="node-concepto" data-from="node-core" data-color="acid" style="left: 880px; top: 90px; width: 640px;">
+      <!-- ========================================================================
+           04. ZONA IZQUIERDA CENTRO: TALLER, 2 LÍNEAS TÉCNICAS Y PACKAGING
+           ======================================================================== -->
+      <article class="node node--bone" id="node-taller" data-from="node-core" data-color="crimson" style="left: 60px; top: 1250px; width: 1120px;">
         <div class="node__head">
-          <span>02 · IDEA DEL PROYECTO Y METÁFORA ASTRONÓMICA</span>
-          <span class="node__grip">⋮⋮</span>
+          <span>03 · ¿CÓMO TRABAJAMOS? — LAS 2 VÍAS ARTESANALES, LAS 4 FASES Y EL PACKAGING «CÁPSULA»</span>
+          <span>⋮⋮</span>
         </div>
         <div class="node__body">
-          <h2 class="node__title" contenteditable="true">CADA PUNTO, <em>una estrella</em></h2>
-          <ul class="node__list" contenteditable="true">
-            <li><strong>Puntillismo = Constelación:</strong> de cerca, miles de puntos de tinta textil (~40.000 puntos por prenda); de lejos, una ilustración con fuerza propia.</li>
-            <li><strong>Cada Drop = Una Explosión de Nova:</strong> no lanzamos colecciones de temporada, sino «Novas» numeradas (Nova 001, Nova 002…) conectadas en una ruta estelar.</li>
-            <li><strong>Acretar:</strong> unir lo que estaba disperso (un tejido olvidado + tinta punto a punto o retales de kimono) en una nueva estrella.</li>
-          </ul>
-          <div class="thumbs-row">
-            <img src="assets/img/look-02.jpg" alt="Nova 001 Enana Blanca" />
+          <div class="subgrid-2" contenteditable="true">
+            <div class="subcard">
+              <h4>VÍA A · LÍNEA «CONSTELACIÓN» (PUNTILLISMO A MANO)</h4>
+              <h3>CADA PUNTO, UNA ESTRELLA</h3>
+              <p>Ilustración dibujada a mano punto a punto con tinta textil indeleble sobre prendas recuperadas. De cerca es una nebulosa abstracta de miles de puntos; de lejos emerge una imagen magnética.</p>
+              <p style="margin-top:.4rem; font-family:var(--mono); font-size:.7rem; font-weight:700;">→ EJEMPLO: NOVA 001 «ENANA BLANCA» &amp; NOVA 005 (NEGATIVO BLANCO SOBRE NEGRO)</p>
+            </div>
+            <div class="subcard">
+              <h4>VÍA B · LÍNEA «COLISIÓN» (FUSIÓN TEXTIL ORIENTE/OCCIDENTE)</h4>
+              <h3>CHOQUE DE DOS MUNDOS TEXTILES</h3>
+              <p>Deconstrucción y ensamblaje de dos o más prendas olvidadas: chaquetas vaqueras occidentales fusionadas con paneles de kimono japonés, bordado tradicional <em>Sashiko</em> con hilo crudo visto, satén y encaje.</p>
+              <p style="margin-top:.4rem; font-family:var(--mono); font-size:.7rem; font-weight:700;">→ EJEMPLO: NOVA 002 «NEBULOSA ÍNDIGO» &amp; NOVA 006 «POLVO CÓSMICO»</p>
+            </div>
+          </div>
+
+          <div class="subcard" style="margin-top:.8rem; background:#070709; color:#ece8e0;" contenteditable="true">
+            <h4 style="color:#d7ff3b;">📦 EXPERIENCIA DE ENTREGA &amp; UNBOXING («CÁPSULA DE MATERIA RECUPERADA»)</h4>
+            <p style="color:#ece8e0;">
+              <strong>1. Ticket de Registro Astronómico físico:</strong> cartulina tipo laboratorio con nº de serie (#001), conteo de puntos, coordenadas AR/DEC y firma manual. ·
+              <strong>2. QR Orbital:</strong> al escanear la etiqueta de la prenda, abre su estrella exacta dentro de la Ruta de Novas de la web. ·
+              <strong>3. Sello interior con tampón ACR✶TA</strong> y cinta neón <em>«PIEZA ÚNICA ✶ SIN REPOSICIÓN»</em>.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ========================================================================
+           05. ZONA DERECHA: LABORATORIO DE COLOR (ACTUAL + 4 PALETAS PROBABLES)
+           ======================================================================== -->
+      <article class="node node--crimson" id="node-colores" data-from="node-core" data-color="acid" style="left: 2060px; top: 660px; width: 1480px;">
+        <div class="node__head">
+          <span>04 · LABORATORIO DE COLOR — PALETA ACTUAL + 4 NUEVAS PALETAS POSIBLES (HAZ CLIC PARA PROBARLAS EN VIVO)</span>
+          <span>⋮⋮</span>
+        </div>
+        <div class="node__body">
+
+          <!-- PALETA 00: ACTUAL -->
+          <div class="palette-box palette-box--active">
+            <div class="palette-head">
+              <span style="color:var(--acid);">★ PALETA ACTUAL EN USO · «SUPERNOVA ÁCIDA» (WEB V2 OFICIAL)</span>
+              <button type="button" class="palette-try" data-acid="#d7ff3b" data-crimson="#ff2e4c" data-ink="#070709" data-bone="#ece8e0">⚡ Probar en el mapa</button>
+            </div>
+            <div class="swatches-5">
+              <div class="sw"><i style="background:#070709"></i><b>#070709</b><br>Tinta Cosmos</div>
+              <div class="sw"><i style="background:#ece8e0"></i><b>#ECE8E0</b><br>Hueso Algodón</div>
+              <div class="sw"><i style="background:#d7ff3b"></i><b>#D7FF3B</b><br>Ácido Estelar</div>
+              <div class="sw"><i style="background:#ff2e4c"></i><b>#FF2E4C</b><br>Carmesí Nova</div>
+              <div class="sw"><i style="background:#8e8a80"></i><b>#8E8A80</b><br>Ceniza Orbital</div>
+            </div>
+            <p style="font-size:.82rem; color:#cbc6bc;" contenteditable="true">
+              <strong>Por qué funciona tan bien:</strong> El hueso (#ECE8E0) y el negro tinta (#070709) reproducen literalmente el algodón de la camisa Enana Blanca y los puntos de tinta; el amarillo ácido y el rojo nova rompen la seriedad con energía rebelde de moda urbana.
+            </p>
+          </div>
+
+          <!-- 4 PALETAS EXPLORATORIAS -->
+          <div class="palettes-2col">
+
+            <!-- PALETA 01 -->
+            <div class="palette-box">
+              <div class="palette-head">
+                <span style="color:#38e4ae;">OPCIÓN A · «NEBULOSA ÍNDIGO &amp; SASHIKO» (JAPÓN + DENIM)</span>
+                <button type="button" class="palette-try" data-acid="#38e4ae" data-crimson="#ff5a36" data-ink="#0b1021" data-bone="#f4efe6">⚡ Probar en el mapa</button>
+              </div>
+              <div class="swatches-5">
+                <div class="sw"><i style="background:#0b1021"></i><b>#0B1021</b><br>Índigo Noche</div>
+                <div class="sw"><i style="background:#f4efe6"></i><b>#F4EFE6</b><br>Papel Washi</div>
+                <div class="sw"><i style="background:#38e4ae"></i><b>#38E4AE</b><br>Verde Aurora</div>
+                <div class="sw"><i style="background:#ff5a36"></i><b>#FF5A36</b><br>Laca Torii</div>
+                <div class="sw"><i style="background:#4a6fa5"></i><b>#4A6FA5</b><br>Denim Lavado</div>
+              </div>
+              <p style="font-size:.8rem; color:#cbc6bc;" contenteditable="true">
+                Inspirada en tintes japoneses, vaquero oscuro e hilo crudo Sashiko con sello bermellón. Perfecta para el <strong>Drop 002 (Nebulosa Índigo)</strong> o la línea de fusión textil asiática.
+              </p>
+            </div>
+
+            <!-- PALETA 02 -->
+            <div class="palette-box">
+              <div class="palette-head">
+                <span style="color:#b49bff;">OPCIÓN B · «PULSAR ULTRAVIOLETA &amp; PLATA» (GALERÍA AVANT-GARDE)</span>
+                <button type="button" class="palette-try" data-acid="#b49bff" data-crimson="#7b61ff" data-ink="#09090c" data-bone="#f7f6f2">⚡ Probar en el mapa</button>
+              </div>
+              <div class="swatches-5">
+                <div class="sw"><i style="background:#09090c"></i><b>#09090C</b><br>Carbón Puro</div>
+                <div class="sw"><i style="background:#f7f6f2"></i><b>#F7F6F2</b><br>Lienzo Galería</div>
+                <div class="sw"><i style="background:#7b61ff"></i><b>#7B61FF</b><br>Violeta Pulsar</div>
+                <div class="sw"><i style="background:#c5c8d4"></i><b>#C5C8D4</b><br>Plata Cromo</div>
+                <div class="sw"><i style="background:#d4a373"></i><b>#D4A373</b><br>Cartón Kraft</div>
+              </div>
+              <p style="font-size:.8rem; color:#cbc6bc;" contenteditable="true">
+                Más fría, nocturna y sofisticada (vibra galería de arte / Maison Margiela). Sustituye el amarillo ácido por plata metálica y luz ultravioleta.
+              </p>
+            </div>
+
+            <!-- PALETA 03 -->
+            <div class="palette-box">
+              <div class="palette-head">
+                <span style="color:#ffb800;">OPCIÓN C · «IGNICIÓN SOLAR &amp; TERRACOTA» (CÁLIDA / VOLCÁNICA)</span>
+                <button type="button" class="palette-try" data-acid="#ffb800" data-crimson="#ff3b1d" data-ink="#12090b" data-bone="#efe6dd">⚡ Probar en el mapa</button>
+              </div>
+              <div class="swatches-5">
+                <div class="sw"><i style="background:#12090b"></i><b>#12090B</b><br>Obsidiana</div>
+                <div class="sw"><i style="background:#efe6dd"></i><b>#EFE6DD</b><br>Lino Crudo</div>
+                <div class="sw"><i style="background:#ffb800"></i><b>#FFB800</b><br>Ámbar Solar</div>
+                <div class="sw"><i style="background:#ff3b1d"></i><b>#FF3B1D</b><br>Llama Nova</div>
+                <div class="sw"><i style="background:#9e2a2b"></i><b>#9E2A2B</b><br>Óxido Textil</div>
+              </div>
+              <p style="font-size:.8rem; color:#cbc6bc;" contenteditable="true">
+                Cálida, orgánica y terrosa. Evoca estrellas en ignición, lino sin blanquear y sellos de lacre rojo. Ideal para cápsulas de otoño o prendas en tonos tierra.
+              </p>
+            </div>
+
+            <!-- PALETA 04 -->
+            <div class="palette-box">
+              <div class="palette-head">
+                <span style="color:#00f0ff;">★ IDEA MAESTRA · «COLOR MUTANTE POR CADA NOVA»</span>
+                <button type="button" class="palette-try" data-acid="#00f0ff" data-crimson="#ff2a85" data-ink="#080a10" data-bone="#eaeff5">⚡ Probar Cian/Magenta</button>
+              </div>
+              <p style="font-size:.83rem; line-height:1.48; color:#ece8e0;" contenteditable="true">
+                <strong>¿Y si no elegís un único color de acento para siempre?</strong><br>
+                Mantenéis fijos el <strong>Negro Tinta (#070709)</strong> y el <strong>Hueso (#ECE8E0)</strong> como base eterna de ACR✶TA, y <strong>cada Drop cambia el color de acento de la web y del ticket</strong> según la temperatura de esa estrella:<br>
+                • <em>Nova 001 Enana Blanca:</em> Ácido <code>#D7FF3B</code> + Carmesí <code>#FF2E4C</code><br>
+                • <em>Nova 002 Nebulosa Índigo:</em> Verde Aurora <code>#38E4AE</code> + Índigo <code>#0B1021</code><br>
+                • <em>Nova 003 Orión:</em> Ultravioleta <code>#7B61FF</code> · <em>Nova 007 Perihelio:</em> Ámbar <code>#FFB800</code>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <!-- ========================================================================
+           06. ZONA CENTRAL INFERIOR: ¿QUÉ TENEMOS EN MANO AHORA MISMO?
+           ======================================================================== -->
+      <article class="node node--cyan" id="node-inventario" data-from="node-core" data-color="acid" style="left: 1220px; top: 1410px; width: 800px;">
+        <div class="node__head">
+          <span>05 · ¿QUÉ TENEMOS EN MANO HOY? (INVENTARIO REAL LISTO)</span>
+          <span>⋮⋮</span>
+        </div>
+        <div class="node__body">
+          <div class="subgrid-3" contenteditable="true">
+            <div class="subcard">
+              <h4>✔ 1. PRENDA REAL #001</h4>
+              <h3>ENANA BLANCA</h3>
+              <p>Camisa blanca intervenida con ~40.000 puntos a mano. Talla S · 1/1 · 85€. Fotografiada en 4 ángulos.</p>
+            </div>
+            <div class="subcard">
+              <h4>✔ 2. WEB V2 ACTIVA 24/7</h4>
+              <h3>COSMOS LOCO</h3>
+              <p>Online en <code>corukailab.github.io/acreta</code> con explosión de 10.800 puntos, Ruta de Novas y versión móvil.</p>
+            </div>
+            <div class="subcard">
+              <h4>✔ 3. UNIVERSO &amp; VECTOR</h4>
+              <h3>MARCA + AFFINITY</h3>
+              <p>Logo ACR✶TA con estrella propia, 7 drops guionizados, mapa vectorial SVG y puente con Affinity 3.3.</p>
+            </div>
+          </div>
+          <div class="thumbs-4">
+            <img src="assets/img/look-02.jpg" alt="Look 02" />
             <img src="assets/img/detalle.jpg" alt="Detalle puntillismo" />
-            <img src="assets/img/look-03.jpg" alt="Look perfil" />
+            <img src="assets/img/look-03.jpg" alt="Look 03" />
+            <img src="assets/img/look-01.jpg" alt="Look 01" />
           </div>
         </div>
       </article>
 
-      <!-- ================= NODO 03: LENGUAJE VISUAL Y ESTÉTICA ================= -->
-      <article class="node node--crimson" id="node-estetica" data-from="node-core" data-color="crimson" style="left: 1800px; top: 110px; width: 510px;">
+      <!-- ========================================================================
+           07. ZONA INFERIOR IZQUIERDA: LA RUTA DE LAS 7 NOVAS (PLAN DE DROPS)
+           ======================================================================== -->
+      <article class="node" id="node-novas" data-from="node-taller" data-color="acid" style="left: 60px; top: 1920px; width: 1720px;">
         <div class="node__head">
-          <span>03 · IDENTIDAD VISUAL Y ESTÉTICA «COSMOS LOCO»</span>
-          <span class="node__grip">⋮⋮</span>
+          <span>06 · LA RUTA DE NOVAS — GUION CREATIVO DE LOS PRIMEROS 7 DROPS (CADA PRENDA ES UNA ESTRELLA EN LA CONSTELACIÓN)</span>
+          <span>⋮⋮</span>
         </div>
         <div class="node__body">
-          <h2 class="node__title" contenteditable="true">BRUTALISMO <em>editorial &amp; cósmico</em></h2>
-          <ul class="node__list" contenteditable="true">
-            <li><strong>El Símbolo (✶):</strong> la estrella de 8 puntas reemplaza a la letra <em>E</em> en <strong>ACR✶TA</strong>, convirtiendo el propio nombre en una explosión.</li>
-            <li><strong>Choque Tipográfico:</strong> bloques contundentes en <em>Anton</em> + acentos emocionales en <em>Instrument Serif Italic</em> + coordenadas técnicas en <em>Space Mono</em>.</li>
-            <li><strong>Gráfica de Taller:</strong> tickets de registro con código de barras, sellos giratorios 1/1, grano analógico y sombras duras desplazadas.</li>
-          </ul>
-          <div class="swatches">
-            <div class="swatch"><i style="background:#070709"></i>#070709<br>TINTA</div>
-            <div class="swatch"><i style="background:#ece8e0"></i>#ECE8E0<br>HUESO</div>
-            <div class="swatch"><i style="background:#d7ff3b"></i>#D7FF3B<br>ÁCIDO</div>
-            <div class="swatch"><i style="background:#ff2e4c"></i>#FF2E4C<br>NOVA</div>
+          <div class="subgrid-7" contenteditable="true">
+            <div class="subcard" style="border-color:var(--acid); background:#1d2212;">
+              <h4>NOVA 001 · 100%</h4>
+              <h3>ENANA BLANCA</h3>
+              <p><strong>Puntillismo a mano.</strong> Camisa blanca recuperada con ~40.000 puntos de tinta. <strong>85€ · Activa.</strong></p>
+            </div>
+            <div class="subcard">
+              <h4>NOVA 002 · 78%</h4>
+              <h3>NEBULOSA ÍNDIGO</h3>
+              <p><strong>Sashiko + Denim.</strong> Chaqueta vaquera con paneles de kimono antiguo y costuras vistas.</p>
+            </div>
+            <div class="subcard">
+              <h4>NOVA 003 · 52%</h4>
+              <h3>CINTURÓN ORIÓN</h3>
+              <p><strong>Bordado + Tinta.</strong> Vaquero recto con las 3 estrellas de Orión bordadas en cadera.</p>
+            </div>
+            <div class="subcard">
+              <h4>NOVA 004 · 35%</h4>
+              <h3>MAREA LUNAR</h3>
+              <p><strong>Satén + Encaje.</strong> Vestido asimétrico que fusiona dos prendas con constelación trasera.</p>
+            </div>
+            <div class="subcard">
+              <h4>NOVA 005 · 64%</h4>
+              <h3>HORIZONTE SUCESOS</h3>
+              <p><strong>Puntillismo Blanco.</strong> Sudadera negra con miles de puntos blancos (negativo estelar).</p>
+            </div>
+            <div class="subcard">
+              <h4>NOVA 006 · 22%</h4>
+              <h3>POLVO CÓSMICO</h3>
+              <p><strong>Patchwork 5 telas.</strong> Falda plisada de corte asiático hecha con 5 prendas rescatadas.</p>
+            </div>
+            <div class="subcard">
+              <h4>NOVA 007 · 88%</h4>
+              <h3>PERIHELIO</h3>
+              <p><strong>Trazo + Serigrafía.</strong> Camiseta de algodón pesado con cartas celestes dibujadas a mano.</p>
+            </div>
           </div>
         </div>
       </article>
 
-      <!-- ================= NODO 04: ¿QUÉ HACEMOS? (PROCESO Y PRODUCTO) ================= -->
-      <article class="node" id="node-proceso" data-from="node-core" data-color="crimson" style="left: 90px; top: 820px; width: 510px;">
+      <!-- ========================================================================
+           08. ZONA INFERIOR DERECHA: ¿DÓNDE QUEREMOS IR? (3 HORIZONTES DE FUTURO)
+           ======================================================================== -->
+      <article class="node node--bone" id="node-futuro" data-from="node-core" data-color="crimson" style="left: 1830px; top: 1920px; width: 1710px;">
         <div class="node__head">
-          <span>04 · ¿CÓMO TRABAJAMOS? (LAS 4 FASES + TÉCNICAS)</span>
-          <span class="node__grip">⋮⋮</span>
+          <span>07 · ¿DÓNDE QUEREMOS IR? — HOJA DE RUTA EN 3 HORIZONTES, CONTENIDO EN REDES Y EXPANSIÓN DEL UNIVERSO ACR✶TA</span>
+          <span>⋮⋮</span>
         </div>
         <div class="node__body">
-          <h2 class="node__title" contenteditable="true">FASES DE <em>formación estelar</em></h2>
-          <div class="steps-grid" contenteditable="true">
-            <div class="step-box">
-              <strong>FASE 01 · MATERIA DISPERSA (RECOLECCIÓN)</strong>
-              <p>Búsqueda y rescate de camisas, chaquetas vaqueras y prendas de 2ª mano con buen tejido y caída.</p>
+          <div class="subgrid-3" contenteditable="true">
+            <div class="subcard">
+              <h4>HORIZONTE 1 · IGNICIÓN (MESES 1–3)</h4>
+              <h3>VALIDAR Y CREAR CULTO AL PROCESO</h3>
+              <ul>
+                <li>Lanzamiento del <strong>Drop 001 (Enana Blanca)</strong> y apertura de <em>La Órbita</em>.</li>
+                <li><strong>Reels / TikTok hipnóticos:</strong> macro ASMR haciendo puntos de tinta, el antes/después de la prenda rescatada y el momento de sellar el ticket 1/1.</li>
+                <li>Conseguir que cada Nova sea esperada con cuenta atrás y se agote en &lt;48h.</li>
+              </ul>
             </div>
-            <div class="step-box">
-              <strong>FASE 02 · GRAVEDAD (CURADURÍA Y DISEÑO)</strong>
-              <p>Lavado, recuperación de la fibra y bocetado de la intervención según la anatomía de la prenda.</p>
+            <div class="subcard">
+              <h4>HORIZONTE 2 · EXPANSIÓN (MESES 4–9)</h4>
+              <h3>«TRAE TU PRENDA A ORBITAR»</h3>
+              <ul>
+                <li><strong>Servicio Custom 1/1:</strong> el cliente envía una prenda de su armario con valor sentimental para que Acreta la intervenga y le asigne número de Nova.</li>
+                <li><strong>Archivo de Estrellas Adoptadas:</strong> cada prenda vendida queda encendida en el mapa web con la ciudad y el alias de su dueña.</li>
+                <li>Cero residuo: accesorios (bolsos tote sashiko, parches) con los retales sobrantes.</li>
+              </ul>
             </div>
-            <div class="step-box">
-              <strong>FASE 03 · INTERVENCIÓN (2 VÍAS ARTESANALES)</strong>
-              <p><strong>Vía A:</strong> Ilustración manual en puntillismo con tinta textil.<br><strong>Vía B:</strong> Upcycling combinando textiles asiáticos (sashiko, kimono) y occidentales.</p>
+            <div class="subcard">
+              <h4>HORIZONTE 3 · UNIVERSO FÍSICO (AÑO 1–2)</h4>
+              <h3>POP-UPS GALERÍA &amp; COLISIONES</h3>
+              <ul>
+                <li><strong>Pop-Ups «Observatorio Acreta»:</strong> exposición de prendas en sala oscura iluminadas como constelaciones + intervención de puntillismo en directo.</li>
+                <li><strong>«Colisiones Estelares»:</strong> piezas 1/1 co-creadas con tatuadoras, ilustradoras y artistas textiles invitadas.</li>
+                <li>Posicionar ACR✶TA como referente de moda circular y upcycling de autor.</li>
+              </ul>
             </div>
-            <div class="step-box">
-              <strong>FASE 04 · EXPLOSIÓN DE NOVA (DROP 1/1)</strong>
-              <p>Numeración (#001 Enana Blanca · 85€), etiqueta de registro y lanzamiento único sin reposición.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ================= NODO 05: COMUNIDAD Y EXPERIENCIA DIGITAL ================= -->
-      <article class="node" id="node-comunidad" data-from="node-core" data-color="acid" style="left: 880px; top: 1080px; width: 640px;">
-        <div class="node__head">
-          <span>05 · COMUNIDAD Y CANAL DIGITAL («LA ÓRBITA»)</span>
-          <span class="node__grip">⋮⋮</span>
-        </div>
-        <div class="node__body">
-          <h2 class="node__title" contenteditable="true">MÁS QUE TIENDA, <em>observatorio vivo</em></h2>
-          <ul class="node__list" contenteditable="true">
-            <li><strong>Portada viva:</strong> el visitante experimenta la explosión inicial y puede dispersar con el dedo o cursor los 10.800 puntos que forman <strong>ACR✶TA</strong>.</li>
-            <li><strong>«Avistamientos» (Lookbook):</strong> archivo fotográfico de cada pieza antes de que pase a manos de su dueña.</li>
-            <li><strong>«La Órbita» (Club &amp; Cuenta atrás):</strong> comunidad que recibe las coordenadas y la cuenta atrás de la siguiente Nova antes de que estalle públicamente.</li>
-            <li><strong>Storytelling en redes (IG / TikTok):</strong> vídeos cortos del proceso punto a punto, el antes/después de la prenda rescatada y el momento de sellar la pieza 1/1.</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- ================= NODO 06: ¿DÓNDE QUEREMOS IR? (HOJA DE RUTA) ================= -->
-      <article class="node node--bone" id="node-futuro" data-from="node-core" data-color="crimson" style="left: 1800px; top: 820px; width: 510px;">
-        <div class="node__head">
-          <span>06 · ¿DÓNDE QUEREMOS IR? (HOJA DE RUTA Y FUTURO)</span>
-          <span class="node__grip">⋮⋮</span>
-        </div>
-        <div class="node__body">
-          <h2 class="node__title" contenteditable="true">LA RUTA DE <em>novas (vislumbres)</em></h2>
-          <div class="steps-grid" contenteditable="true">
-            <div class="step-box">
-              <strong>HORIZONTE 1 · IGNICIÓN (AHORA)</strong>
-              <p>Lanzamiento de la web interactiva, venta del <strong>Drop 001 (Enana Blanca)</strong> y captación de los primeros miembros en <em>La Órbita</em>.</p>
-            </div>
-            <div class="step-box">
-              <strong>HORIZONTE 2 · CONSTELACIÓN DE DROPS (002 → 007)</strong>
-              <p>Despliegue progresivo de la Ruta de Novas: <em>002 Nebulosa Índigo</em> (Sashiko + Denim), <em>003 Cinturón de Orión</em>, <em>004 Marea Lunar</em>, <em>005 Horizonte de Sucesos</em> (puntillismo blanco sobre negro), <em>006 Polvo Cósmico</em> y <em>007 Perihelio</em>.</p>
-            </div>
-            <div class="step-box">
-              <strong>HORIZONTE 3 · «TRAE TU PRENDA A ORBITAR» &amp; POP-UPS</strong>
-              <p>• Servicio por encargo donde el cliente envía una prenda propia con valor sentimental para ser intervenida.<br>• Pop-ups físicos tipo galería-taller y colaboraciones con ilustradoras y artistas textiles.</p>
-            </div>
-          </div>
-          <div class="badges">
-            <span class="badge badge--dark">META: REFERENTE UPCYCLING DE AUTOR</span>
           </div>
         </div>
       </article>
@@ -503,9 +824,9 @@
     </div>
   </div>
 
-  <!-- BARRA DE ESTADO Y ZOOM -->
+  <!-- BARRA DE ESTADO -->
   <footer class="statusbar">
-    <span>ACR✶TA · MAPA CONCEPTUAL INTERACTIVO + VECTOR SVG PARA AFFINITY DESIGNER</span>
+    <span>ACR✶TA · MASTER BRAND MAP (3600×2600) · SINCRONIZADO CON CANVA AFFINITY 3.3.3</span>
     <div class="zoom-controls">
       <button type="button" class="zbtn" id="zoomOutBtn">−</button>
       <span id="zoomLabel">100%</span>
@@ -521,12 +842,8 @@
       const edgesSvg = document.getElementById("edgesSvg");
       const zoomLabel = document.getElementById("zoomLabel");
 
-      let scale = 1;
-      let panX = 0;
-      let panY = 0;
-      let isPanning = false;
-      let startPanX = 0;
-      let startPanY = 0;
+      let scale = 1, panX = 0, panY = 0;
+      let isPanning = false, startPanX = 0, startPanY = 0;
 
       function applyTransform() {
         board.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
@@ -536,78 +853,71 @@
       function fitToScreen() {
         const vw = viewport.clientWidth;
         const vh = viewport.clientHeight;
-        scale = Math.min(vw / 2460, vh / 1600, 1);
-        scale = Math.max(0.32, scale);
-        panX = (vw - 2400 * scale) * 0.5;
-        panY = (vh - 1560 * scale) * 0.5;
+        scale = Math.min(vw / 3660, vh / 2640, 1);
+        scale = Math.max(0.24, scale);
+        panX = (vw - 3600 * scale) * 0.5;
+        panY = (vh - 2600 * scale) * 0.5;
         applyTransform();
       }
 
-      // Dibuja curvas Bézier dinámicas desde el nodo central hacia todos los demás nodos
       function updateEdges() {
         const defs = edgesSvg.querySelector("defs").outerHTML;
-        const core = document.getElementById("node-core");
-        const cx = core.offsetLeft + core.offsetWidth * 0.5;
-        const cy = core.offsetTop + core.offsetHeight * 0.5;
-
         const targets = board.querySelectorAll(".node[data-from]");
         let paths = "";
         targets.forEach((node) => {
+          const fromEl = document.getElementById(node.dataset.from) || document.getElementById("node-core");
+          const cx = fromEl.offsetLeft + fromEl.offsetWidth * 0.5;
+          const cy = fromEl.offsetTop + fromEl.offsetHeight * 0.5;
           const nx = node.offsetLeft + node.offsetWidth * 0.5;
           const ny = node.offsetTop + node.offsetHeight * 0.5;
-          const dx = nx - cx;
-          const dy = ny - cy;
-          const c1x = cx + dx * 0.45;
-          const c1y = cy + dy * 0.12;
-          const c2x = cx + dx * 0.55;
-          const c2y = cy + dy * 0.88;
+          const dx = nx - cx, dy = ny - cy;
+          const c1x = cx + dx * 0.45, c1y = cy + dy * 0.12;
+          const c2x = cx + dx * 0.55, c2y = cy + dy * 0.88;
           const isCrimson = node.dataset.color === "crimson";
-          const color = isCrimson ? "#ff2e4c" : "#d7ff3b";
+          const color = isCrimson ? "var(--crimson)" : "var(--acid)";
           const marker = isCrimson ? "url(#arrCrimson)" : "url(#arrAcid)";
-          paths += `<path d="M ${cx} ${cy} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${nx} ${ny}" fill="none" stroke="${color}" stroke-width="2.8" stroke-dasharray="8 6" marker-end="${marker}" opacity="0.88"/>`;
-          paths += `<circle cx="${nx}" cy="${ny}" r="6" fill="${color}"/>`;
+          paths += `<path d="M ${cx} ${cy} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${nx} ${ny}" fill="none" stroke="${color}" stroke-width="3.2" stroke-dasharray="10 7" marker-end="${marker}" opacity="0.88"/>`;
         });
         edgesSvg.innerHTML = defs + paths;
       }
 
-      // Hacer arrastrables todos los nodos
       function makeDraggable(node) {
-        let dragging = false;
-        let startX = 0, startY = 0;
-        let origLeft = 0, origTop = 0;
-
+        let dragging = false, startX = 0, startY = 0, origLeft = 0, origTop = 0;
         node.addEventListener("pointerdown", (e) => {
-          if (e.target.isContentEditable && document.activeElement === e.target) return;
+          if (e.target.closest("button, a") || (e.target.isContentEditable && document.activeElement === e.target)) return;
           e.stopPropagation();
           dragging = true;
           node.classList.add("is-dragging");
           node.setPointerCapture(e.pointerId);
-          startX = e.clientX;
-          startY = e.clientY;
-          origLeft = node.offsetLeft;
-          origTop = node.offsetTop;
+          startX = e.clientX; startY = e.clientY;
+          origLeft = node.offsetLeft; origTop = node.offsetTop;
         });
-
         node.addEventListener("pointermove", (e) => {
           if (!dragging) return;
-          const dx = (e.clientX - startX) / scale;
-          const dy = (e.clientY - startY) / scale;
-          node.style.left = `${Math.round(origLeft + dx)}px`;
-          node.style.top = `${Math.round(origTop + dy)}px`;
+          node.style.left = `${Math.round(origLeft + (e.clientX - startX) / scale)}px`;
+          node.style.top = `${Math.round(origTop + (e.clientY - startY) / scale)}px`;
           updateEdges();
         });
-
-        const stop = () => {
-          dragging = false;
-          node.classList.remove("is-dragging");
-        };
+        const stop = () => { dragging = false; node.classList.remove("is-dragging"); };
         node.addEventListener("pointerup", stop);
         node.addEventListener("pointercancel", stop);
       }
-
       board.querySelectorAll(".node").forEach(makeDraggable);
 
-      // Pan del lienzo arrastrando el fondo
+      // Probador interactivo de paletas de color
+      document.querySelectorAll(".palette-try").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          document.documentElement.style.setProperty("--acid", btn.dataset.acid);
+          document.documentElement.style.setProperty("--crimson", btn.dataset.crimson);
+          document.documentElement.style.setProperty("--ink", btn.dataset.ink);
+          document.documentElement.style.setProperty("--bone", btn.dataset.bone);
+          document.querySelectorAll(".palette-box").forEach((b) => b.classList.remove("palette-box--active"));
+          btn.closest(".palette-box").classList.add("palette-box--active");
+          updateEdges();
+        });
+      });
+
       viewport.addEventListener("pointerdown", (e) => {
         if (e.target.closest(".node")) return;
         isPanning = true;
@@ -626,55 +936,58 @@
         viewport.classList.remove("is-panning");
       });
 
-      // Zoom con rueda
       viewport.addEventListener("wheel", (e) => {
         e.preventDefault();
         const factor = e.deltaY < 0 ? 1.1 : 0.9;
-        const nextScale = Math.min(1.8, Math.max(0.3, scale * factor));
+        const nextScale = Math.min(1.8, Math.max(0.22, scale * factor));
         const rect = viewport.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
+        const mx = e.clientX - rect.left, my = e.clientY - rect.top;
         panX = mx - ((mx - panX) / scale) * nextScale;
         panY = my - ((my - panY) / scale) * nextScale;
         scale = nextScale;
         applyTransform();
       }, { passive: false });
 
-      document.getElementById("zoomInBtn").addEventListener("click", () => {
-        scale = Math.min(1.8, scale * 1.15);
-        applyTransform();
-      });
-      document.getElementById("zoomOutBtn").addEventListener("click", () => {
-        scale = Math.max(0.3, scale * 0.87);
-        applyTransform();
-      });
+      document.getElementById("zoomInBtn").addEventListener("click", () => { scale = Math.min(1.8, scale * 1.15); applyTransform(); });
+      document.getElementById("zoomOutBtn").addEventListener("click", () => { scale = Math.max(0.22, scale * 0.87); applyTransform(); });
       document.getElementById("fitBtn").addEventListener("click", fitToScreen);
-      document.getElementById("themeBtn").addEventListener("click", () => {
-        document.body.classList.toggle("is-light");
-      });
+      document.getElementById("themeBtn").addEventListener("click", () => document.body.classList.toggle("is-light"));
       document.getElementById("printBtn").addEventListener("click", () => window.print());
 
-      // Añadir un nuevo nodo editable al mapa
-      let customCount = 7;
+      document.getElementById("pushAffinityBtn").addEventListener("click", async () => {
+        const btn = document.getElementById("pushAffinityBtn");
+        btn.textContent = "⚡ Enviando a Affinity 3.3…";
+        try {
+          const r = await fetch("/api/affinity/open", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ file: "mapa-conceptual-acreta.svg" }),
+          });
+          const d = await r.json();
+          btn.textContent = d.ok ? "✶ ¡Abierto en tu Affinity!" : "⬇ Abriendo SVG…";
+          setTimeout(() => { btn.textContent = "⚡ Abrir en tu Affinity 3.3"; }, 2600);
+        } catch {
+          window.location.href = "mapa-conceptual-acreta.svg";
+        }
+      });
+
+      let customCount = 8;
       document.getElementById("addNodeBtn").addEventListener("click", () => {
         const n = document.createElement("article");
         n.className = "node";
         n.dataset.from = "node-core";
         n.dataset.color = customCount % 2 === 0 ? "acid" : "crimson";
-        n.style.left = `${1020 + (customCount % 3) * 80}px`;
-        n.style.top = `${360 + (customCount % 3) * 60}px`;
-        n.style.width = "420px";
+        n.style.left = `${1380 + (customCount % 4) * 70}px`;
+        n.style.top = `${1100 + (customCount % 4) * 50}px`;
+        n.style.width = "460px";
         n.innerHTML = `
           <div class="node__head">
-            <span contenteditable="true">0${customCount} · NUEVA IDEA / RAMA</span>
-            <span class="node__grip">⋮⋮</span>
+            <span contenteditable="true">0${customCount} · NUEVA IDEA / BRAINSTORMING</span>
+            <span>⋮⋮</span>
           </div>
-          <div class="node__body">
-            <h2 class="node__title" contenteditable="true">NUEVA <em>constelación</em></h2>
-            <ul class="node__list" contenteditable="true">
-              <li>Haz doble clic aquí para escribir tu idea, línea de ropa, colaboración o referencia visual.</li>
-              <li>Arrastra esta tarjeta a cualquier coordenada del mapa.</li>
-            </ul>
+          <div class="node__body" contenteditable="true">
+            <h2 class="node__title">NUEVA <em>estrella</em></h2>
+            <p style="font-size:.9rem; line-height:1.45;">Haz doble clic aquí para anotar nuevas ideas de prendas, colores, mejoras de logo o colaboraciones.</p>
           </div>
         `;
         customCount++;
