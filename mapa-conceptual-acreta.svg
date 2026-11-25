@@ -1,266 +1,747 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1600" width="2400" height="1600">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3600 2600" width="3600" height="2600">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;family=Space+Mono:wght@400;700&amp;family=Manrope:wght@400;600;700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Anton&amp;family=Instrument+Serif:ital@0;1&amp;family=Space+Mono:wght@400;700&amp;family=Manrope:wght@400;600;700;800&amp;display=swap');
       .bg { fill: #070709; }
-      .grid-line { stroke: #1a1a22; stroke-width: 1; }
-      .orbit-ring { fill: none; stroke: #282834; stroke-width: 1.5; stroke-dasharray: 8 8; }
-      .conn-acid { fill: none; stroke: #d7ff3b; stroke-width: 2.5; stroke-dasharray: 7 5; }
-      .conn-crimson { fill: none; stroke: #ff2e4c; stroke-width: 2.5; }
-      .conn-bone { fill: none; stroke: #ece8e0; stroke-width: 1.8; stroke-dasharray: 4 6; opacity: 0.65; }
-      .card-dark { fill: #111116; stroke: #ece8e0; stroke-width: 2.5; }
+      .grid-line { stroke: #181822; stroke-width: 1; }
+      .orbit-ring { fill: none; stroke: #272736; stroke-width: 1.8; stroke-dasharray: 10 10; }
+      .conn-acid { fill: none; stroke: #d7ff3b; stroke-width: 3; stroke-dasharray: 9 6; }
+      .conn-crimson { fill: none; stroke: #ff2e4c; stroke-width: 3; }
+      .conn-bone { fill: none; stroke: #ece8e0; stroke-width: 2; stroke-dasharray: 5 7; opacity: 0.65; }
+      .conn-cyan { fill: none; stroke: #38e4ae; stroke-width: 2.5; stroke-dasharray: 8 5; }
+      .card-dark { fill: #101016; stroke: #ece8e0; stroke-width: 2.5; }
+      .card-panel { fill: #16161f; stroke: #343446; stroke-width: 1.8; }
       .card-bone { fill: #ece8e0; stroke: #070709; stroke-width: 2.5; }
-      .card-acid { fill: #d7ff3b; stroke: #070709; stroke-width: 3; }
+      .card-acid { fill: #d7ff3b; stroke: #070709; stroke-width: 3.5; }
       .card-crimson { fill: #ff2e4c; stroke: #ece8e0; stroke-width: 2.5; }
       .shadow-acid { fill: #d7ff3b; }
       .shadow-crimson { fill: #ff2e4c; }
-      .shadow-ink { fill: #070709; }
       .shadow-bone { fill: #ece8e0; }
+      .shadow-ink { fill: #070709; }
       .h-disp { font-family: 'Anton', Impact, 'Arial Black', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
       .h-serif { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; }
-      .mono { font-family: 'Space Mono', 'Courier New', monospace; text-transform: uppercase; letter-spacing: 2px; }
+      .mono { font-family: 'Space Mono', 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1.8px; }
       .sans { font-family: 'Manrope', 'Segoe UI', Arial, sans-serif; }
     </style>
 
-    <!-- Glifo estrella ACR✶TA -->
-    <g id="starGlyph">
-      <polygon points="0,-42 9,-11 28,-25 14,-3 38,0 14,3 28,25 9,11 0,42 -9,11 -28,25 -14,3 -38,0 -14,-3 -28,-25 -9,-11" fill="currentColor"/>
-      <circle cx="0" cy="0" r="4.5" fill="#070709"/>
+    <!-- Glifo Estrella de 8 puntas ACR✶TA -->
+    <g id="star8">
+      <polygon points="0,-44 9,-11 29,-26 14,-3 40,0 14,3 29,26 9,11 0,44 -9,11 -29,26 -14,3 -40,0 -14,-3 -29,-26 -9,-11" fill="currentColor"/>
+      <circle cx="0" cy="0" r="5" fill="#070709"/>
     </g>
 
-    <!-- Marcadores de flecha -->
+    <!-- Glifo Estrella de Puntillismo (Nebulosa de puntos) -->
+    <g id="starStipple">
+      <circle cx="0" cy="0" r="4.5" fill="#ff2e4c"/>
+      <!-- Eje vertical -->
+      <circle cx="0" cy="-10" r="3.8" fill="currentColor"/><circle cx="0" cy="-19" r="3.2" fill="currentColor"/><circle cx="0" cy="-28" r="2.5" fill="currentColor"/><circle cx="0" cy="-36" r="1.8" fill="currentColor"/><circle cx="0" cy="-43" r="1.2" fill="#ff2e4c"/>
+      <circle cx="0" cy="10" r="3.8" fill="currentColor"/><circle cx="0" cy="19" r="3.2" fill="currentColor"/><circle cx="0" cy="28" r="2.5" fill="currentColor"/><circle cx="0" cy="36" r="1.8" fill="currentColor"/><circle cx="0" cy="43" r="1.2" fill="#ff2e4c"/>
+      <!-- Eje horizontal -->
+      <circle cx="-10" cy="0" r="3.6" fill="currentColor"/><circle cx="-19" cy="0" r="3.0" fill="currentColor"/><circle cx="-27" cy="0" r="2.2" fill="currentColor"/><circle cx="-35" cy="0" r="1.5" fill="#ff2e4c"/>
+      <circle cx="10" cy="0" r="3.6" fill="currentColor"/><circle cx="19" cy="0" r="3.0" fill="currentColor"/><circle cx="27" cy="0" r="2.2" fill="currentColor"/><circle cx="35" cy="0" r="1.5" fill="#ff2e4c"/>
+      <!-- Diagonales -->
+      <circle cx="-8" cy="-8" r="2.8" fill="currentColor"/><circle cx="-15" cy="-15" r="2.2" fill="currentColor"/><circle cx="-22" cy="-22" r="1.5" fill="#ff2e4c"/>
+      <circle cx="8" cy="-8" r="2.8" fill="currentColor"/><circle cx="15" cy="-15" r="2.2" fill="currentColor"/><circle cx="22" cy="-22" r="1.5" fill="#ff2e4c"/>
+      <circle cx="-8" cy="8" r="2.8" fill="currentColor"/><circle cx="-15" cy="15" r="2.2" fill="currentColor"/><circle cx="-22" cy="22" r="1.5" fill="#ff2e4c"/>
+      <circle cx="8" cy="8" r="2.8" fill="currentColor"/><circle cx="15" cy="15" r="2.2" fill="currentColor"/><circle cx="22" cy="22" r="1.5" fill="#ff2e4c"/>
+      <!-- Polvo orbital -->
+      <circle cx="-14" cy="-5" r="1.4" fill="currentColor"/><circle cx="14" cy="5" r="1.4" fill="currentColor"/>
+      <circle cx="-5" cy="14" r="1.4" fill="currentColor"/><circle cx="5" cy="-14" r="1.4" fill="currentColor"/>
+    </g>
+
     <marker id="arrowAcid" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#d7ff3b"/>
     </marker>
     <marker id="arrowCrimson" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#ff2e4c"/>
     </marker>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38e4ae"/>
+    </marker>
   </defs>
 
-  <!-- ==================== 00. FONDO Y RETÍCULA ASTRONÓMICA ==================== -->
+  <!-- ==================== 00. FONDO Y CARTA CELESTE ==================== -->
   <g id="00-FONDO-COSMOS">
-    <rect class="bg" x="0" y="0" width="2400" height="1600"/>
-    <!-- Líneas de carta celeste -->
+    <rect class="bg" x="0" y="0" width="3600" height="2600"/>
     <g opacity="0.55">
-      <line class="grid-line" x1="0" y1="200" x2="2400" y2="200"/>
-      <line class="grid-line" x1="0" y1="400" x2="2400" y2="400"/>
-      <line class="grid-line" x1="0" y1="600" x2="2400" y2="600"/>
-      <line class="grid-line" x1="0" y1="800" x2="2400" y2="800"/>
-      <line class="grid-line" x1="0" y1="1000" x2="2400" y2="1000"/>
-      <line class="grid-line" x1="0" y1="1200" x2="2400" y2="1200"/>
-      <line class="grid-line" x1="0" y1="1400" x2="2400" y2="1400"/>
-      <line class="grid-line" x1="300" y1="0" x2="300" y2="1600"/>
-      <line class="grid-line" x1="600" y1="0" x2="600" y2="1600"/>
-      <line class="grid-line" x1="900" y1="0" x2="900" y2="1600"/>
-      <line class="grid-line" x1="1200" y1="0" x2="1200" y2="1600"/>
-      <line class="grid-line" x1="1500" y1="0" x2="1500" y2="1600"/>
-      <line class="grid-line" x1="1800" y1="0" x2="1800" y2="1600"/>
-      <line class="grid-line" x1="2100" y1="0" x2="2100" y2="1600"/>
+      <line class="grid-line" x1="0" y1="300" x2="3600" y2="300"/>
+      <line class="grid-line" x1="0" y1="600" x2="3600" y2="600"/>
+      <line class="grid-line" x1="0" y1="900" x2="3600" y2="900"/>
+      <line class="grid-line" x1="0" y1="1200" x2="3600" y2="1200"/>
+      <line class="grid-line" x1="0" y1="1500" x2="3600" y2="1500"/>
+      <line class="grid-line" x1="0" y1="1800" x2="3600" y2="1800"/>
+      <line class="grid-line" x1="0" y1="2100" x2="3600" y2="2100"/>
+      <line class="grid-line" x1="0" y1="2400" x2="3600" y2="2400"/>
+      <line class="grid-line" x1="450" y1="0" x2="450" y2="2600"/>
+      <line class="grid-line" x1="900" y1="0" x2="900" y2="2600"/>
+      <line class="grid-line" x1="1350" y1="0" x2="1350" y2="2600"/>
+      <line class="grid-line" x1="1800" y1="0" x2="1800" y2="2600"/>
+      <line class="grid-line" x1="2250" y1="0" x2="2250" y2="2600"/>
+      <line class="grid-line" x1="2700" y1="0" x2="2700" y2="2600"/>
+      <line class="grid-line" x1="3150" y1="0" x2="3150" y2="2600"/>
     </g>
-    <!-- Órbitas gravitacionales alrededor del núcleo -->
-    <circle class="orbit-ring" cx="1200" cy="790" r="290"/>
-    <circle class="orbit-ring" cx="1200" cy="790" r="520"/>
-    <circle class="orbit-ring" cx="1200" cy="790" r="760"/>
+    <!-- Anillos gravitacionales centrados en el Núcleo (1640, 1280) -->
+    <circle class="orbit-ring" cx="1640" cy="1280" r="340"/>
+    <circle class="orbit-ring" cx="1640" cy="1280" r="640"/>
+    <circle class="orbit-ring" cx="1640" cy="1280" r="980"/>
+    <circle class="orbit-ring" cx="1640" cy="1280" r="1320"/>
   </g>
 
-  <!-- ==================== CABECERA DEL MAPA CONCEPTUAL ==================== -->
-  <g id="00-CABECERA">
-    <rect x="60" y="38" width="2280" height="84" fill="#111116" stroke="#ece8e0" stroke-width="2"/>
-    <rect x="82" y="57" width="180" height="46" fill="#d7ff3b"/>
-    <text x="172" y="86" text-anchor="middle" class="mono" font-size="18" font-weight="700" fill="#070709">BRAND MAP 01</text>
-    <text x="290" y="88" class="h-disp" font-size="34" fill="#ece8e0">ACR✶TA — MAPA CONCEPTUAL DE MARCA: IDENTIDAD, PROCESO, ESTÉTICA Y HOJA DE RUTA</text>
-    <text x="2310" y="85" text-anchor="end" class="mono" font-size="14" fill="#d7ff3b">VECTOR EDITABLE · AFFINITY / FIGMA / ILLUSTRATOR</text>
+  <!-- ==================== CABECERA GENERAL DEL MASTER BOARD ==================== -->
+  <g id="00-CABECERA-MASTER">
+    <rect x="60" y="36" width="3480" height="92" fill="#101016" stroke="#ece8e0" stroke-width="2.5"/>
+    <rect x="84" y="56" width="250" height="52" fill="#d7ff3b"/>
+    <text x="209" y="89" text-anchor="middle" class="mono" font-size="20" font-weight="700" fill="#070709">MASTER BRAND MAP v2</text>
+    <text x="364" y="94" class="h-disp" font-size="40" fill="#ece8e0">ACR✶TA — MAPA CONCEPTUAL COMPLETO · BRAINSTORMING DE LOGOS · LABORATORIO DE COLOR · ESTRATEGIA Y FUTURO</text>
+    <text x="3510" y="88" text-anchor="end" class="mono" font-size="16" fill="#d7ff3b">ARTBOARD 3600×2600 · CAPAS VECTORIALES PARA AFFINITY 3.3</text>
   </g>
 
-  <!-- ==================== CONEXIONES ENTRE NODOS ==================== -->
-  <g id="00-CONEXIONES">
-    <!-- Núcleo -> 1. Quiénes Somos (Arriba Izquierda) -->
-    <path class="conn-acid" d="M 1010 700 C 860 630, 720 450, 560 390" marker-end="url(#arrowAcid)"/>
-    <!-- Núcleo -> 2. El Proceso / Qué Hacemos (Abajo Izquierda) -->
-    <path class="conn-crimson" d="M 1010 850 C 850 910, 720 1050, 560 1120" marker-end="url(#arrowCrimson)"/>
-    <!-- Núcleo -> 3. Universo Narrativo (Arriba Centro) -->
-    <path class="conn-bone" d="M 1200 650 L 1200 430" marker-end="url(#arrowAcid)"/>
-    <!-- Núcleo -> 4. ADN Estético y Visual (Arriba Derecha) -->
-    <path class="conn-acid" d="M 1390 700 C 1540 630, 1680 450, 1840 390" marker-end="url(#arrowAcid)"/>
-    <!-- Núcleo -> 5. Hacia Dónde Vamos / Futuro (Abajo Derecha) -->
-    <path class="conn-crimson" d="M 1390 850 C 1550 910, 1680 1050, 1840 1120" marker-end="url(#arrowCrimson)"/>
-    <!-- Núcleo -> 6. Comunidad y Modelo de Drops (Abajo Centro) -->
-    <path class="conn-acid" d="M 1200 930 L 1200 1150" marker-end="url(#arrowAcid)"/>
-
-    <!-- Relaciones secundarias entre bloques -->
-    <path class="conn-bone" d="M 330 560 L 330 930"/>
-    <path class="conn-bone" d="M 2070 560 L 2070 930"/>
-    <path class="conn-bone" d="M 570 1280 C 750 1350, 880 1350, 960 1320"/>
-    <path class="conn-bone" d="M 1440 1320 C 1540 1350, 1660 1350, 1830 1280"/>
+  <!-- ==================== CONEXIONES VECTORIALES ENTRE ZONAS ==================== -->
+  <g id="00-CONEXIONES-RED">
+    <!-- Núcleo (1640, 1280) -> Brainstorming Logos (Arriba) -->
+    <path class="conn-acid" d="M 1640 1090 L 1640 835" marker-end="url(#arrowAcid)"/>
+    <!-- Núcleo -> Quiénes Somos / Concepto Inicial (Izquierda Arriba) -->
+    <path class="conn-acid" d="M 1340 1200 C 1150 1120, 1080 980, 965 950" marker-end="url(#arrowAcid)"/>
+    <!-- Núcleo -> Producto, Técnicas y Packaging (Izquierda Centro/Abajo) -->
+    <path class="conn-crimson" d="M 1340 1340 C 1160 1390, 1080 1480, 965 1520" marker-end="url(#arrowCrimson)"/>
+    <!-- Núcleo -> Laboratorio de Color (Derecha) -->
+    <path class="conn-acid" d="M 1940 1230 C 2100 1180, 2180 1080, 2310 1040" marker-end="url(#arrowAcid)"/>
+    <!-- Núcleo -> Lo que tenemos en mano hoy (Centro Abajo) -->
+    <path class="conn-cyan" d="M 1640 1475 L 1640 1630" marker-end="url(#arrowCyan)"/>
+    <!-- Núcleo -> Hacia Dónde Vamos / Futuro (Abajo Derecha/Centro) -->
+    <path class="conn-crimson" d="M 1840 1475 C 1940 1650, 2080 1850, 2310 1920" marker-end="url(#arrowCrimson)"/>
+    <!-- Producto -> Ruta de 7 Novas (Abajo Izquierda) -->
+    <path class="conn-bone" d="M 510 1890 L 510 1975" marker-end="url(#arrowAcid)"/>
   </g>
 
-  <!-- ==================== 01. NÚCLEO CENTRAL: ACR✶TA ==================== -->
-  <g id="01-NUCLEO-ACRETA" transform="translate(960, 650)">
-    <rect class="shadow-crimson" x="14" y="14" width="480" height="270"/>
-    <rect class="card-acid" x="0" y="0" width="480" height="270"/>
-    <rect x="24" y="20" width="432" height="32" fill="#070709"/>
-    <text x="240" y="42" text-anchor="middle" class="mono" font-size="14" font-weight="700" fill="#d7ff3b">✶ NÚCLEO DEL PROYECTO · SEGUNDA VIDA TEXTIL ✶</text>
+  <!-- ==================================================================================
+       01. ZONA SUPERIOR (ANCHO COMPLETO): BRAINSTORMING DE MEJORAS Y EVOLUCIONES DE LOGO
+       ================================================================================== -->
+  <g id="01-BRAINSTORMING-LOGOS" transform="translate(60, 165)">
+    <rect class="shadow-acid" x="12" y="12" width="3480" height="650"/>
+    <rect class="card-dark" x="0" y="0" width="3480" height="650"/>
+    <rect x="0" y="0" width="3480" height="52" fill="#d7ff3b"/>
+    <text x="28" y="34" class="mono" font-size="18" font-weight="700" fill="#070709">01 · BRAINSTORMING DE LOGOTIPO E ISOTIPO — 6 CAMINOS VISUALES PARA ACR✶TA (COMPARATIVA VECTORIAL EDITABLE)</text>
+    <text x="3450" y="34" text-anchor="end" class="mono" font-size="15" font-weight="700" fill="#070709">SELECCIONA Y DESAGRUPA CUALQUIER PROPUESTA EN AFFINITY</text>
 
-    <!-- Nombre ACR✶TA con estrella vectorial -->
-    <text x="86" y="148" class="h-disp" font-size="96" fill="#070709">ACR</text>
-    <g transform="translate(274, 113) scale(0.95)" color="#ff2e4c">
-      <use href="#starGlyph"/>
+    <!-- TARJETA LOGO 1: ACTUAL (ESTRELLA 8 PUNTAS INTEGRADA) -->
+    <g id="LOGO-01-ACTUAL" transform="translate(36, 82)">
+      <rect class="card-panel" x="0" y="0" width="540" height="536"/>
+      <rect x="0" y="0" width="540" height="36" fill="#222230"/>
+      <text x="18" y="24" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">OPCIÓN A · ACTUAL (ESTRELLA DE 8 PUNTAS)</text>
+      <rect x="415" y="7" width="112" height="22" fill="#d7ff3b"/>
+      <text x="471" y="22" text-anchor="middle" class="mono" font-size="11" font-weight="700" fill="#070709">EN USO WEB V2</text>
+
+      <!-- Muestra gráfica del logo -->
+      <rect x="24" y="56" width="492" height="190" fill="#070709" stroke="#343446" stroke-width="1.5"/>
+      <text x="68" y="184" class="h-disp" font-size="92" fill="#ece8e0">ACR</text>
+      <g transform="translate(274, 150) scale(0.95)" color="#d7ff3b"><use href="#star8"/></g>
+      <text x="316" y="184" class="h-disp" font-size="92" fill="#ece8e0">TA</text>
+
+      <text x="24" y="282" class="h-disp" font-size="26" fill="#ece8e0">IMPACTO DIRECTO &amp; LECTURA INSTANTÁNEA</text>
+      <text x="24" y="314" class="sans" font-size="15" fill="#cbc6bc">• La estrella de 8 puntas sustituye a la E sin barras horizontales.</text>
+      <text x="24" y="342" class="sans" font-size="15" fill="#cbc6bc">• Proporción vertical idéntica a la caja alta de Anton.</text>
+      <text x="24" y="370" class="sans" font-size="15" fill="#cbc6bc">• Punto central hueco (#070709) que simula el núcleo de una nova.</text>
+      <text x="24" y="412" class="mono" font-size="13" fill="#d7ff3b">✔ PUNTO FUERTE: Muy sólido en cabeceras web y cartelería.</text>
+      <text x="24" y="438" class="mono" font-size="13" fill="#ff2e4c">⚡ MEJORA POSIBLE: Añadir versión con textura de puntos.</text>
+      <rect x="24" y="468" width="492" height="44" fill="#101016" stroke="#d7ff3b" stroke-width="1"/>
+      <text x="270" y="495" text-anchor="middle" class="mono" font-size="12" fill="#ece8e0">USO IDEAL: CABECERA WEB · CARTELES · STICKERS</text>
     </g>
-    <text x="315" y="148" class="h-disp" font-size="96" fill="#070709">TA</text>
 
-    <text x="240" y="192" text-anchor="middle" class="h-serif" font-size="31" fill="#070709">«La ropa también explota y vuelve a nacer»</text>
-    <line x1="36" y1="210" x2="444" y2="210" stroke="#070709" stroke-width="1.5" stroke-dasharray="4 4"/>
-    <text x="240" y="236" text-anchor="middle" class="sans" font-size="15" font-weight="700" fill="#070709">Acreción: materia dispersa tras una explosión que se une</text>
-    <text x="240" y="256" text-anchor="middle" class="sans" font-size="15" font-weight="700" fill="#070709">por gravedad hasta dar vida a un cuerpo estelar único (1 de 1).</text>
+    <!-- TARJETA LOGO 2: ESTRELLA EN PUNTILLISMO / CONSTELACIÓN -->
+    <g id="LOGO-02-PUNTILLISMO" transform="translate(606, 82)">
+      <rect class="card-panel" x="0" y="0" width="540" height="536"/>
+      <rect x="0" y="0" width="540" height="36" fill="#222230"/>
+      <text x="18" y="24" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">OPCIÓN B · ESTRELLA EN PUNTILLISMO (ARTESANAL)</text>
+      <rect x="395" y="7" width="132" height="22" fill="#ff2e4c"/>
+      <text x="461" y="22" text-anchor="middle" class="mono" font-size="11" font-weight="700" fill="#ece8e0">★ RECOMENDADA</text>
+
+      <!-- Muestra gráfica del logo -->
+      <rect x="24" y="56" width="492" height="190" fill="#ece8e0" stroke="#070709" stroke-width="2"/>
+      <text x="68" y="184" class="h-disp" font-size="92" fill="#070709">ACR</text>
+      <g transform="translate(274, 150) scale(1.05)" color="#070709"><use href="#starStipple"/></g>
+      <text x="316" y="184" class="h-disp" font-size="92" fill="#070709">TA</text>
+
+      <text x="24" y="282" class="h-disp" font-size="26" fill="#ece8e0">LA ESTRELLA HECHA DE PUNTOS DE TINTA</text>
+      <text x="24" y="314" class="sans" font-size="15" fill="#cbc6bc">• En vez de una estrella geométrica plana, el símbolo central está</text>
+      <text x="24" y="338" class="sans" font-size="15" fill="#cbc6bc">  formado por 33 puntos de puntillismo de mayor a menor calibre.</text>
+      <text x="24" y="366" class="sans" font-size="15" fill="#cbc6bc">• Conecta al 100% el logotipo con la técnica real de las prendas.</text>
+      <text x="24" y="412" class="mono" font-size="13" fill="#d7ff3b">✔ PUNTO FUERTE: Cuenta de un vistazo que pintáis punto a punto.</text>
+      <text x="24" y="438" class="mono" font-size="13" fill="#ff2e4c">⚡ APLICACIÓN: Brutal para serigrafía o sello sobre tela blanca.</text>
+      <rect x="24" y="468" width="492" height="44" fill="#101016" stroke="#ff2e4c" stroke-width="1"/>
+      <text x="270" y="495" text-anchor="middle" class="mono" font-size="12" fill="#ece8e0">USO IDEAL: ETIQUETAS DE CARTÓN · ESTAMPACIÓN TEXTIL</text>
+    </g>
+
+    <!-- TARJETA LOGO 3: ANILLO DE ACRECIÓN / ÓRBITA -->
+    <g id="LOGO-03-ORBITA" transform="translate(1176, 82)">
+      <rect class="card-panel" x="0" y="0" width="540" height="536"/>
+      <rect x="0" y="0" width="540" height="36" fill="#222230"/>
+      <text x="18" y="24" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">OPCIÓN C · ANILLO DE ACRECIÓN ORBITAL</text>
+
+      <!-- Muestra gráfica del logo -->
+      <rect x="24" y="56" width="492" height="190" fill="#070709" stroke="#343446" stroke-width="1.5"/>
+      <!-- Arco trasero de la órbita -->
+      <ellipse cx="270" cy="152" rx="215" ry="52" transform="rotate(-14 270 152)" fill="none" stroke="#ff2e4c" stroke-width="2.5" stroke-dasharray="8 6"/>
+      <text x="68" y="184" class="h-disp" font-size="92" fill="#ece8e0">ACR</text>
+      <g transform="translate(274, 150) scale(0.95)" color="#d7ff3b"><use href="#star8"/></g>
+      <text x="316" y="184" class="h-disp" font-size="92" fill="#ece8e0">TA</text>
+      <!-- Satélites en la órbita -->
+      <circle cx="82" cy="196" r="6" fill="#d7ff3b"/>
+      <circle cx="464" cy="106" r="5" fill="#ff2e4c"/>
+
+      <text x="24" y="282" class="h-disp" font-size="26" fill="#ece8e0">DINAMISMO Y GRAVEDAD VISUAL</text>
+      <text x="24" y="314" class="sans" font-size="15" fill="#cbc6bc">• Un disco de acreción elíptico (-14°) envuelve la palabra ACR✶TA</text>
+      <text x="24" y="338" class="sans" font-size="15" fill="#cbc6bc">  con dos micro-satélites (ácido y carmesí) orbitando la estrella.</text>
+      <text x="24" y="366" class="sans" font-size="15" fill="#cbc6bc">• Evoca movimiento, universo Y2K/streetwear y gravedad.</text>
+      <text x="24" y="412" class="mono" font-size="13" fill="#d7ff3b">✔ PUNTO FUERTE: Silueta icónica muy reconocible en camisetas.</text>
+      <text x="24" y="438" class="mono" font-size="13" fill="#ff2e4c">⚡ APLICACIÓN: Bordado en espalda o pecho con hilo neón.</text>
+      <rect x="24" y="468" width="492" height="44" fill="#101016" stroke="#d7ff3b" stroke-width="1"/>
+      <text x="270" y="495" text-anchor="middle" class="mono" font-size="12" fill="#ece8e0">USO IDEAL: BORDADO EN PRENDA · MERCH · AVATAR REDES</text>
+    </g>
+
+    <!-- TARJETA LOGO 4: EDITORIAL MIX (SERIF + BRUTAL + COORDENADAS) -->
+    <g id="LOGO-04-EDITORIAL" transform="translate(1746, 82)">
+      <rect class="card-panel" x="0" y="0" width="540" height="536"/>
+      <rect x="0" y="0" width="540" height="36" fill="#222230"/>
+      <text x="18" y="24" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">OPCIÓN D · ALTA MODA EDITORIAL (CHOQUE SERIF)</text>
+
+      <!-- Muestra gráfica del logo -->
+      <rect x="24" y="56" width="492" height="190" fill="#070709" stroke="#343446" stroke-width="1.5"/>
+      <text x="64" y="182" class="h-disp" font-size="88" fill="#ece8e0">AC</text>
+      <text x="176" y="182" class="h-serif" font-size="108" fill="#d7ff3b">r</text>
+      <g transform="translate(262, 146) scale(0.9)" color="#ff2e4c"><use href="#star8"/></g>
+      <text x="306" y="182" class="h-disp" font-size="88" fill="#ece8e0">T</text>
+      <text x="358" y="182" class="h-serif" font-size="106" fill="#ece8e0">a</text>
+      <text x="270" y="224" text-anchor="middle" class="mono" font-size="11" fill="#8e8a80">第二の命 · ESTUDIO DE ACRECIÓN TEXTIL · 1/1</text>
+
+      <text x="24" y="282" class="h-disp" font-size="26" fill="#ece8e0">HÍBRIDO ENTRE CALLE Y GALERÍA DE ARTE</text>
+      <text x="24" y="314" class="sans" font-size="15" fill="#cbc6bc">• Combina letras en bloque industrial (Anton) con cursivas</text>
+      <text x="24" y="338" class="sans" font-size="15" fill="#cbc6bc">  editoriales (Instrument Serif) dentro de la misma palabra.</text>
+      <text x="24" y="366" class="sans" font-size="15" fill="#cbc6bc">• Representa visualmente el patchwork: unir piezas distintas.</text>
+      <text x="24" y="412" class="mono" font-size="13" fill="#d7ff3b">✔ PUNTO FUERTE: Estética de firma de moda de autor / japonesa.</text>
+      <text x="24" y="438" class="mono" font-size="13" fill="#ff2e4c">⚡ APLICACIÓN: Lookbooks impresos, tarjetas y colaboraciones.</text>
+      <rect x="24" y="468" width="492" height="44" fill="#101016" stroke="#d7ff3b" stroke-width="1"/>
+      <text x="270" y="495" text-anchor="middle" class="mono" font-size="12" fill="#ece8e0">USO IDEAL: PACKAGING · LOOKBOOK · ETIQUETA INTERIOR</text>
+    </g>
+
+    <!-- TARJETA LOGO 5: MONOGRAMA / SELLO DE COSTURA "A✶" -->
+    <g id="LOGO-05-MONOGRAMA" transform="translate(2316, 82)">
+      <rect class="card-panel" x="0" y="0" width="540" height="536"/>
+      <rect x="0" y="0" width="540" height="36" fill="#222230"/>
+      <text x="18" y="24" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">OPCIÓN E · ISOTIPO / SELLO «A✶» CON PESPUNTE</text>
+      <rect x="395" y="7" width="132" height="22" fill="#d7ff3b"/>
+      <text x="461" y="22" text-anchor="middle" class="mono" font-size="11" font-weight="700" fill="#070709">★ PARA ETIQUETAS</text>
+
+      <!-- Muestra gráfica del monograma -->
+      <rect x="24" y="56" width="492" height="190" fill="#070709" stroke="#343446" stroke-width="1.5"/>
+      <circle cx="270" cy="151" r="76" fill="#12121a" stroke="#ece8e0" stroke-width="2"/>
+      <!-- Pespunte Sashiko circular -->
+      <circle cx="270" cy="151" r="66" fill="none" stroke="#d7ff3b" stroke-width="2" stroke-dasharray="7 5"/>
+      <!-- Letra A vectorial cuyo travesaño es la estrella -->
+      <path d="M 270 96 L 234 198 M 270 96 L 306 198" stroke="#ece8e0" stroke-width="11" stroke-linecap="square"/>
+      <g transform="translate(270, 156) scale(0.72)" color="#ff2e4c"><use href="#star8"/></g>
+      <text x="148" y="156" class="mono" font-size="13" fill="#d7ff3b">第二の命</text>
+      <text x="366" y="156" class="mono" font-size="13" fill="#d7ff3b">1 DE 1</text>
+
+      <text x="24" y="282" class="h-disp" font-size="26" fill="#ece8e0">MONOGRAMA COMPACTO «A✶» + COSTURA SASHIKO</text>
+      <text x="24" y="314" class="sans" font-size="15" fill="#cbc6bc">• Toda gran marca necesita un icono corto además del nombre largo.</text>
+      <text x="24" y="338" class="sans" font-size="15" fill="#cbc6bc">• La letra A tiene como travesaño la estrella de 8 puntas, rodeada</text>
+      <text x="24" y="362" class="sans" font-size="15" fill="#cbc6bc">  por un aro de puntadas de hilo Sashiko.</text>
+      <text x="24" y="412" class="mono" font-size="13" fill="#d7ff3b">✔ PUNTO FUERTE: Funciona a tamaños mínimos (15×15 px o 1 cm).</text>
+      <text x="24" y="438" class="mono" font-size="13" fill="#ff2e4c">⚡ APLICACIÓN: Favicon, sello de lacre/tinta, parche en nuca.</text>
+      <rect x="24" y="468" width="492" height="44" fill="#101016" stroke="#d7ff3b" stroke-width="1"/>
+      <text x="270" y="495" text-anchor="middle" class="mono" font-size="12" fill="#ece8e0">USO IDEAL: SELLO EN NUCA · BOTONES · FAVICON · LACRE</text>
+    </g>
+
+    <!-- TARJETA LOGO 6: ESTÉNCIL DE TALLER / PATRÓN DE CORTE -->
+    <g id="LOGO-06-STENCIL" transform="translate(2886, 82)">
+      <rect class="card-panel" x="0" y="0" width="558" height="536"/>
+      <rect x="0" y="0" width="558" height="36" fill="#222230"/>
+      <text x="18" y="24" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">OPCIÓN F · TAMPÓN / ESTÉNCIL CON GUÍAS DE PATRÓN</text>
+
+      <!-- Muestra gráfica del logo -->
+      <rect x="24" y="56" width="510" height="190" fill="#d7ff3b" stroke="#070709" stroke-width="2"/>
+      <!-- Marcas de corte de sastrería en las esquinas -->
+      <path d="M 40 72 L 64 72 M 40 72 L 40 96 M 518 72 L 494 72 M 518 72 L 518 96 M 40 230 L 64 230 M 40 230 L 40 206 M 518 230 L 494 230 M 518 230 L 518 206" stroke="#070709" stroke-width="2.5"/>
+      <text x="76" y="184" class="h-disp" font-size="92" fill="#070709">ACR</text>
+      <g transform="translate(282, 150) scale(0.95)" color="#ff2e4c"><use href="#star8"/></g>
+      <text x="324" y="184" class="h-disp" font-size="92" fill="#070709">TA</text>
+      <!-- Línea de corte de patrón atravesando el logo -->
+      <line x1="56" y1="148" x2="502" y2="148" stroke="#d7ff3b" stroke-width="4" stroke-dasharray="14 8"/>
+      <text x="495" y="92" text-anchor="end" class="mono" font-size="11" font-weight="700" fill="#070709">✂ CORTE Nº 001</text>
+
+      <text x="24" y="282" class="h-disp" font-size="26" fill="#ece8e0">TAMPÓN INDUSTRIAL SOBRE TELA RECUPERADA</text>
+      <text x="24" y="314" class="sans" font-size="15" fill="#cbc6bc">• Incorpora marcas de corte de patronaje (✂) y puentes de esténcil</text>
+      <text x="24" y="338" class="sans" font-size="15" fill="#cbc6bc">  para poder fabricar un sello de caucho físico real.</text>
+      <text x="24" y="366" class="sans" font-size="15" fill="#cbc6bc">• Permite sellar a mano el interior de cada prenda rescatada.</text>
+      <text x="24" y="412" class="mono" font-size="13" fill="#d7ff3b">✔ PUNTO FUERTE: Coste cero de producción (tampón + tinta textil).</text>
+      <text x="24" y="438" class="mono" font-size="13" fill="#ff2e4c">⚡ CONSEJO: Usar A en web, B en etiquetas y E/F como sello físico.</text>
+      <rect x="24" y="468" width="510" height="44" fill="#101016" stroke="#d7ff3b" stroke-width="1"/>
+      <text x="279" y="495" text-anchor="middle" class="mono" font-size="12" fill="#ece8e0">USO IDEAL: TAMPÓN DE TINTA EN TALLER · CAJAS DE ENVÍO</text>
+    </g>
   </g>
 
-  <!-- ==================== 02. QUIÉNES SOMOS (ARRIBA IZQUIERDA) ==================== -->
-  <g id="02-QUIENES-SOMOS" transform="translate(80, 175)">
-    <rect class="shadow-acid" x="10" y="10" width="500" height="370"/>
-    <rect class="card-dark" x="0" y="0" width="500" height="370"/>
-    <rect x="0" y="0" width="500" height="44" fill="#d7ff3b"/>
-    <text x="22" y="29" class="mono" font-size="15" font-weight="700" fill="#070709">01 · ¿CÓMO SOMOS? (ADN Y MANIFIESTO)</text>
+  <!-- ==================================================================================
+       02. NÚCLEO CENTRAL: CONCEPTO FUNDACIONAL DE ACR✶TA (CENTRO DEL MAPA)
+       ================================================================================== -->
+  <g id="02-NUCLEO-CENTRAL-ACRETA" transform="translate(1330, 1085)">
+    <rect class="shadow-crimson" x="16" y="16" width="620" height="385"/>
+    <rect class="card-acid" x="0" y="0" width="620" height="385"/>
+    <rect x="24" y="22" width="572" height="38" fill="#070709"/>
+    <text x="310" y="47" text-anchor="middle" class="mono" font-size="15" font-weight="700" fill="#d7ff3b">✶ CORAZÓN DEL PROYECTO · CONCEPTO FUNDACIONAL ✶</text>
 
-    <text x="28" y="92" class="h-disp" font-size="40" fill="#ece8e0">ANTI-FAST FASHION</text>
-    <text x="335" y="92" class="h-serif" font-size="42" fill="#d7ff3b">&amp; arte lento</text>
+    <!-- Logo central grande -->
+    <text x="115" y="168" class="h-disp" font-size="112" fill="#070709">ACR</text>
+    <g transform="translate(344, 128) scale(1.12)" color="#ff2e4c"><use href="#star8"/></g>
+    <text x="394" y="168" class="h-disp" font-size="112" fill="#070709">TA</text>
 
-    <text x="28" y="135" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• Nada se crea de cero: rescatamos prendas olvidadas con historia.</text>
-    <text x="28" y="168" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• Piezas 1 de 1 (Sin reposición): cuando una prenda se va, no vuelve.</text>
-    <text x="28" y="201" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• Contraste radical: delicadeza artesanal + energía rebelde y cósmica.</text>
-    <text x="28" y="234" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• Transparencia de oficio: cada pieza cuenta cuántos puntos y horas lleva.</text>
+    <text x="310" y="216" text-anchor="middle" class="h-serif" font-size="36" fill="#070709">«Nada se crea de cero. Las estrellas nacen de una explosión.»</text>
+    <line x1="36" y1="236" x2="584" y2="236" stroke="#070709" stroke-width="2" stroke-dasharray="6 4"/>
 
-    <!-- Píldoras de valores -->
-    <rect x="28" y="265" width="135" height="34" fill="#1d1d26" stroke="#d7ff3b" stroke-width="1.5"/>
-    <text x="95" y="287" text-anchor="middle" class="mono" font-size="12" fill="#d7ff3b">100% RECUPERADO</text>
-
-    <rect x="178" y="265" width="135" height="34" fill="#1d1d26" stroke="#ff2e4c" stroke-width="1.5"/>
-    <text x="245" y="287" text-anchor="middle" class="mono" font-size="12" fill="#ff2e4c">EDICIÓN 1 / 1</text>
-
-    <rect x="328" y="265" width="144" height="34" fill="#1d1d26" stroke="#ece8e0" stroke-width="1.5"/>
-    <text x="400" y="287" text-anchor="middle" class="mono" font-size="12" fill="#ece8e0">HECHO A MANO</text>
-
-    <text x="28" y="340" class="mono" font-size="13" fill="#8e8a80">LEMA: «NADA SE CREA DE CERO. LAS ESTRELLAS NACEN DE UNA EXPLOSIÓN.»</text>
+    <text x="310" y="268" text-anchor="middle" class="sans" font-size="16" font-weight="800" fill="#070709">¿QUÉ SIGNIFICA ACRETA?</text>
+    <text x="310" y="294" text-anchor="middle" class="sans" font-size="15" font-weight="600" fill="#070709">Viene de ACRECIÓN: cuando una estrella explota, su materia dispersa</text>
+    <text x="310" y="316" text-anchor="middle" class="sans" font-size="15" font-weight="600" fill="#070709">se vuelve a unir por gravedad hasta formar un astro nuevo.</text>
+    <text x="310" y="344" text-anchor="middle" class="sans" font-size="15" font-weight="800" fill="#ff2e4c">Nosotras hacemos lo mismo con la ropa olvidada: le damos una 2ª vida (1 de 1).</text>
   </g>
 
-  <!-- ==================== 03. UNIVERSO NARRATIVO (ARRIBA CENTRO) ==================== -->
-  <g id="03-UNIVERSO-NARRATIVO" transform="translate(880, 175)">
-    <rect class="shadow-acid" x="10" y="10" width="640" height="240"/>
-    <rect class="card-bone" x="0" y="0" width="640" height="240"/>
-    <rect x="0" y="0" width="640" height="42" fill="#070709"/>
-    <text x="22" y="27" class="mono" font-size="15" font-weight="700" fill="#d7ff3b">02 · CONCEPTO Y METÁFORA ASTRONÓMICA</text>
+  <!-- ==================================================================================
+       03. ZONA IZQUIERDA ARRIBA: ¿CÓMO SOMOS? (LOS CONCEPTOS DEL PRINCIPIO AMPLIADOS)
+       ================================================================================== -->
+  <g id="03-COMO-SOMOS-ADN" transform="translate(60, 865)">
+    <rect class="shadow-acid" x="12" y="12" width="900" height="510"/>
+    <rect class="card-dark" x="0" y="0" width="900" height="510"/>
+    <rect x="0" y="0" width="900" height="48" fill="#d7ff3b"/>
+    <text x="26" y="31" class="mono" font-size="16" font-weight="700" fill="#070709">02 · ¿CÓMO SOMOS? — FILOSOFÍA, MANIFIESTO Y PERSONALIDAD DE MARCA</text>
 
-    <text x="26" y="86" class="h-disp" font-size="34" fill="#070709">CADA PUNTO = UNA ESTRELLA · CADA DROP = UNA NOVA</text>
-    <text x="26" y="122" class="sans" font-size="16" font-weight="600" fill="#070709">• Puntillismo como constelación: de cerca son miles de puntos de tinta</text>
-    <text x="40" y="146" class="sans" font-size="16" font-weight="600" fill="#070709">dibujados uno a uno (~40.000 puntos); de lejos emerge la figura.</text>
-    <text x="26" y="178" class="sans" font-size="16" font-weight="600" fill="#070709">• Segunda Vida (第二の命): igual que una supernova recicla materia estelar,</text>
-    <text x="40" y="202" class="sans" font-size="16" font-weight="600" fill="#070709">Acreta transforma ropa descartada en piezas coleccionables.</text>
+    <text x="32" y="102" class="h-disp" font-size="44" fill="#ece8e0">SOSTENIBILIDAD REBELDE</text>
+    <text x="495" y="102" class="h-serif" font-size="46" fill="#d7ff3b">(no somos moda beige)</text>
+
+    <!-- 4 Sub-tarjetas de ADN -->
+    <rect class="card-panel" x="30" y="128" width="408" height="158"/>
+    <text x="48" y="160" class="mono" font-size="14" font-weight="700" fill="#d7ff3b">✦ 1. EDICIÓN 1 DE 1 (SIN REPOSICIÓN)</text>
+    <text x="48" y="188" class="sans" font-size="15" fill="#ece8e0">• Cada prenda es un ejemplar irrepetible.</text>
+    <text x="48" y="214" class="sans" font-size="15" fill="#ece8e0">• No hay stock industrial ni tallas S-M-L-XL clonadas.</text>
+    <text x="48" y="240" class="sans" font-size="15" fill="#cbc6bc">• Quien compra una Acreta sabe que nadie más en el</text>
+    <text x="48" y="262" class="sans" font-size="15" fill="#cbc6bc">  planeta lleva esa misma constelación.</text>
+
+    <rect class="card-panel" x="462" y="128" width="408" height="158"/>
+    <text x="480" y="160" class="mono" font-size="14" font-weight="700" fill="#ff2e4c">✦ 2. SEGUNDA VIDA TEXTIL (第二の命)</text>
+    <text x="480" y="188" class="sans" font-size="15" fill="#ece8e0">• 0% producción textil virgen: rescatamos prendas ya</text>
+    <text x="480" y="212" class="sans" font-size="15" fill="#ece8e0">  fabricadas que tenían calidad pero quedaron olvidadas.</text>
+    <text x="480" y="240" class="sans" font-size="15" fill="#cbc6bc">• El defecto o desgaste previo no se esconde: se</text>
+    <text x="480" y="262" class="sans" font-size="15" fill="#cbc6bc">  convierte en el centro de la intervención artística.</text>
+
+    <rect class="card-panel" x="30" y="304" width="408" height="172"/>
+    <text x="48" y="336" class="mono" font-size="14" font-weight="700" fill="#d7ff3b">✦ 3. TIEMPO HUMANO COMO LUJO</text>
+    <text x="48" y="364" class="sans" font-size="15" fill="#ece8e0">• Frente a una camiseta hecha en 3 minutos en fábrica,</text>
+    <text x="48" y="388" class="sans" font-size="15" fill="#ece8e0">  cada Nova lleva días de dibujo manual (~40.000 puntos)</text>
+    <text x="48" y="412" class="sans" font-size="15" fill="#ece8e0">  o reconstrucción de patronaje.</text>
+    <text x="48" y="444" class="mono" font-size="13" fill="#d7ff3b">→ DOCUMENTAMOS LAS HORAS Y PUNTOS EN EL TICKET.</text>
+
+    <rect class="card-panel" x="462" y="304" width="408" height="172"/>
+    <text x="480" y="336" class="mono" font-size="14" font-weight="700" fill="#ff2e4c">✦ 4. TONO DE VOZ Y ACTITUD</text>
+    <text x="480" y="364" class="sans" font-size="15" fill="#ece8e0">• Vocabulario propio: no vendemos «colecciones»,</text>
+    <text x="480" y="388" class="sans" font-size="15" fill="#ece8e0">  detonamos «Novas»; no tenemos «catálogo», tenemos</text>
+    <text x="480" y="412" class="sans" font-size="15" fill="#ece8e0">  «Avistamientos»; el club es «La Órbita».</text>
+    <text x="480" y="444" class="mono" font-size="13" fill="#ff2e4c">→ POÉTICO + ASTRONÓMICO + DIRECTO + CALLEJERO.</text>
   </g>
 
-  <!-- ==================== 04. ADN ESTÉTICO Y VISUAL (ARRIBA DERECHA) ==================== -->
-  <g id="04-ADN-ESTETICO" transform="translate(1820, 175)">
-    <rect class="shadow-crimson" x="10" y="10" width="500" height="370"/>
-    <rect class="card-dark" x="0" y="0" width="500" height="370"/>
-    <rect x="0" y="0" width="500" height="44" fill="#ff2e4c"/>
-    <text x="22" y="29" class="mono" font-size="15" font-weight="700" fill="#ece8e0">03 · LENGUAJE VISUAL Y ESTÉTICA</text>
+  <!-- ==================================================================================
+       04. ZONA IZQUIERDA CENTRO: TALLER, TÉCNICAS Y EXPERIENCIA DE PRODUCTO / PACKAGING
+       ================================================================================== -->
+  <g id="04-PRODUCTO-TALLER-PACKAGING" transform="translate(60, 1415)">
+    <rect class="shadow-crimson" x="12" y="12" width="900" height="515"/>
+    <rect class="card-bone" x="0" y="0" width="900" height="515"/>
+    <rect x="0" y="0" width="900" height="48" fill="#070709"/>
+    <text x="26" y="31" class="mono" font-size="16" font-weight="700" fill="#d7ff3b">03 · ¿CÓMO TRABAJAMOS? — LAS 2 LÍNEAS ARTESANALES, LAS 4 FASES Y EL UNBOXING</text>
 
-    <text x="28" y="92" class="h-disp" font-size="38" fill="#ece8e0">COSMOS EDITORIAL</text>
-    <text x="315" y="92" class="h-serif" font-size="40" fill="#d7ff3b">+ brutalismo</text>
+    <!-- Las 2 líneas de producto -->
+    <rect x="28" y="68" width="412" height="190" fill="#ffffff" stroke="#070709" stroke-width="2.5"/>
+    <rect x="28" y="68" width="412" height="32" fill="#070709"/>
+    <text x="44" y="89" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">LÍNEA A · CONSTELACIÓN (PUNTILLISMO A MANO)</text>
+    <text x="44" y="124" class="sans" font-size="15" font-weight="700" fill="#070709">Cada punto es una estrella dibujada a mano.</text>
+    <text x="44" y="150" class="sans" font-size="14" fill="#222222">• Tinta textil indeleble aplicada punto a punto sobre</text>
+    <text x="44" y="172" class="sans" font-size="14" fill="#222222">  algodón recuperado (positivo negro sobre blanco o</text>
+    <text x="44" y="194" class="sans" font-size="14" fill="#222222">  negativo blanco sobre prendas negras).</text>
+    <text x="44" y="232" class="mono" font-size="12" font-weight="700" fill="#ff2e4c">EJEMPLO: NOVA 001 «ENANA BLANCA» (~40.000 PUNTOS)</text>
 
-    <text x="28" y="132" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• La Estrella (✶) sustituye a la E en ACR✶TA como sello icónico.</text>
-    <text x="28" y="164" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• Tipografía de choque: Anton (impacto) + Instrument Serif (poesía)</text>
-    <text x="42" y="188" class="sans" font-size="16" font-weight="600" fill="#ece8e0">+ Space Mono (telemetría astronómica y etiquetas de taller).</text>
-    <text x="28" y="220" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• Textura de grano analógico, tickets de laboratorio y sellos giratorios.</text>
+    <rect x="460" y="68" width="412" height="190" fill="#ffffff" stroke="#070709" stroke-width="2.5"/>
+    <rect x="460" y="68" width="412" height="32" fill="#ff2e4c"/>
+    <text x="476" y="89" class="mono" font-size="13" font-weight="700" fill="#ece8e0">LÍNEA B · COLISIÓN (FUSIÓN TEXTIL ORIENTE/OCCIDENTE)</text>
+    <text x="476" y="124" class="sans" font-size="15" font-weight="700" fill="#070709">Dos o más prendas chocan y forman una sola.</text>
+    <text x="476" y="150" class="sans" font-size="14" fill="#222222">• Combinación de denim/vaqueros occidentales con</text>
+    <text x="476" y="172" class="sans" font-size="14" fill="#222222">  paneles de kimono antiguo, bordado japonés Sashiko</text>
+    <text x="476" y="194" class="sans" font-size="14" fill="#222222">  con hilo crudo visto, satén, encaje y patchwork.</text>
+    <text x="476" y="232" class="mono" font-size="12" font-weight="700" fill="#070709">EJEMPLO: NOVA 002 «NEBULOSA ÍNDIGO» &amp; NOVA 006</text>
 
-    <!-- Paleta de color vectorial -->
-    <text x="28" y="262" class="mono" font-size="13" fill="#d7ff3b">PALETA OFICIAL:</text>
-    <rect x="28" y="276" width="102" height="58" fill="#070709" stroke="#ece8e0" stroke-width="2"/>
-    <text x="79" y="352" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">#070709 TINTA</text>
+    <!-- Flujo de 4 fases -->
+    <rect x="28" y="276" width="844" height="86" fill="#070709"/>
+    <text x="46" y="304" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">EL CICLO DE 4 FASES EN TALLER:</text>
+    <text x="46" y="338" class="h-disp" font-size="25" fill="#ece8e0">01. MATERIA DISPERSA (RESCATE)   →   02. GRAVEDAD (CURADURÍA)   →   03. INTERVENCIÓN   →   04. EXPLOSIÓN DE NOVA (DROP 1/1)</text>
 
-    <rect x="142" y="276" width="102" height="58" fill="#ece8e0" stroke="#070709" stroke-width="2"/>
-    <text x="193" y="352" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">#ECE8E0 HUESO</text>
-
-    <rect x="256" y="276" width="102" height="58" fill="#d7ff3b" stroke="#070709" stroke-width="2"/>
-    <text x="307" y="352" text-anchor="middle" class="mono" font-size="11" fill="#d7ff3b">#D7FF3B ÁCIDO</text>
-
-    <rect x="370" y="276" width="102" height="58" fill="#ff2e4c" stroke="#ece8e0" stroke-width="2"/>
-    <text x="421" y="352" text-anchor="middle" class="mono" font-size="11" fill="#ff2e4c">#FF2E4C NOVA</text>
+    <!-- Ideas de Packaging y Unboxing -->
+    <rect x="28" y="378" width="844" height="114" fill="#ffffff" stroke="#070709" stroke-width="2"/>
+    <text x="46" y="405" class="mono" font-size="14" font-weight="700" fill="#ff2e4c">📦 EXPERIENCIA DE ENTREGA / PACKAGING («CÁPSULA DE MATERIA»):</text>
+    <text x="46" y="432" class="sans" font-size="14" font-weight="700" fill="#070709">• Ticket de Registro Astronómico físico: cartulina gruesa con número #001, conteo de puntos, origen de la prenda y firma a mano.</text>
+    <text x="46" y="456" class="sans" font-size="14" font-weight="700" fill="#070709">• Sello interior con tampón ACR✶TA + código QR que abre la coordenada exacta de esa estrella en la Ruta de Novas de la web.</text>
+    <text x="46" y="480" class="sans" font-size="14" font-weight="700" fill="#070709">• Bolsa/sobre reutilizable con cinta adhesiva neón «SIN REPOSICIÓN ✶ PIEZA ÚNICA ✶ SEGUNDA VIDA».</text>
   </g>
 
-  <!-- ==================== 05. CÓMO TRABAJAMOS / EL PROCESO (ABAJO IZQUIERDA) ==================== -->
-  <g id="05-PROCESO-CREATIVO" transform="translate(80, 945)">
-    <rect class="shadow-bone" x="10" y="10" width="500" height="460"/>
-    <rect class="card-dark" x="0" y="0" width="500" height="460"/>
-    <rect x="0" y="0" width="500" height="44" fill="#ece8e0"/>
-    <text x="22" y="29" class="mono" font-size="15" font-weight="700" fill="#070709">04 · ¿QUÉ HACEMOS? (LAS 4 FASES + TÉCNICAS)</text>
+  <!-- ==================================================================================
+       05. ZONA DERECHA: LABORATORIO DE COLOR (PALETA ACTUAL + 4 PALETAS POSIBLES)
+       ================================================================================== -->
+  <g id="05-LABORATORIO-DE-COLOR" transform="translate(2310, 865)">
+    <rect class="shadow-acid" x="12" y="12" width="1230" height="1065"/>
+    <rect class="card-dark" x="0" y="0" width="1230" height="1065"/>
+    <rect x="0" y="0" width="1230" height="48" fill="#ff2e4c"/>
+    <text x="26" y="31" class="mono" font-size="16" font-weight="700" fill="#ece8e0">04 · LABORATORIO DE COLOR — PALETA ACTUAL EN USO + 4 UNIVERSOS CROMÁTICOS POSIBLES</text>
 
-    <!-- 4 Fases -->
-    <rect x="24" y="64" width="452" height="72" fill="#17171f" stroke="#ece8e0" stroke-width="1.5"/>
-    <text x="42" y="94" class="h-disp" font-size="26" fill="#d7ff3b">01. MATERIA DISPERSA</text>
-    <text x="42" y="120" class="sans" font-size="14" fill="#ece8e0">Rescate y curaduría de camisas, vaqueros y chaquetas de 2ª mano.</text>
+    <!-- PALETA ACTUAL (EN USO) -->
+    <g id="PALETA-00-ACTUAL" transform="translate(28, 72)">
+      <rect x="0" y="0" width="1174" height="205" fill="#16161f" stroke="#d7ff3b" stroke-width="2.5"/>
+      <rect x="0" y="0" width="1174" height="36" fill="#d7ff3b"/>
+      <text x="18" y="24" class="mono" font-size="14" font-weight="700" fill="#070709">★ PALETA ACTUAL OFICIAL · «SUPERNOVA ÁCIDA» (ACTIVA EN LA WEB V2)</text>
+      <text x="1154" y="24" text-anchor="end" class="mono" font-size="13" font-weight="700" fill="#070709">ALTO CONTRASTE · ENERGÍA REBELDE</text>
 
-    <rect x="24" y="148" width="452" height="72" fill="#17171f" stroke="#ece8e0" stroke-width="1.5"/>
-    <text x="42" y="178" class="h-disp" font-size="26" fill="#d7ff3b">02. GRAVEDAD</text>
-    <text x="42" y="204" class="sans" font-size="14" fill="#ece8e0">Lavado, estudio de caída del tejido y diseño de la constelación.</text>
+      <!-- 5 Muestras grandes -->
+      <g transform="translate(20, 52)">
+        <rect x="0" y="0" width="210" height="92" fill="#070709" stroke="#ece8e0" stroke-width="2"/>
+        <text x="105" y="116" text-anchor="middle" class="mono" font-size="13" font-weight="700" fill="#ece8e0">#070709 · TINTA / COSMOS</text>
+        <text x="105" y="134" text-anchor="middle" class="sans" font-size="12" fill="#9d988e">Fondo espacial y puntos de tinta</text>
+      </g>
+      <g transform="translate(250, 52)">
+        <rect x="0" y="0" width="210" height="92" fill="#ece8e0" stroke="#070709" stroke-width="2"/>
+        <text x="105" y="116" text-anchor="middle" class="mono" font-size="13" font-weight="700" fill="#ece8e0">#ECE8E0 · HUESO / LIENZO</text>
+        <text x="105" y="134" text-anchor="middle" class="sans" font-size="12" fill="#9d988e">Algodón crudo de la camisa</text>
+      </g>
+      <g transform="translate(480, 52)">
+        <rect x="0" y="0" width="210" height="92" fill="#d7ff3b" stroke="#070709" stroke-width="2"/>
+        <text x="105" y="116" text-anchor="middle" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">#D7FF3B · ÁCIDO ESTELAR</text>
+        <text x="105" y="134" text-anchor="middle" class="sans" font-size="12" fill="#9d988e">Acento eléctrico, botones y cintas</text>
+      </g>
+      <g transform="translate(710, 52)">
+        <rect x="0" y="0" width="210" height="92" fill="#ff2e4c" stroke="#ece8e0" stroke-width="2"/>
+        <text x="105" y="116" text-anchor="middle" class="mono" font-size="13" font-weight="700" fill="#ff2e4c">#FF2E4C · CARMESÍ NOVA</text>
+        <text x="105" y="134" text-anchor="middle" class="sans" font-size="12" fill="#9d988e">Explosión, estrella ✶ y alertas 1/1</text>
+      </g>
+      <g transform="translate(940, 52)">
+        <rect x="0" y="0" width="210" height="92" fill="#8e8a80" stroke="#ece8e0" stroke-width="2"/>
+        <text x="105" y="116" text-anchor="middle" class="mono" font-size="13" font-weight="700" fill="#8e8a80">#8E8A80 · POLVO / CENIZA</text>
+        <text x="105" y="134" text-anchor="middle" class="sans" font-size="12" fill="#9d988e">Coordenadas y metadatos técnicos</text>
+      </g>
+    </g>
 
-    <rect x="24" y="232" width="452" height="84" fill="#17171f" stroke="#d7ff3b" stroke-width="2"/>
-    <text x="42" y="262" class="h-disp" font-size="26" fill="#ff2e4c">03. INTERVENCIÓN ARTESANAL (2 LÍNEAS)</text>
-    <text x="42" y="286" class="sans" font-size="14" font-weight="700" fill="#ece8e0">A) Ilustración en Puntillismo a mano con tinta textil.</text>
-    <text x="42" y="306" class="sans" font-size="14" font-weight="700" fill="#ece8e0">B) Fusión textil: retales asiáticos (kimono/sashiko) + occidentales.</text>
+    <!-- SUBTÍTULO DE PALETAS EXPLORATORIAS -->
+    <text x="28" y="314" class="h-disp" font-size="30" fill="#ece8e0">¿QUÉ OTRAS PALETAS PODRÍA HABER? (POR TEMPORADA, CÁPSULA O EVOLUCIÓN DE MARCA)</text>
 
-    <rect x="24" y="328" width="452" height="72" fill="#17171f" stroke="#ece8e0" stroke-width="1.5"/>
-    <text x="42" y="358" class="h-disp" font-size="26" fill="#d7ff3b">04. EXPLOSIÓN DE NOVA</text>
-    <text x="42" y="384" class="sans" font-size="14" fill="#ece8e0">Prenda numerada (#001, #002...), firmada y lanzada como pieza única.</text>
+    <!-- PALETA ALTERNATIVA 1: NEBULOSA ÍNDIGO & SASHIKO -->
+    <g id="PALETA-01-INDIGO" transform="translate(28, 334)">
+      <rect class="card-panel" x="0" y="0" width="572" height="330"/>
+      <rect x="0" y="0" width="572" height="34" fill="#0b1528"/>
+      <text x="16" y="23" class="mono" font-size="13" font-weight="700" fill="#38e4ae">OPCIÓN COLOR 01 · «NEBULOSA ÍNDIGO &amp; SASHIKO» (JAPÓN + DENIM)</text>
 
-    <text x="24" y="434" class="mono" font-size="13" fill="#d7ff3b">✶ PRIMER HITO ACTIVO: NOVA 001 «ENANA BLANCA» (85€ · TALLA S · 1/1)</text>
+      <rect x="20" y="50" width="122" height="82" fill="#0b1021" stroke="#ece8e0" stroke-width="1.5"/>
+      <text x="81" y="150" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">#0B1021</text>
+      <text x="81" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Índigo Noche</text>
+
+      <rect x="156" y="50" width="122" height="82" fill="#f4efe6" stroke="#070709" stroke-width="1.5"/>
+      <text x="217" y="150" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">#F4EFE6</text>
+      <text x="217" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Papel Washi</text>
+
+      <rect x="292" y="50" width="122" height="82" fill="#38e4ae" stroke="#070709" stroke-width="1.5"/>
+      <text x="353" y="150" text-anchor="middle" class="mono" font-size="11" fill="#38e4ae">#38E4AE</text>
+      <text x="353" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Verde Aurora</text>
+
+      <rect x="428" y="50" width="122" height="82" fill="#ff5a36" stroke="#ece8e0" stroke-width="1.5"/>
+      <text x="489" y="150" text-anchor="middle" class="mono" font-size="11" fill="#ff5a36">#FF5A36</text>
+      <text x="489" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Laca Torii</text>
+
+      <text x="20" y="204" class="sans" font-size="14" font-weight="700" fill="#ece8e0">• Sensación: Artesanía japonesa, vaquero oscuro, hilo crudo y sello bermellón.</text>
+      <text x="20" y="228" class="sans" font-size="14" fill="#cbc6bc">• Cuándo usarla: Ideal cuando lancéis el Drop 002 «Nebulosa Índigo» o para</text>
+      <text x="20" y="250" class="sans" font-size="14" fill="#cbc6bc">  diferenciar la línea de Fusión Textil / Kimono de la línea de Puntillismo.</text>
+      <rect x="20" y="272" width="532" height="38" fill="#0b1021" stroke="#38e4ae" stroke-width="1"/>
+      <text x="286" y="296" text-anchor="middle" class="mono" font-size="12" fill="#38e4ae">VIBRA: TOKYO ARCHIVE · DENIM · SASHIKO · PROFUNDA</text>
+    </g>
+
+    <!-- PALETA ALTERNATIVA 2: ENANA BLANCA & ULTRAVIOLETA -->
+    <g id="PALETA-02-ULTRAVIOLETA" transform="translate(630, 334)">
+      <rect class="card-panel" x="0" y="0" width="572" height="330"/>
+      <rect x="0" y="0" width="572" height="34" fill="#1e1936"/>
+      <text x="16" y="23" class="mono" font-size="13" font-weight="700" fill="#b49bff">OPCIÓN COLOR 02 · «PULSAR ULTRAVIOLETA &amp; PLATA» (GALERÍA / AVANT-GARDE)</text>
+
+      <rect x="20" y="50" width="122" height="82" fill="#09090c" stroke="#ece8e0" stroke-width="1.5"/>
+      <text x="81" y="150" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">#09090C</text>
+      <text x="81" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Carbón</text>
+
+      <rect x="156" y="50" width="122" height="82" fill="#f7f6f2" stroke="#070709" stroke-width="1.5"/>
+      <text x="217" y="150" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">#F7F6F2</text>
+      <text x="217" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Blanco Puro</text>
+
+      <rect x="292" y="50" width="122" height="82" fill="#7b61ff" stroke="#ece8e0" stroke-width="1.5"/>
+      <text x="353" y="150" text-anchor="middle" class="mono" font-size="11" fill="#b49bff">#7B61FF</text>
+      <text x="353" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Violeta Pulsar</text>
+
+      <rect x="428" y="50" width="122" height="82" fill="#c5c8d4" stroke="#070709" stroke-width="1.5"/>
+      <text x="489" y="150" text-anchor="middle" class="mono" font-size="11" fill="#c5c8d4">#C5C8D4</text>
+      <text x="489" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Plata / Cromo</text>
+
+      <text x="20" y="204" class="sans" font-size="14" font-weight="700" fill="#ece8e0">• Sensación: Más fría, futurista, galería de arte contemporáneo y lujo silencioso.</text>
+      <text x="20" y="228" class="sans" font-size="14" fill="#cbc6bc">• Cuándo usarla: Si queréis suavizar el amarillo ácido hacia un tono más</text>
+      <text x="20" y="250" class="sans" font-size="14" fill="#cbc6bc">  misterioso y nocturno (inspirado en Maison Margiela / Comme des Garçons).</text>
+      <rect x="20" y="272" width="532" height="38" fill="#12101b" stroke="#7b61ff" stroke-width="1"/>
+      <text x="286" y="296" text-anchor="middle" class="mono" font-size="12" fill="#b49bff">VIBRA: GALERÍA · MISTERIOSA · PLATA METÁLICA · EDITORIAL</text>
+    </g>
+
+    <!-- PALETA ALTERNATIVA 3: HORIZONTE INFRARROJO / SOLAR -->
+    <g id="PALETA-03-INFRARROJO" transform="translate(28, 692)">
+      <rect class="card-panel" x="0" y="0" width="572" height="340"/>
+      <rect x="0" y="0" width="572" height="34" fill="#2b110d"/>
+      <text x="16" y="23" class="mono" font-size="13" font-weight="700" fill="#ffb800">OPCIÓN COLOR 03 · «IGNICIÓN SOLAR &amp; TERRACOTA» (CÁLIDA / ORGÁNICA)</text>
+
+      <rect x="20" y="50" width="122" height="82" fill="#12090b" stroke="#ece8e0" stroke-width="1.5"/>
+      <text x="81" y="150" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">#12090B</text>
+      <text x="81" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Obsidiana</text>
+
+      <rect x="156" y="50" width="122" height="82" fill="#efe6dd" stroke="#070709" stroke-width="1.5"/>
+      <text x="217" y="150" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">#EFE6DD</text>
+      <text x="217" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Lino Crudo</text>
+
+      <rect x="292" y="50" width="122" height="82" fill="#ff3b1d" stroke="#ece8e0" stroke-width="1.5"/>
+      <text x="353" y="150" text-anchor="middle" class="mono" font-size="11" fill="#ff3b1d">#FF3B1D</text>
+      <text x="353" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Rojo Solar</text>
+
+      <rect x="428" y="50" width="122" height="82" fill="#ffb800" stroke="#070709" stroke-width="1.5"/>
+      <text x="489" y="150" text-anchor="middle" class="mono" font-size="11" fill="#ffb800">#FFB800</text>
+      <text x="489" y="166" text-anchor="middle" class="sans" font-size="11" fill="#9d988e">Ámbar / Oro</text>
+
+      <text x="20" y="204" class="sans" font-size="14" font-weight="700" fill="#ece8e0">• Sensación: Calor de estrella en ignición, tierra, óxido y taller artesanal.</text>
+      <text x="20" y="228" class="sans" font-size="14" fill="#cbc6bc">• Cuándo usarla: Para cápsulas de otoño/verano, prendas en tonos crudos,</text>
+      <text x="20" y="250" class="sans" font-size="14" fill="#cbc6bc">  marrones o rojos, o etiquetas físicas en cartón kraft con tinta roja.</text>
+      <rect x="20" y="278" width="532" height="38" fill="#1a0d0b" stroke="#ffb800" stroke-width="1"/>
+      <text x="286" y="302" text-anchor="middle" class="mono" font-size="12" fill="#ffb800">VIBRA: CÁLIDA · VOLCÁNICA · ARTESANAL · ANALÓGICA</text>
+    </g>
+
+    <!-- PALETA ALTERNATIVA 4: SISTEMA CAMALEÓNICO POR DROP -->
+    <g id="PALETA-04-SISTEMA-DINAMICO" transform="translate(630, 692)">
+      <rect class="card-panel" x="0" y="0" width="572" height="340"/>
+      <rect x="0" y="0" width="572" height="34" fill="#d7ff3b"/>
+      <text x="16" y="23" class="mono" font-size="13" font-weight="700" fill="#070709">★ IDEA CREATIVA: «COLOR MUTANTE POR CADA NOVA»</text>
+
+      <text x="22" y="72" class="h-disp" font-size="28" fill="#ece8e0">MANTENER TINTA + HUESO FIJOS Y CAMBIAR EL ACENTO EN CADA DROP</text>
+      <text x="22" y="106" class="sans" font-size="14" fill="#cbc6bc">En lugar de atarse a un solo color de acento para siempre, la base de</text>
+      <text x="22" y="128" class="sans" font-size="14" fill="#cbc6bc">ACR✶TA es siempre <tspan fill="#ece8e0" font-weight="700">Negro Tinta (#070709) + Hueso (#ECE8E0)</tspan>, y cada</text>
+      <text x="22" y="150" class="sans" font-size="14" fill="#cbc6bc">Nova tiñe la web y el ticket con su propia temperatura estelar:</text>
+
+      <rect x="22" y="170" width="528" height="28" fill="#101016" stroke="#d7ff3b" stroke-width="1"/>
+      <text x="34" y="189" class="mono" font-size="12" fill="#d7ff3b">● NOVA 001 (ENANA BLANCA) → ÁCIDO #D7FF3B + CARMESÍ #FF2E4C</text>
+
+      <rect x="22" y="206" width="528" height="28" fill="#101016" stroke="#38e4ae" stroke-width="1"/>
+      <text x="34" y="225" class="mono" font-size="12" fill="#38e4ae">● NOVA 002 (NEBULOSA ÍNDIGO) → AURORA #38E4AE + ÍNDIGO #4A6FA5</text>
+
+      <rect x="22" y="242" width="528" height="28" fill="#101016" stroke="#7b61ff" stroke-width="1"/>
+      <text x="34" y="261" class="mono" font-size="12" fill="#b49bff">● NOVA 003 (CINTURÓN DE ORIÓN) → PULSAR #7B61FF + PLATA #C5C8D4</text>
+
+      <rect x="22" y="278" width="528" height="28" fill="#101016" stroke="#ffb800" stroke-width="1"/>
+      <text x="34" y="297" class="mono" font-size="12" fill="#ffb800">● NOVA 007 (PERIHELIO SOLAR) → ÁMBAR #FFB800 + LLAMA #FF3B1D</text>
+    </g>
   </g>
 
-  <!-- ==================== 06. MODELO DE DROPS Y COMUNIDAD (ABAJO CENTRO) ==================== -->
-  <g id="06-COMUNIDAD-Y-EXPERIENCIA" transform="translate(880, 1165)">
-    <rect class="shadow-crimson" x="10" y="10" width="640" height="240"/>
-    <rect class="card-dark" x="0" y="0" width="640" height="240"/>
-    <rect x="0" y="0" width="640" height="42" fill="#d7ff3b"/>
-    <text x="22" y="27" class="mono" font-size="15" font-weight="700" fill="#070709">05 · EXPERIENCIA DIGITAL Y COMUNIDAD («LA ÓRBITA»)</text>
+  <!-- ==================================================================================
+       06. ZONA CENTRAL INFERIOR: ¿QUÉ TENEMOS EN MANO AHORA MISMO? (INVENTARIO REAL)
+       ================================================================================== -->
+  <g id="06-LO-QUE-TENEMOS-EN-MANO" transform="translate(1010, 1525)">
+    <rect class="shadow-acid" x="12" y="12" width="1250" height="405"/>
+    <rect class="card-dark" x="0" y="0" width="1250" height="405"/>
+    <rect x="0" y="0" width="1250" height="48" fill="#38e4ae"/>
+    <text x="26" y="31" class="mono" font-size="16" font-weight="700" fill="#070709">05 · ¿QUÉ TENEMOS EN MANO AHORA MISMO? — ACTIVOS LISTOS PARA LANZAR Y ENSEÑAR AL CLIENTE</text>
 
-    <text x="26" y="84" class="h-disp" font-size="32" fill="#ece8e0">NO TENEMOS CLIENTES: TENEMOS OBSERVADORAS EN ÓRBITA</text>
-    <text x="26" y="120" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• Web-experiencia interactiva: portada con explosión de 10.800 partículas.</text>
-    <text x="26" y="150" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• «Avistamientos» en lugar de Lookbook: registro vivo de cada pieza.</text>
-    <text x="26" y="180" class="sans" font-size="16" font-weight="600" fill="#ece8e0">• «La Órbita» (Newsletter / Club privado): aviso con cuenta atrás antes de</text>
-    <text x="40" y="204" class="sans" font-size="16" font-weight="600" fill="#d7ff3b">cada explosión de Nova para reclamar la prenda antes de que se agote.</text>
+    <!-- Columna 1: Producto físico -->
+    <rect class="card-panel" x="26" y="68" width="388" height="312"/>
+    <text x="44" y="100" class="mono" font-size="14" font-weight="700" fill="#d7ff3b">✔ 1. PIEZA INAUGURAL (DROP 001)</text>
+    <text x="44" y="132" class="h-disp" font-size="32" fill="#ece8e0">CAMISA «ENANA BLANCA»</text>
+    <text x="44" y="164" class="sans" font-size="14" fill="#cbc6bc">• Camisa blanca de algodón 2ª mano intervenida.</text>
+    <text x="44" y="188" class="sans" font-size="14" fill="#cbc6bc">• Técnica: Puntillismo (~40.000 puntos a mano).</text>
+    <text x="44" y="212" class="sans" font-size="14" fill="#cbc6bc">• Talla S · Unidad 1/1 · Precio fijado: 85€.</text>
+    <text x="44" y="236" class="sans" font-size="14" fill="#cbc6bc">• Sesión fotográfica completa: 4 fotos editoriales</text>
+    <text x="44" y="258" class="sans" font-size="14" fill="#cbc6bc">  (frontal, detalle macro, perfil y plano completo).</text>
+    <rect x="44" y="284" width="352" height="72" fill="#101016" stroke="#d7ff3b" stroke-width="1.5"/>
+    <text x="220" y="314" text-anchor="middle" class="mono" font-size="12" fill="#d7ff3b">ESTADO: LISTA PARA VENTA REAL</text>
+    <text x="220" y="338" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">REGISTRO #001 · 100% COMPLETADA</text>
+
+    <!-- Columna 2: Plataforma Digital -->
+    <rect class="card-panel" x="431" y="68" width="388" height="312"/>
+    <text x="449" y="100" class="mono" font-size="14" font-weight="700" fill="#38e4ae">✔ 2. PLATAFORMA WEB INTERACTIVA 24/7</text>
+    <text x="449" y="132" class="h-disp" font-size="32" fill="#ece8e0">WEB «COSMOS LOCO» ONLINE</text>
+    <text x="449" y="164" class="sans" font-size="14" fill="#cbc6bc">• Portada con explosión de Nova de 10.800 puntos</text>
+    <text x="449" y="188" class="sans" font-size="14" fill="#cbc6bc">  que forman el logo ACR✶TA interactivo al tacto.</text>
+    <text x="449" y="212" class="sans" font-size="14" fill="#cbc6bc">• Manifiesto con píldoras fotográficas + Ficha Drop</text>
+    <text x="449" y="236" class="sans" font-size="14" fill="#cbc6bc">  con efecto glitch, ticket y bolsa de compra.</text>
+    <text x="449" y="260" class="sans" font-size="14" fill="#cbc6bc">• Mapa interactivo de la Ruta de Novas + Cuenta atrás.</text>
+    <rect x="449" y="284" width="352" height="72" fill="#101016" stroke="#38e4ae" stroke-width="1.5"/>
+    <text x="625" y="314" text-anchor="middle" class="mono" font-size="12" fill="#38e4ae">URL: CORUKAILAB.GITHUB.IO/ACRETA</text>
+    <text x="625" y="338" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">OPTIMIZADA PARA MÓVIL Y ORDENADOR</text>
+
+    <!-- Columna 3: Identidad y Herramientas -->
+    <rect class="card-panel" x="836" y="68" width="388" height="312"/>
+    <text x="854" y="100" class="mono" font-size="14" font-weight="700" fill="#ff2e4c">✔ 3. SISTEMA GRÁFICO &amp; PUENTE AFFINITY</text>
+    <text x="854" y="132" class="h-disp" font-size="32" fill="#ece8e0">IDENTIDAD + ARCHIVOS FUENTE</text>
+    <text x="854" y="164" class="sans" font-size="14" fill="#cbc6bc">• Glifo vectorial propio (✶) integrado en ACR✶TA.</text>
+    <text x="854" y="188" class="sans" font-size="14" fill="#cbc6bc">• Sistema tipográfico definido (Anton + Instrument</text>
+    <text x="854" y="212" class="sans" font-size="14" fill="#cbc6bc">  Serif + Space Mono + Manrope).</text>
+    <text x="854" y="236" class="sans" font-size="14" fill="#cbc6bc">• Narrativa completa de las primeras 7 Novas.</text>
+    <text x="854" y="260" class="sans" font-size="14" fill="#cbc6bc">• Puente API directo con Canva Affinity 3.3.</text>
+    <rect x="854" y="284" width="352" height="72" fill="#101016" stroke="#ff2e4c" stroke-width="1.5"/>
+    <text x="1030" y="314" text-anchor="middle" class="mono" font-size="12" fill="#ff2e4c">TODO EDITABLE EN VECTOR (.SVG)</text>
+    <text x="1030" y="338" text-anchor="middle" class="mono" font-size="11" fill="#ece8e0">LISTO PARA IMPRENTA Y SERIGRAFÍA</text>
   </g>
 
-  <!-- ==================== 07. HACIA DÓNDE VAMOS / HOJA DE RUTA (ABAJO DERECHA) ==================== -->
-  <g id="07-DONDE-QUEREMOS-IR" transform="translate(1820, 945)">
-    <rect class="shadow-acid" x="10" y="10" width="500" height="460"/>
-    <rect class="card-bone" x="0" y="0" width="500" height="460"/>
-    <rect x="0" y="0" width="500" height="44" fill="#070709"/>
-    <text x="22" y="29" class="mono" font-size="15" font-weight="700" fill="#d7ff3b">06 · ¿DÓNDE QUEREMOS IR? (HOJA DE RUTA / FUTURO)</text>
+  <!-- ==================================================================================
+       07. ZONA INFERIOR IZQUIERDA: LA CONSTELACIÓN DE 7 DROPS (RUTA DE NOVAS)
+       ================================================================================== -->
+  <g id="07-RUTA-DE-7-NOVAS" transform="translate(60, 1980)">
+    <rect class="shadow-acid" x="12" y="12" width="1700" height="530"/>
+    <rect class="card-dark" x="0" y="0" width="1700" height="530"/>
+    <rect x="0" y="0" width="1700" height="48" fill="#d7ff3b"/>
+    <text x="26" y="31" class="mono" font-size="16" font-weight="700" fill="#070709">06 · LA RUTA DE NOVAS — PLANIFICACIÓN CREATIVA DE LOS PRIMEROS 7 DROPS (CADA PRENDA ES UNA ESTRELLA)</text>
 
-    <text x="26" y="88" class="h-disp" font-size="34" fill="#070709">LA RUTA DE NOVAS (CORTO → LARGO PLAZO)</text>
+    <!-- Línea conectora de las 7 Novas -->
+    <line x1="120" y1="215" x2="1580" y2="215" stroke="#d7ff3b" stroke-width="3" stroke-dasharray="10 6"/>
 
-    <!-- Horizontes -->
-    <rect x="24" y="108" width="452" height="96" fill="#ffffff" stroke="#070709" stroke-width="2"/>
-    <rect x="24" y="108" width="12" height="96" fill="#d7ff3b"/>
-    <text x="50" y="135" class="mono" font-size="13" font-weight="700" fill="#ff2e4c">HORIZONTE 1 · AHORA (IGNICIÓN)</text>
-    <text x="50" y="160" class="sans" font-size="15" font-weight="700" fill="#070709">Lanzamiento de Drop 001 (Enana Blanca) y apertura de La Órbita.</text>
-    <text x="50" y="184" class="sans" font-size="14" fill="#333333">Primeros avistamientos en redes (IG/TikTok) mostrando el proceso punto a punto.</text>
+    <!-- 7 Tarjetas de Drop -->
+    <g transform="translate(26, 78)">
+      <rect x="0" y="0" width="220" height="418" fill="#d7ff3b" stroke="#070709" stroke-width="2"/>
+      <text x="16" y="30" class="mono" font-size="13" font-weight="700" fill="#070709">NOVA 001 · ACTIVA</text>
+      <text x="16" y="68" class="h-disp" font-size="30" fill="#070709">ENANA BLANCA</text>
+      <text x="16" y="96" class="mono" font-size="11" font-weight="700" fill="#ff2e4c">PUNTILLISMO A MANO</text>
+      <text x="16" y="126" class="sans" font-size="13" font-weight="700" fill="#070709">Camisa blanca recuperada con ~40.000 puntos de tinta dibujados uno a uno.</text>
+      <text x="16" y="390" class="mono" font-size="13" font-weight="700" fill="#070709">100% · 85€ · TALLA S</text>
+    </g>
 
-    <rect x="24" y="218" width="452" height="104" fill="#ffffff" stroke="#070709" stroke-width="2"/>
-    <rect x="24" y="218" width="12" height="104" fill="#ff2e4c"/>
-    <text x="50" y="245" class="mono" font-size="13" font-weight="700" fill="#070709">HORIZONTE 2 · PRÓXIMAS NOVAS (002 → 007)</text>
-    <text x="50" y="270" class="sans" font-size="15" font-weight="700" fill="#070709">Constelación de 7 Drops: Nebulosa Índigo (Sashiko+Denim),</text>
-    <text x="50" y="292" class="sans" font-size="14" fill="#333333">Cinturón de Orión, Marea Lunar, Horizonte de Sucesos, Polvo Cósmico y Perihelio.</text>
+    <g transform="translate(262, 78)">
+      <rect class="card-panel" x="0" y="0" width="220" height="418"/>
+      <text x="16" y="30" class="mono" font-size="13" font-weight="700" fill="#38e4ae">NOVA 002 · PRÓXIMA</text>
+      <text x="16" y="68" class="h-disp" font-size="30" fill="#ece8e0">NEBULOSA ÍNDIGO</text>
+      <text x="16" y="96" class="mono" font-size="11" fill="#d7ff3b">SASHIKO + DENIM</text>
+      <text x="16" y="126" class="sans" font-size="13" fill="#cbc6bc">Chaqueta vaquera reconstruida con paneles de kimono antiguo y costuras vistas.</text>
+      <text x="16" y="390" class="mono" font-size="12" fill="#38e4ae">ACRECIÓN: 78%</text>
+    </g>
 
-    <rect x="24" y="336" width="452" height="102" fill="#070709" stroke="#070709" stroke-width="2"/>
-    <rect x="24" y="336" width="12" height="102" fill="#d7ff3b"/>
-    <text x="50" y="363" class="mono" font-size="13" font-weight="700" fill="#d7ff3b">HORIZONTE 3 · EXPANSIÓN DEL UNIVERSO ACR✶TA</text>
-    <text x="50" y="388" class="sans" font-size="15" font-weight="700" fill="#ece8e0">• Servicio «Trae tu prenda a orbitar» (intervención por encargo).</text>
-    <text x="50" y="412" class="sans" font-size="15" font-weight="700" fill="#ece8e0">• Pop-ups / exposiciones físicas como galería-taller y colaboraciones.</text>
+    <g transform="translate(498, 78)">
+      <rect class="card-panel" x="0" y="0" width="220" height="418"/>
+      <text x="16" y="30" class="mono" font-size="13" font-weight="700" fill="#ff2e4c">NOVA 003 · EN RUTA</text>
+      <text x="16" y="68" class="h-disp" font-size="28" fill="#ece8e0">CINTURÓN DE ORIÓN</text>
+      <text x="16" y="96" class="mono" font-size="11" fill="#d7ff3b">BORDADO + TINTA</text>
+      <text x="16" y="126" class="sans" font-size="13" fill="#cbc6bc">Vaquero recto con las tres estrellas de Orión bordadas e intervenidas en cadera.</text>
+      <text x="16" y="390" class="mono" font-size="12" fill="#ff2e4c">ACRECIÓN: 52%</text>
+    </g>
+
+    <g transform="translate(734, 78)">
+      <rect class="card-panel" x="0" y="0" width="220" height="418"/>
+      <text x="16" y="30" class="mono" font-size="13" font-weight="700" fill="#ff2e4c">NOVA 004 · EN RUTA</text>
+      <text x="16" y="68" class="h-disp" font-size="30" fill="#ece8e0">MAREA LUNAR</text>
+      <text x="16" y="96" class="mono" font-size="11" fill="#d7ff3b">SATÉN + ENCAJE</text>
+      <text x="16" y="126" class="sans" font-size="13" fill="#cbc6bc">Vestido asimétrico que fusiona dos prendas olvidadas con constelación en espalda.</text>
+      <text x="16" y="390" class="mono" font-size="12" fill="#ff2e4c">ACRECIÓN: 35%</text>
+    </g>
+
+    <g transform="translate(970, 78)">
+      <rect class="card-panel" x="0" y="0" width="220" height="418"/>
+      <text x="16" y="30" class="mono" font-size="13" font-weight="700" fill="#ff2e4c">NOVA 005 · EN RUTA</text>
+      <text x="16" y="68" class="h-disp" font-size="26" fill="#ece8e0">HORIZONTE SUCESOS</text>
+      <text x="16" y="96" class="mono" font-size="11" fill="#d7ff3b">PUNTILLISMO BLANCO</text>
+      <text x="16" y="126" class="sans" font-size="13" fill="#cbc6bc">Sudadera negra intervenida con miles de puntos blancos: el negativo de la Nova 001.</text>
+      <text x="16" y="390" class="mono" font-size="12" fill="#ff2e4c">ACRECIÓN: 64%</text>
+    </g>
+
+    <g transform="translate(1206, 78)">
+      <rect class="card-panel" x="0" y="0" width="220" height="418"/>
+      <text x="16" y="30" class="mono" font-size="13" font-weight="700" fill="#ff2e4c">NOVA 006 · EN RUTA</text>
+      <text x="16" y="68" class="h-disp" font-size="30" fill="#ece8e0">POLVO CÓSMICO</text>
+      <text x="16" y="96" class="mono" font-size="11" fill="#d7ff3b">PATCHWORK 5 TEJIDOS</text>
+      <text x="16" y="126" class="sans" font-size="13" fill="#cbc6bc">Falda plisada de corte asiático construida con retales de cinco prendas con historia.</text>
+      <text x="16" y="390" class="mono" font-size="12" fill="#ff2e4c">ACRECIÓN: 22%</text>
+    </g>
+
+    <g transform="translate(1442, 78)">
+      <rect class="card-panel" x="0" y="0" width="232" height="418"/>
+      <text x="16" y="30" class="mono" font-size="13" font-weight="700" fill="#38e4ae">NOVA 007 · EN RUTA</text>
+      <text x="16" y="68" class="h-disp" font-size="30" fill="#ece8e0">PERIHELIO</text>
+      <text x="16" y="96" class="mono" font-size="11" fill="#d7ff3b">TRAZO + SERIGRAFÍA</text>
+      <text x="16" y="126" class="sans" font-size="13" fill="#cbc6bc">Camiseta de algodón pesado con cartas celestes y coordenadas dibujadas a mano.</text>
+      <text x="16" y="390" class="mono" font-size="12" fill="#38e4ae">ACRECIÓN: 88%</text>
+    </g>
   </g>
 
-  <!-- ==================== PIE DE PÁGINA DEL LIENZO ==================== -->
-  <g id="08-PIE-DE-MAPA">
-    <text x="60" y="1560" class="mono" font-size="14" fill="#8e8a80">ACR✶TA · MAPA CONCEPTUAL DE PROYECTO · CAPAS VECTORIALES AGRUPADAS PARA AFFINITY DESIGNER</text>
-    <text x="2340" y="1560" text-anchor="end" class="mono" font-size="14" fill="#d7ff3b">HTTPS://CORUKAILAB.GITHUB.IO/ACRETA/</text>
+  <!-- ==================================================================================
+       08. ZONA INFERIOR DERECHA: ¿DÓNDE QUEREMOS IR? (ESTRATEGIA, REDES Y VISIÓN FUTURA)
+       ================================================================================== -->
+  <g id="08-DONDE-QUEREMOS-IR-FUTURO" transform="translate(1810, 1980)">
+    <rect class="shadow-crimson" x="12" y="12" width="1730" height="530"/>
+    <rect class="card-bone" x="0" y="0" width="1730" height="530"/>
+    <rect x="0" y="0" width="1730" height="48" fill="#070709"/>
+    <text x="26" y="31" class="mono" font-size="16" font-weight="700" fill="#d7ff3b">07 · ¿DÓNDE QUEREMOS IR? — HOJA DE RUTA EN 3 HORIZONTES, CONTENIDO Y EXPANSIÓN DEL UNIVERSO ACR✶TA</text>
+
+    <!-- Horizonte 1 -->
+    <g transform="translate(28, 76)">
+      <rect x="0" y="0" width="538" height="422" fill="#ffffff" stroke="#070709" stroke-width="2.5"/>
+      <rect x="0" y="0" width="538" height="38" fill="#d7ff3b"/>
+      <text x="18" y="25" class="mono" font-size="14" font-weight="700" fill="#070709">HORIZONTE 1 · IGNICIÓN (MESES 1–3)</text>
+      <text x="22" y="76" class="h-disp" font-size="30" fill="#070709">VALIDAR MARCA &amp; CREAR CULTO AL PROCESO</text>
+      <text x="22" y="114" class="sans" font-size="15" font-weight="700" fill="#070709">• Venta de las primeras Novas (001 → 003) como</text>
+      <text x="22" y="138" class="sans" font-size="15" font-weight="700" fill="#070709">  acontecimientos con cuenta atrás en la web.</text>
+      <text x="22" y="172" class="sans" font-size="14" fill="#222222">• Contenido hipnótico en Reels / TikTok:</text>
+      <text x="22" y="196" class="sans" font-size="14" fill="#222222">  1) Macro ASMR de la aguja/rotulador haciendo puntos.</text>
+      <text x="22" y="220" class="sans" font-size="14" fill="#222222">  2) «Dónde encontré esta prenda vs. en qué se convirtió».</text>
+      <text x="22" y="244" class="sans" font-size="14" fill="#222222">  3) El ritual de sellar y numerar el ticket 1/1.</text>
+      <text x="22" y="278" class="sans" font-size="15" font-weight="700" fill="#070709">• Primeros 250 miembros en «La Órbita» (acceso</text>
+      <text x="22" y="302" class="sans" font-size="15" font-weight="700" fill="#070709">  anticipado 24h antes de cada explosión).</text>
+      <rect x="22" y="352" width="494" height="46" fill="#070709"/>
+      <text x="269" y="380" text-anchor="middle" class="mono" font-size="12" fill="#d7ff3b">META: QUE CADA DROP SE AGOTE EN MENOS DE 48H</text>
+    </g>
+
+    <!-- Horizonte 2 -->
+    <g transform="translate(596, 76)">
+      <rect x="0" y="0" width="538" height="422" fill="#ffffff" stroke="#070709" stroke-width="2.5"/>
+      <rect x="0" y="0" width="538" height="38" fill="#ff2e4c"/>
+      <text x="18" y="25" class="mono" font-size="14" font-weight="700" fill="#ece8e0">HORIZONTE 2 · EXPANSIÓN (MESES 4–9)</text>
+      <text x="22" y="76" class="h-disp" font-size="30" fill="#070709">«TRAE TU PRENDA A ORBITAR» &amp; ARCHIVO VIVO</text>
+      <text x="22" y="114" class="sans" font-size="15" font-weight="700" fill="#070709">• Servicio Custom «Órbita Personal»:</text>
+      <text x="22" y="138" class="sans" font-size="14" fill="#222222">  El cliente envía una chaqueta o camisa de su armario</text>
+      <text x="22" y="160" class="sans" font-size="14" fill="#222222">  con valor emocional para que Acreta la intervenga</text>
+      <text x="22" y="182" class="sans" font-size="14" fill="#222222">  en puntillismo o sashiko y le asigne número de Nova.</text>
+      <text x="22" y="216" class="sans" font-size="15" font-weight="700" fill="#070709">• Pasaporte Astronómico en la Web:</text>
+      <text x="22" y="240" class="sans" font-size="14" fill="#222222">  Las estrellas vendidas no se borran de la web; quedan</text>
+      <text x="22" y="262" class="sans" font-size="14" fill="#222222">  en la constelación con la ciudad y el alias de su dueña.</text>
+      <text x="22" y="296" class="sans" font-size="15" font-weight="700" fill="#070709">• Mini-cápsula de accesorios con retales sobrantes</text>
+      <text x="22" y="320" class="sans" font-size="14" fill="#222222">  (bolsos tote sashiko, parches bordados, pañuelos).</text>
+      <rect x="22" y="352" width="494" height="46" fill="#070709"/>
+      <text x="269" y="380" text-anchor="middle" class="mono" font-size="12" fill="#ff2e4c">META: CERO RESIDUO TEXTIL + INGRESO POR ENCARGOS</text>
+    </g>
+
+    <!-- Horizonte 3 -->
+    <g transform="translate(1164, 76)">
+      <rect x="0" y="0" width="538" height="422" fill="#070709" stroke="#070709" stroke-width="2.5"/>
+      <rect x="0" y="0" width="538" height="38" fill="#d7ff3b"/>
+      <text x="18" y="25" class="mono" font-size="14" font-weight="700" fill="#070709">HORIZONTE 3 · UNIVERSO FÍSICO (AÑO 1–2)</text>
+      <text x="22" y="76" class="h-disp" font-size="30" fill="#ece8e0">GALERÍA-TALLER, POP-UPS Y COLISIONES</text>
+      <text x="22" y="114" class="sans" font-size="15" font-weight="700" fill="#d7ff3b">• Pop-Ups «Observatorio Acreta»:</text>
+      <text x="22" y="138" class="sans" font-size="14" fill="#cbc6bc">  Exponer las prendas en un espacio oscuro iluminadas</text>
+      <text x="22" y="160" class="sans" font-size="14" fill="#cbc6bc">  como obras de arte colgadas en constelación, con</text>
+      <text x="22" y="182" class="sans" font-size="14" fill="#cbc6bc">  intervención de puntillismo en vivo durante el evento.</text>
+      <text x="22" y="216" class="sans" font-size="15" font-weight="700" fill="#d7ff3b">• «Colisiones Estelares» (Colaboraciones):</text>
+      <text x="22" y="240" class="sans" font-size="14" fill="#cbc6bc">  Drops conjuntos con tatuadoras, ceramistas, músicos</text>
+      <text x="22" y="262" class="sans" font-size="14" fill="#cbc6bc">  indie e ilustradoras que intervengan 1 prenda única.</text>
+      <text x="22" y="296" class="sans" font-size="15" font-weight="700" fill="#d7ff3b">• Referente nacional de Upcycling de Autor:</text>
+      <text x="22" y="320" class="sans" font-size="14" fill="#cbc6bc">  Donde moda, arte contemporáneo y conciencia se unen.</text>
+      <rect x="22" y="352" width="494" height="46" fill="#d7ff3b"/>
+      <text x="269" y="380" text-anchor="middle" class="mono" font-size="12" font-weight="700" fill="#070709">VISIÓN: CONVERTIR ROPA OLVIDADA EN PIEZAS DE COLECCIÓN</text>
+    </g>
+  </g>
+
+  <!-- ==================== PIE DEL ARTBOARD ==================== -->
+  <g id="09-PIE-MASTER">
+    <text x="60" y="2564" class="mono" font-size="15" fill="#8e8a80">ACR✶TA · MASTER BRAND MAP &amp; BRAINSTORMING · 3600×2600 PX · VECTOR 100% EDITABLE POR CAPAS EN AFFINITY DESIGNER 3.3</text>
+    <text x="3540" y="2564" text-anchor="end" class="mono" font-size="15" fill="#d7ff3b">HTTPS://CORUKAILAB.GITHUB.IO/ACRETA/MAPA-CONCEPTUAL.HTML</text>
   </g>
 </svg>
